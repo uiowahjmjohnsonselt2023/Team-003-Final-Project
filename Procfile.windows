@@ -1,1 +1,0 @@
-web: jruby -S bin\puma -C config\puma.rb
