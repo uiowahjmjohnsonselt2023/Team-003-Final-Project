@@ -5,6 +5,20 @@ ruby "2.7.3"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
 
+gem 'bcrypt', '~> 3.1.7'                   # gem for securely hashing passwords
+
+group :development, :test do
+  gem 'rspec-rails'                        # gem for writing and running RSpec tests.
+  gem 'cucumber-rails', require: false     # gem for writing and running Cucumber tests (BDD)
+  gem 'database_cleaner'                   # gem for cleaning the database between test runs
+end
+
+group :test do
+  gem 'simplecov', require: false          # gem for code coverage analysis during testing
+  gem 'factory_bot_rails'                  # gem for creating and managing test data using factories
+  gem 'faker'                              # gem for generating fake data for tests, like sample user names and emails
+end
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
