@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy', as: :logout
+  get 'logout', to: 'sessions#destroy'
 
   # route for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
@@ -16,5 +16,4 @@ Rails.application.routes.draw do
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
-
 end
