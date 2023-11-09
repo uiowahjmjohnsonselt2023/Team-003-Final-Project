@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
     params.require(:listing).permit(:title, :description, :price, :condition, :quantity, :images)
   end
   def show
-    id = params[:id] # retrieve movie ID from URI route
+    id = params[:id] # retrieve listing ID from URI route
     @listing = Listing.find(id)
   end
 
@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
 
   def new
     # default: render 'new' template
-        @listing = Listing.new
+    @listing = Listing.new
   end
 
   def create
