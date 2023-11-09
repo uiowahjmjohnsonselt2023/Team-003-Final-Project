@@ -21,11 +21,6 @@ end
 
 gem 'rails-controller-testing'             # gem for asserting that certain templates are rendered in controller tests
 
-
-group :production do
-  gem 'pg'                                 # PostgreSQL database adapter in production environments
-end
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
