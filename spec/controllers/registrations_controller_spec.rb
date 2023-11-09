@@ -32,10 +32,10 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "logs out the user and redirects to root url" do
+    it "logs out the user and redirects to login page" do
       delete :destroy
       expect(session[:user_id]).to be_nil
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(login_path)
       expect(flash[:notice]).to eq("Logged out!")
     end
   end

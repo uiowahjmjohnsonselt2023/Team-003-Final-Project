@@ -52,8 +52,8 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).to be_nil
     end
 
-    it 'redirects to the root_url' do
-      expect(response).to redirect_to(root_url)
+    it 'redirects to the login page' do
+      expect(response).to redirect_to(login_path)
     end
 
     it 'sets a notice flash message' do
