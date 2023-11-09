@@ -12,7 +12,7 @@
   <tbody>
   <% @listings.each do |listing| %>
     <tr>
-      <td><%= listing.title %></td>
+      <td><%=link_to listing.title, listing %></td>
       <td><%= listing.description %></td>
     </tr>
   <% end %>
