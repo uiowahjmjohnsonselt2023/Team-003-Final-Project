@@ -1,3 +1,28 @@
-Hello World
+<!-- app/views/listings/show.html.erb -->
 
-<%= @listing.title %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @listing.title %> - Listing</title>
+</head>
+<body>
+
+<h1><%= @listing.title %></h1>
+
+<div>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</div>
+
+<div>
+  <strong>Price:</strong>
+  <%= number_to_currency(@listing.price) %>
+</div>
+
+<!-- Add more details as needed -->
+
+<a href="<%= edit_listing_path(@listing) %>">Edit</a>
+<a href="<%= listings_path %>">Back to listings</a>
+
+</body>
+</html>
