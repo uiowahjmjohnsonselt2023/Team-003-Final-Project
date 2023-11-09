@@ -5,7 +5,7 @@
 # - 'password_digest'  = stores the user's password securely using bcrypt.
 # - 'bio'              = stores additional user information in text format.
 # - 'timestamps'       = adds 'created_at' and 'updated_at' columns for tracking record creation and updates
-class CreateUsers < ActiveRecord::Migration[7.1]
+class Users < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.string :name
