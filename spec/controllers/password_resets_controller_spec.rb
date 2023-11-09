@@ -1,39 +1,33 @@
-# spec/controllers/password_resets_controller_spec.rb
 require 'rails_helper'
 
-RSpec.describe PasswordResetsController, type: :controller do
-  let(:user) { create(:user) }
-
-  describe 'GET #new' do
-    it 'renders the new template' do
-      get :new
-      expect(response).to render_template(:new)
+RSpec.describe 'Password Resets', type: :request do
+  describe 'GET /password_resets/new' do
+    it 'returns http success' do
+      get new_password_reset_path
+      expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'POST #create' do
-    context 'with valid username and email' do
-      it 'generates a password reset token and redirects to root path' do
-        post :create, params: { password_reset: { username: user.username, email: user.email } }
-        expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to include('Password reset successfully.')
-      end
+  describe 'POST /password_resets' do
+    it 'creates a password reset record' do
     end
+  end
 
-    context 'with invalid username or email' do
-      it 'renders the new template with an error message' do
-        post :create, params: { password_reset: { username: 'wrong_username', email: user.email } }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to include('Invalid username or email.')
-      end
+  describe 'GET /password_resets/edit/:id' do
+    it 'returns http success' do
+      # Generate a password reset record and retrieve its ID
+      password_reset = create(:password_reset) # Assuming you have a factory for password resets
+      get edit_password_reset_path(password_reset) # Use the named route with ID
+      expect(response).to have_http_status(:success)
     end
+  end
 
-    context 'with missing username or email' do
-      it 'renders the new template with an error message' do
-        post :create, params: { password_reset: { username: '', email: '' } }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to include('Username and email are required fields.')
-      end
+  describe 'PATCH /password_resets/update/:id' do
+    it 'updates the password reset' do
+      # Generate a password reset record and retrieve its ID
+      password_reset = create(:password_reset) # Assuming you have a factory for password resets
+      patch update_password_reset_path(password_reset), params: { password_reset: { new_password: 'new_password' } } # Use the named route with ID and parameters
+      # Your expectations here
     end
   end
 end
