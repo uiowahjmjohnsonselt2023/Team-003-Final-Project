@@ -190,56 +190,23 @@
           null
         ]
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/password_reset.rb": {
         "lines": [
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          8,
-          null,
-          null,
-          8,
-          4,
-          4,
-          null,
-          null,
-          null,
-          4,
-          8,
-          4,
-          null,
-          null,
-          null,
-          null,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
-          null,
-          null,
-          null
-        ]
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/application_controller.rb": {
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/application_record.rb": {
         "lines": [
-          1,
-          null
-        ]
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
       "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/user.rb": {
         "lines": [
@@ -259,55 +226,39 @@
           null,
           null,
           null,
-          1,
-          1,
+          0,
+          0,
           null,
-          1,
-          1,
-          1,
-          1,
-          null,
+          0,
+          0,
+          0,
+          0,
+          0,
           null
-        ]
+        ],
+        "branches": {
+        }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/application_record.rb": {
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/application_controller.rb": {
         "lines": [
-          1,
-          1,
-          null
-        ]
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
         "lines": [
-          1,
-          1,
           null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
           0,
           null,
           0,
           0,
           null,
           null,
-          1,
           0,
+          0,
+          null,
           null,
           0,
           0,
@@ -315,27 +266,95 @@
           null,
           null,
           null,
-          1,
-          0,
-          null,
           0,
           0,
-          0,
-          null,
-          0,
-          null,
           0,
           0,
           0,
           null,
+          null,
+          0,
+          0,
+          0,
           0,
           null,
           null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null
-        ]
+        ],
+        "branches": {
+        }
       },
       "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/home_controller.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -379,6 +398,6 @@
         }
       }
     },
-    "timestamp": 1699560075
+    "timestamp": 1699560778
   }
 }

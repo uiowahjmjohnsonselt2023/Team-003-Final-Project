@@ -16,7 +16,7 @@ RSpec.describe 'Password Resets', type: :request do
   describe 'GET /password_resets/edit/:id' do
     it 'returns http success' do
       # Generate a password reset record and retrieve its ID
-      password_reset = create(:password_reset) # Assuming you have a factory for password resets
+      password_reset = create(:password_reset)
       get edit_password_reset_path(password_reset) # Use the named route with ID
       expect(response).to have_http_status(:success)
     end
