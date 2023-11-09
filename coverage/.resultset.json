@@ -107,6 +107,17 @@
         "branches": {
         }
       },
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/registrations_controller.rb": {
         "lines": [
           null,
@@ -161,6 +172,6 @@
         }
       }
     },
-    "timestamp": 1699512904
+    "timestamp": 1699513962
   }
 }
