@@ -1,0 +1,74 @@
+<!-- Signup Container -->
+<div class="signup-container">
+  <h2>Sign up</h2>
+
+  <!-- Registration Form -->
+  <%= form_with(model: @user, local: true, url: registrations_path, class: 'form-signup') do |f| %>
+
+    <!-- Display Error Messages -->
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- Display Flash Notices -->
+    <% if flash[:notice] %>
+      <div class="flash-notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <!-- Name Field  -->
+    <div class="field">
+      <%= f.label :name, class: 'label' %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'input' %>
+    </div>
+
+    <!-- Username Field -->
+    <div class="field">
+      <%= f.label :username, class: 'label' %>
+      <%= f.text_field :username, autocomplete: "username", class: 'input' %>
+    </div>
+
+    <!-- Email Field -->
+    <div class="field">
+      <%= f.label :email, class: 'label' %>
+      <%= f.email_field :email, autocomplete: "email", class: 'input' %>
+    </div>
+
+    <!-- Password Field -->
+    <div class="field">
+      <%= f.label :password, class: 'label' %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
+    </div>
+
+    <!-- Password Confirmation Field -->
+    <div class="field">
+      <%= f.label :password_confirmation, class: 'label' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+    </div>
+
+    <!-- Bio Field -->
+    <div class="field">
+      <%= f.label :bio, class: 'label' %>
+      <%= f.text_area :bio, class: 'input' %>
+    </div>
+
+    <!-- Profile Picture Field -->
+    <div class="field">
+      <%= f.label :profile_picture, class: 'label' %>
+      <%= f.file_field :profile_picture, class: 'input' %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'button-signup' %>
+    </div>
+  <% end %>
+</div>
