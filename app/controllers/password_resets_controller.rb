@@ -3,7 +3,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:password_reset][:username], email: params[:password_reset][:email])
+    username = params.dig(:password_reset, :username)
+    email = params.dig(:password_reset, :email)
+
+    if username.blank? || email.blank?
+      flash.now[:alert] = "Username and email are required fields."
+      render :new
+      return
+    end
+
+    @user = User.find_by(username: username, email: email)
 
     if @user
       # generate a password reset token and reset the password
@@ -31,6 +40,7 @@ class PasswordResetsController < ApplicationController
     if @user.nil?
       flash[:alert] = "Password reset link has expired. Please request a new one."
       redirect_to new_password_reset_path
+
     elsif @user.update(user_params)
       # clear the password reset token
       @user.update(reset_token: nil)
@@ -39,4 +49,5 @@ class PasswordResetsController < ApplicationController
     else
       render :edit
     end
+  end
 end
