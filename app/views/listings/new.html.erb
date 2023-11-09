@@ -1,1 +1,40 @@
-%h1 Create New Listing
+<!DOCTYPE html>
+<!-- app/views/listings/new.html.erb -->
+<html>
+<%= form_tag listings_path do %>
+  <div class="form-group">
+    <label>Title</label>
+    <%= text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <%= text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <%= text_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Condition</label>
+    <%= select_tag :condition, options_for_select(["New", "Used - Like New", "Used - Very Good", "Used - Good",
+                                                   "Used - Acceptable"]), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Quantity</label>
+    <%= number_field :quantity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Images</label>
+    <%= file_field :images, multiple: true, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Create Listing", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</html>

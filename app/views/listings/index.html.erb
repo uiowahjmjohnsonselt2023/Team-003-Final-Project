@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Selt2023</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<h1>Listings</h1>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+  <tbody>
+  <% @listings.each do |listing| %>
+    <tr>
+      <td><%= listing.title %></td>
+      <td><%= listing.description %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
