@@ -24,7 +24,8 @@ class SessionsController < ApplicationController
   # log out the user and redirect to the root page (back to the login form)
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    flash[:notice] = "Logged out!"
+    redirect_to login_path
   end
 end
 
