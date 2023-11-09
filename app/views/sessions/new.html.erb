@@ -1,13 +1,7 @@
+<turbo-frame id="login-form-frame">
 <!-- Login Container -->
 <div class="login-container">
   <h2>Log in</h2>
-
-  <!-- Display flash messages if present in the flash[:alert] -->
-  <% if flash[:alert] %>
-    <div class="flash-alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
 
   <!-- Login Form -->
   <%= form_with(url: login_path, local: true, html: { class: 'form-login' }) do |f| %>
@@ -33,3 +27,4 @@
   <!-- Link to Sign Up Page -->
   <%= link_to "Sign up", new_registration_path, class: 'link-signup' %>
 </div>
+</turbo-frame>

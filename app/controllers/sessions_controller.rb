@@ -12,7 +12,13 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully.'
-      redirect_to root_path
+      # redirect_to root_path
+
+      # respond with a Turbo Stream to update the login form or other parts of the page
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('login_form', partial: 'shared/login_success') }
+      end
     else
 
       # display an error message and re-render the login form on failure

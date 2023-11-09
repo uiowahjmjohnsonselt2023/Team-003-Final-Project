@@ -4,7 +4,7 @@ Feature: User Login
     Given I am on the login page
     When I fill in the login form correctly
     And I click the login button
-    Then I should be redirected to the home page
+    Then I should be redirected to the home page of the marketplace
 
   Scenario: Unsuccessful login with invalid credentials
     Given I am on the login page
