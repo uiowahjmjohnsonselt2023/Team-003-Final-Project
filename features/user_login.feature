@@ -11,3 +11,5 @@ Feature: User Login
     When I fill in the login form with invalid credentials
     And I click the login button
     Then I should see a login error message
+    And I should be on the login page
+
