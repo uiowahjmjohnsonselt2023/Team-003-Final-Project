@@ -147,3 +147,10 @@ body {
     color: #ffffff;
 }
 
+/* forgot your password link */
+.field a {
+    float: right;
+    margin-top: -19px;
+    font-size: 16px;
+}
+
