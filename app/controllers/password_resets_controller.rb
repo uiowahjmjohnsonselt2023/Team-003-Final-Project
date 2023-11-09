@@ -26,5 +26,17 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-  end
+    @user = User.find_by(reset_token: params[:id])
+
+    if @user.nil?
+      flash[:alert] = "Password reset link has expired. Please request a new one."
+      redirect_to new_password_reset_path
+    elsif @user.update(user_params)
+      # clear the password reset token
+      @user.update(reset_token: nil)
+      flash[:notice] = "Password successfully reset."
+      redirect_to root_path
+    else
+      render :edit
+    end
 end
