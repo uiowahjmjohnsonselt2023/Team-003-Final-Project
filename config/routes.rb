@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
+  # route for forgot your password link
+  get '/forgot_password', to: 'sessions#forgot_password'
+
   # route for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
 

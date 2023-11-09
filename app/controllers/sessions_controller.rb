@@ -27,6 +27,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  # forgot password functionality
+  def forgot_password
+  end
+
   # log out the user and redirect to the root page (back to the login form)
   def destroy
     session[:user_id] = nil
