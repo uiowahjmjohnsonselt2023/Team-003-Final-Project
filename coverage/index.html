@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-09T14:12:58-06:00">2023-11-09T14:12:58-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-09T14:14:34-06:00">2023-11-09T14:14:34-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  1.85%
+  1.74%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>108</b> relevant lines,
+    <b>115</b> relevant lines,
     <span class="green"><b>2</b> lines covered</span> and
-    <span class="red"><b>106</b> lines missed. </span>
+    <span class="red"><b>113</b> lines missed. </span>
     (<span class="red">
-  1.85%
+  1.74%
 </span>
 )
   </div>
@@ -161,10 +161,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0c466f4cad936a1b1692c7f49f63700baa15e037" class="src_link" title="app/models/password_reset.rb">app/models/password_reset.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -383,9 +383,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>13</b> relevant lines,
+    <b>20</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>13</b> lines missed. </span>
+    <span class="red"><b>20</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -424,10 +424,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0c466f4cad936a1b1692c7f49f63700baa15e037" class="src_link" title="app/models/password_reset.rb">app/models/password_reset.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -2460,9 +2460,9 @@
     
 
     <div class="t-line-summary">
-      <b>3</b> relevant lines.
+      <b>10</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <span class="red"><b>10</b> lines missed.</span>
     </div>
 
     
@@ -2479,7 +2479,7 @@
 
             
 
-            <code class="ruby">class PasswordReset &lt; ApplicationRecord</code>
+            <code class="ruby">class CreatePasswordResets &lt; ActiveRecord::Migration[6.0]</code>
           </li>
         </div>
       
@@ -2490,12 +2490,100 @@
 
             
 
-            <code class="ruby">  belongs_to :user</code>
+            <code class="ruby">  def change</code>
           </li>
         </div>
       
         <div>
           <li class="missed" data-hits="0" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby">    create_table :password_resets do |t|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">      t.references :user, foreign_key: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">      t.string :token</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">      t.datetime :created_at</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">      t.timestamps</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="11">
             
             
 
