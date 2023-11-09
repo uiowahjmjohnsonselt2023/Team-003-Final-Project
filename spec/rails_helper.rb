@@ -1,3 +1,5 @@
+require 'factory_bot_rails'
+
 require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter 'app/channels/application_cable/channel.rb'
