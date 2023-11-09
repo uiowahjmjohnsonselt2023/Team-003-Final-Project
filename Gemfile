@@ -19,6 +19,8 @@ group :test do
   gem 'faker'                              # gem for generating fake data for tests, like sample user names and emails
 end
 
+gem 'rails-controller-testing'             # gem for asserting that certain templates are rendered in controller tests
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
