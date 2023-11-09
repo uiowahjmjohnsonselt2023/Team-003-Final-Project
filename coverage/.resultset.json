@@ -184,6 +184,53 @@
           null
         ]
       },
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          4,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          4,
+          4,
+          null,
+          null,
+          null,
+          null,
+          1,
+          4,
+          4,
+          4,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/user.rb": {
         "lines": [
           null,
@@ -219,57 +266,6 @@
           1,
           null
         ]
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
-        "lines": [
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null
-        ],
-        "branches": {
-        }
       },
       "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/home_controller.rb": {
         "lines": [
@@ -316,6 +312,6 @@
         }
       }
     },
-    "timestamp": 1699556323
+    "timestamp": 1699556850
   }
 }
