@@ -14,12 +14,17 @@ class ListingsController < ApplicationController
 
   def new
     # default: render 'new' template
+        @listing = Listing.new
   end
 
   def create
     @listing = Listing.create!(listing_params)
-    flash[:notice] = "#{@listing} was successfully created."
-    redirect_to listings_path
-  end
-
+    if @listing.save
+      flash[:notice] = 'Listing added!'
+      redirect_to listings_path
+    else
+      flash[:error] = 'Failed to add listing'
+      render :new
+    end
+    end
 end
