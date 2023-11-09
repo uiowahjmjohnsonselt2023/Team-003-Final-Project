@@ -11,9 +11,13 @@
 </head>
 
 <body>
-<!-- flash messages -->
-<% flash.each do |key, value| %>
-  <div class="flash <%= key %>"><%= value %></div>
+<% if flash[:notice] %>
+  <!-- display success message -->
+  <div class="flash notice"><%= flash[:notice] %></div>
+
+<% elsif flash[:alert] %>
+  <!-- display error message for failed login -->
+  <div class="flash alert"><%= flash[:alert] %></div>
 <% end %>
 
 <%= yield %>
