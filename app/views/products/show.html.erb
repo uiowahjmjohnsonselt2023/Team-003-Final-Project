@@ -4,7 +4,7 @@
   <p>Ships from: <%= @product.location %></p>
 
   <div class="product-image">
-    <%= image_tag(@product.image_url) %> <!-- Assuming you have image handling set up -->
+    <%= image_tag(@product.image) if @product.image.attached? %>
   </div>
 
   <div class="product-purchase">

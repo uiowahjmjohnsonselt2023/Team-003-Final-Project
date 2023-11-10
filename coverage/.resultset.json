@@ -267,109 +267,27 @@
   },
   "RSpec": {
     "coverage": {
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/helpers/application_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart_item.rb": {
         "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
-        "lines": [
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          8,
-          null,
-          null,
-          8,
-          4,
-          4,
-          null,
-          null,
-          null,
-          4,
-          8,
-          4,
-          null,
-          null,
-          null,
-          null,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
           0,
-          null,
-          null
-        ]
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/user.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/product.rb": {
         "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/models/password_reset.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
         "lines": [
           0,
           0,
@@ -378,7 +296,7 @@
         "branches": {
         }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/home_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart.rb": {
         "lines": [
           0,
           0,
@@ -389,7 +307,163 @@
         "branches": {
         }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/carts_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/products_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/cart_items_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
         "lines": [
           0,
           0,
@@ -456,7 +530,7 @@
         "branches": {
         }
       },
-      "/Users/knguyen/RubymineProjects/Team-003-Final-Project/app/controllers/registrations_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/registrations_controller.rb": {
         "lines": [
           null,
           0,
@@ -483,6 +557,46 @@
           null,
           0,
           0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/carts_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/cart_items_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/products_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/application_helper.rb": {
+        "lines": [
           0,
           0
         ],
@@ -490,6 +604,6 @@
         }
       }
     },
-    "timestamp": 1699566943
+    "timestamp": 1699578328
   }
 }
