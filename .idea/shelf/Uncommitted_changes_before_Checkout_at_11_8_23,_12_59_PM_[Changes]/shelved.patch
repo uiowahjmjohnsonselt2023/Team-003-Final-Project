@@ -1,0 +1,66 @@
+Index: Gemfile.lock
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>GEM\n  remote: https://rubygems.org/\n  specs:\n    actioncable (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      nio4r (~> 2.0)\n      websocket-driver (>= 0.6.1)\n    actionmailbox (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      activejob (= 7.0.4.3)\n      activerecord (= 7.0.4.3)\n      activestorage (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      mail (>= 2.7.1)\n      net-imap\n      net-pop\n      net-smtp\n    actionmailer (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      actionview (= 7.0.4.3)\n      activejob (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      mail (~> 2.5, >= 2.5.4)\n      net-imap\n      net-pop\n      net-smtp\n      rails-dom-testing (~> 2.0)\n    actionpack (7.0.4.3)\n      actionview (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      rack (~> 2.0, >= 2.2.0)\n      rack-test (>= 0.6.3)\n      rails-dom-testing (~> 2.0)\n      rails-html-sanitizer (~> 1.0, >= 1.2.0)\n    actiontext (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      activerecord (= 7.0.4.3)\n      activestorage (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      globalid (>= 0.6.0)\n      nokogiri (>= 1.8.5)\n    actionview (7.0.4.3)\n      activesupport (= 7.0.4.3)\n      builder (~> 3.1)\n      erubi (~> 1.4)\n      rails-dom-testing (~> 2.0)\n      rails-html-sanitizer (~> 1.1, >= 1.2.0)\n    activejob (7.0.4.3)\n      activesupport (= 7.0.4.3)\n      globalid (>= 0.3.6)\n    activemodel (7.0.4.3)\n      activesupport (= 7.0.4.3)\n    activerecord (7.0.4.3)\n      activemodel (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n    activerecord-jdbc-adapter (70.1-java)\n      activerecord (~> 7.0)\n    activerecord-jdbcpostgresql-adapter (70.1-java)\n      activerecord-jdbc-adapter (= 70.1)\n      jdbc-postgres (>= 9.4, < 43)\n    activestorage (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      activejob (= 7.0.4.3)\n      activerecord (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      marcel (~> 1.0)\n      mini_mime (>= 1.1.0)\n    activesupport (7.0.4.3)\n      concurrent-ruby (~> 1.0, >= 1.0.2)\n      i18n (>= 1.6, < 2)\n      minitest (>= 5.1)\n      tzinfo (~> 2.0)\n    bootsnap (1.16.0)\n      msgpack (~> 1.2)\n    builder (3.2.4)\n    coffee-rails (5.0.0)\n      coffee-script (>= 2.2.0)\n      railties (>= 5.2.0)\n    coffee-script (2.4.1)\n      coffee-script-source\n      execjs\n    coffee-script-source (1.12.2)\n    concurrent-ruby (1.2.2)\n    crass (1.0.6)\n    date (3.3.3)\n    date (3.3.3-java)\n    erubi (1.12.0)\n    execjs (2.8.1)\n    ffi (1.15.5)\n    ffi (1.15.5-java)\n    globalid (1.1.0)\n      activesupport (>= 5.0)\n    i18n (1.12.0)\n      concurrent-ruby (~> 1.0)\n    jar-dependencies (0.4.1)\n    jbuilder (2.11.5)\n      actionview (>= 5.0.0)\n      activesupport (>= 5.0.0)\n    jdbc-postgres (42.2.25)\n    jquery-rails (4.5.1)\n      rails-dom-testing (>= 1, < 3)\n      railties (>= 4.2.0)\n      thor (>= 0.14, < 2.0)\n    listen (3.8.0)\n      rb-fsevent (~> 0.10, >= 0.10.3)\n      rb-inotify (~> 0.9, >= 0.9.10)\n    loofah (2.19.1)\n      crass (~> 1.0.2)\n      nokogiri (>= 1.5.9)\n    mail (2.8.1)\n      mini_mime (>= 0.1.1)\n      net-imap\n      net-pop\n      net-smtp\n    marcel (1.0.2)\n    method_source (1.0.0)\n    mini_mime (1.1.2)\n    minitest (5.18.0)\n    msgpack (1.6.1)\n    msgpack (1.6.1-java)\n    net-imap (0.3.4)\n      date\n      net-protocol\n    net-pop (0.1.2)\n      net-protocol\n    net-protocol (0.2.1)\n      timeout\n    net-smtp (0.3.3)\n      net-protocol\n    nio4r (2.5.8)\n    nio4r (2.5.8-java)\n    nokogiri (1.14.2-java)\n      racc (~> 1.4)\n    nokogiri (1.14.2-x86_64-linux)\n      racc (~> 1.4)\n    psych (5.1.0)\n      stringio\n    psych (5.1.0-java)\n      jar-dependencies (>= 0.1.7)\n    puma (6.1.1)\n      nio4r (~> 2.0)\n    puma (6.1.1-java)\n      nio4r (~> 2.0)\n    racc (1.6.2)\n    racc (1.6.2-java)\n    rack (2.2.6.4)\n    rack-test (2.1.0)\n      rack (>= 1.3)\n    rails (7.0.4.3)\n      actioncable (= 7.0.4.3)\n      actionmailbox (= 7.0.4.3)\n      actionmailer (= 7.0.4.3)\n      actionpack (= 7.0.4.3)\n      actiontext (= 7.0.4.3)\n      actionview (= 7.0.4.3)\n      activejob (= 7.0.4.3)\n      activemodel (= 7.0.4.3)\n      activerecord (= 7.0.4.3)\n      activestorage (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      bundler (>= 1.15.0)\n      railties (= 7.0.4.3)\n    rails-dom-testing (2.0.3)\n      activesupport (>= 4.2.0)\n      nokogiri (>= 1.6)\n    rails-html-sanitizer (1.5.0)\n      loofah (~> 2.19, >= 2.19.1)\n    railties (7.0.4.3)\n      actionpack (= 7.0.4.3)\n      activesupport (= 7.0.4.3)\n      method_source\n      rake (>= 12.2)\n      thor (~> 1.0)\n      zeitwerk (~> 2.5)\n    rake (13.0.6)\n    rb-fsevent (0.11.2)\n    rb-inotify (0.10.1)\n      ffi (~> 1.0)\n    rdoc (6.5.0)\n      psych (>= 4.0.0)\n    sass-rails (6.0.0)\n      sassc-rails (~> 2.1, >= 2.1.1)\n    sassc (2.4.0)\n      ffi (~> 1.9)\n    sassc-rails (2.1.2)\n      railties (>= 4.0.0)\n      sassc (>= 2.0)\n      sprockets (> 3.0)\n      sprockets-rails\n      tilt\n    sdoc (2.6.1)\n      rdoc (>= 5.0)\n    sprockets (4.2.0)\n      concurrent-ruby (~> 1.0)\n      rack (>= 2.2.4, < 4)\n    sprockets-rails (3.4.2)\n      actionpack (>= 5.2)\n      activesupport (>= 5.2)\n      sprockets (>= 3.0.0)\n    stringio (3.0.5)\n    thor (1.2.1)\n    tilt (2.1.0)\n    timeout (0.3.2)\n    turbolinks (5.2.1)\n      turbolinks-source (~> 5.2)\n    turbolinks-source (5.2.0)\n    tzinfo (2.0.6)\n      concurrent-ruby (~> 1.0)\n    uglifier (4.2.0)\n      execjs (>= 0.3.0, < 3)\n    websocket-driver (0.7.5)\n      websocket-extensions (>= 0.1.0)\n    websocket-driver (0.7.5-java)\n      websocket-extensions (>= 0.1.0)\n    websocket-extensions (0.1.5)\n    zeitwerk (2.6.7)\n\nPLATFORMS\n  java\n  universal-java-19\n  universal-java-20\n  x86_64-linux\n\nDEPENDENCIES\n  activerecord-jdbc-adapter\n  activerecord-jdbcpostgresql-adapter\n  bootsnap\n  coffee-rails\n  jbuilder\n  jquery-rails\n  listen\n  puma\n  rails (~> 7.0.4.3)\n  sass-rails\n  sdoc\n  turbolinks\n  uglifier\n\nRUBY VERSION\n   ruby 3.1.0p0 (jruby 9.4.1.0)\n\nBUNDLED WITH\n   2.4.7\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Gemfile.lock b/Gemfile.lock
+--- a/Gemfile.lock	
++++ b/Gemfile.lock	
+@@ -71,6 +71,7 @@
+       i18n (>= 1.6, < 2)
+       minitest (>= 5.1)
+       tzinfo (~> 2.0)
++    bcrypt (3.1.19-java)
+     bootsnap (1.16.0)
+       msgpack (~> 1.2)
+     builder (3.2.4)
+@@ -85,6 +86,12 @@
+     crass (1.0.6)
+     date (3.3.3)
+     date (3.3.3-java)
++    devise (4.9.3)
++      bcrypt (~> 3.0)
++      orm_adapter (~> 0.1)
++      railties (>= 4.1.0)
++      responders
++      warden (~> 1.2.3)
+     erubi (1.12.0)
+     execjs (2.8.1)
+     ffi (1.15.5)
+@@ -134,6 +141,7 @@
+       racc (~> 1.4)
+     nokogiri (1.14.2-x86_64-linux)
+       racc (~> 1.4)
++    orm_adapter (0.5.0)
+     psych (5.1.0)
+       stringio
+     psych (5.1.0-java)
+@@ -179,6 +187,9 @@
+       ffi (~> 1.0)
+     rdoc (6.5.0)
+       psych (>= 4.0.0)
++    responders (3.1.1)
++      actionpack (>= 5.2)
++      railties (>= 5.2)
+     sass-rails (6.0.0)
+       sassc-rails (~> 2.1, >= 2.1.1)
+     sassc (2.4.0)
+@@ -209,6 +220,8 @@
+       concurrent-ruby (~> 1.0)
+     uglifier (4.2.0)
+       execjs (>= 0.3.0, < 3)
++    warden (1.2.9)
++      rack (>= 2.0.9)
+     websocket-driver (0.7.5)
+       websocket-extensions (>= 0.1.0)
+     websocket-driver (0.7.5-java)
+@@ -227,6 +240,7 @@
+   activerecord-jdbcpostgresql-adapter
+   bootsnap
+   coffee-rails
++  devise
+   jbuilder
+   jquery-rails
+   listen
