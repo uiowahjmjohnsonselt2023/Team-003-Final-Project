@@ -70,6 +70,8 @@ group :test do
   gem "webdrivers"
   gem 'rspec-rails'
   gem 'simplecov', require: false
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :test, :development do
