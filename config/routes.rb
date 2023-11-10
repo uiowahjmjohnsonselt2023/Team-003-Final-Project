@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
 
+  # routes for navigation
+  get 'profile', to: 'home#profile'
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 end
