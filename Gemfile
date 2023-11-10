@@ -72,6 +72,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
   gem 'faker'
+  gem 'rack_session_access'
 end
 
 group :test, :development do

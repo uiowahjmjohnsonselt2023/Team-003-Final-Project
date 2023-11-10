@@ -3,26 +3,24 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:destroy]
   before_action :check_user, only: [:destroy]
 
-
   def create
     @review = @product.reviews.build(review_params)
-    @review.user = current_user  # Assumes you have a method to get the current user
+    @review.user = current_user
 
     if @review.save
-      flash[:notice] = 'Review successfully submitted!'
+      redirect_to product_path(@product), notice: 'Review successfully submitted!'
     else
-      flash[:alert] = 'There was a problem submitting your review.'
+      redirect_to product_path(@product), alert: 'There was a problem submitting your review.'
     end
-    redirect_to product_path(@product)
   end
 
   def destroy
-    if @review.destroy
-      flash[:notice] = 'Review successfully deleted!'
+    if @review
+      @review.destroy
+      redirect_to product_path(@product), notice: 'Review was successfully deleted.'
     else
-      flash[:alert] = 'There was a problem deleting your review.'
+      redirect_to product_path(@product), alert: 'Review could not be found.'
     end
-    redirect_to product_path(@product)
   end
 
   private
@@ -32,13 +30,13 @@ class ReviewsController < ApplicationController
   end
 
   def set_review
-    @review = Review.find(params[:id])
+    # Use find_by to avoid throwing an exception if the review is not found
+    @review = @product.reviews.find_by(id: params[:id])
   end
 
   def check_user
     unless current_user == @review.user
-      flash[:alert] = 'You do not have permission to delete this review.'
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), alert: 'You do not have permission to delete this review.'
     end
   end
 
