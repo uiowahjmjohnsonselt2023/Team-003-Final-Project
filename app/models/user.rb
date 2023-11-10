@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
 
   has_one :cart
+  has_many :reviews, dependent: :destroy
 
 end
 

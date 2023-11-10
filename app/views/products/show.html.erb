@@ -22,10 +22,34 @@
 
   <div class="product-detail-interaction">
     <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
-    <%= button_to 'Write a Review', write_review_product_path(@product), method: :post, class: "write-review-button" %>
   </div>
 
+  <!-- review form for submitting new reviews -->
+  <div class="review-form">
+    <h3>Write a Review</h3>
+    <%= form_with(model: [ @product, @product.reviews.build ], local: true) do |form| %>
+      <div>
+        <%= form.label :rating %>
+        <%= form.number_field :rating, in: 1..5 %>
+      </div>
+      <div>
+        <%= form.label :content, "Your Review" %>
+        <%= form.text_area :content %>
+      </div>
+      <%= form.submit "Submit Review", class: "submit-review-button" %>
+    <% end %>
+  </div>
+
+  <!-- existing reviews -->
   <div class="product-detail-reviews">
-    <!-- Reviews will be listed here -->
+    <h3>Reviews</h3>
+    <% @product.reviews.each do |review| %>
+      <div class="review">
+        <strong>Rating:</strong> <%= review.rating %><br>
+        <strong>Review:</strong> <%= review.content %><br>
+        <strong>Written by:</strong> <%= review.user&.username || "Unknown" %>
+
+      </div>
+    <% end %>
   </div>
 </div>
