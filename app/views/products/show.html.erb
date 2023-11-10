@@ -9,7 +9,8 @@
 
   <div class="product-purchase">
     <p><%= number_to_currency(@product.price) %></p>
-    <%= button_to 'Add to Cart', add_to_cart_product_path(@product), method: :post %>
+    <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post %>
+
   </div>
 
   <div class="product-description">

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # routes for creating cart items
+  resources :cart_items, only: [:create]
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 end
