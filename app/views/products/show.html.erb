@@ -1,0 +1,25 @@
+<div class="product-details">
+  <h1><%= @product.title %></h1>
+  <p>Listed by <%= @product.user.username %> | Condition: <%= @product.condition %></p>
+  <p>Ships from: <%= @product.location %></p>
+
+  <div class="product-image">
+    <%= image_tag(@product.image_url) %> <!-- Assuming you have image handling set up -->
+  </div>
+
+  <div class="product-purchase">
+    <p><%= number_to_currency(@product.price) %></p>
+    <%= button_to 'Add to Cart', add_to_cart_product_path(@product), method: :post %>
+  </div>
+
+  <div class="product-description">
+    <p><%= @product.description %></p>
+  </div>
+
+  <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post %>
+  <%= button_to 'Write a Review', write_review_product_path(@product), method: :post %>
+
+  <div class="product-reviews">
+    <!-- Reviews will be listed here -->
+  </div>
+</div>
