@@ -1,26 +1,31 @@
-<div class="product-details">
-  <h1><%= @product.title %></h1>
-  <p>Listed by <%= @product.user.username %> | Condition: <%= @product.condition %></p>
-  <p>Ships from: <%= @product.location %></p>
+<div class="product-detail-container">
+  <div class="product-detail-header">
+    <h1><%= @product.title %></h1>
+    <p>Listed by <%= @product.user.username %> | Condition: <%= @product.condition %></p>
+    <p>Ships from: <%= @product.location %></p>
+  </div>
 
-  <div class="product-image">
+  <div class="product-detail-image">
     <%= image_tag(@product.image) if @product.image.attached? %>
   </div>
 
-  <div class="product-purchase">
-    <p><%= number_to_currency(@product.price) %></p>
-    <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post %>
-
+  <div class="product-detail-info">
+    <div class="product-detail-price">
+      <p><%= number_to_currency(@product.price) %></p>
+    </div>
+    <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
   </div>
 
-  <div class="product-description">
+  <div class="product-detail-description">
     <p><%= @product.description %></p>
   </div>
 
-  <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post %>
-  <%= button_to 'Write a Review', write_review_product_path(@product), method: :post %>
+  <div class="product-detail-interaction">
+    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
+    <%= button_to 'Write a Review', write_review_product_path(@product), method: :post, class: "write-review-button" %>
+  </div>
 
-  <div class="product-reviews">
+  <div class="product-detail-reviews">
     <!-- Reviews will be listed here -->
   </div>
 </div>
