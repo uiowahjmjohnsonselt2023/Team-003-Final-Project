@@ -1,4 +1,21 @@
-<h1><%= @greeting %></h1>
-<p>Welcome to your profile!</p>
+<html>
+<%= stylesheet_link_tag "profile" %>
+<%= button_to "Home", root_path, method: :get %>
+<div class="user-information-box">
+  <div style="float:left; width:fit-content;">
+    <h1><%= @user.name %></h1>
+    <p><%= @user.username %> | <%= @user.email %></p>
+  </div>
+  <div style="float:right;margin-left: auto;">
+    <img src=~/profile_picture.jpg style="height: 128px; width: 128px;">
+  </div>
+  <div style="clear:both"></div>
+  <p><%= @user.bio %></p>
+  <%= button_to "Message", message_path %>
+  <p>Account Created: <%= @user.created_at %></p>
+</div>
 
-<%= link_to "Home", root_path, method: :get %>
+<body>
+
+</body>
+</html>
