@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       post 'message_seller'
       post 'write_review'
     end
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :destroy]
   end
 
   # route for if the cart has a show action to display an individual user's cart
