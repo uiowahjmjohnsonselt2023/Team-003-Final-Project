@@ -7,11 +7,7 @@
     <list default="true" id="cac4e39b-33d4-42ea-a549-ae9b54be12b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/profile.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/profile.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/user_profile.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/user_profile.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +273,7 @@
       <workItem from="1699557606837" duration="443000" />
       <workItem from="1699558061922" duration="5600000" />
       <workItem from="1699632158736" duration="2237000" />
-      <workItem from="1699634618496" duration="11168000" />
+      <workItem from="1699634618496" duration="11262000" />
     </task>
     <servers />
   </component>
