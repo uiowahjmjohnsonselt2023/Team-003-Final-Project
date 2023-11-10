@@ -25,8 +25,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # route for if the cart has a show action to display an individual user's cart
+  resource :cart, only: [:show]
+
   # routes for creating cart items
-  resources :cart_items, only: [:create]
+  resources :cart_items, only: [:create, :update, :destroy]
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
