@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
 
+  # routes for product details
+  resources :products do
+    member do
+      post 'add_to_cart'
+      post 'message_seller'
+      post 'write_review'
+    end
+  end
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 end
