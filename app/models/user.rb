@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :given_reviews, foreign_key: 'reviewer_id', class_name: 'Review'
   has_many :received_reviews, foreign_key: 'reviewee_id', class_name: 'Review'
+  has_many :listings, class_name: 'Listing'
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6 }
