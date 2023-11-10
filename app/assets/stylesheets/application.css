@@ -3,6 +3,7 @@
  *= require_tree .
  *= require_self
  *= require products
+ *= require cart
  */
 
 /* Customize the Login Page */
