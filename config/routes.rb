@@ -1,4 +1,4 @@
-R/*ails.application.routes.draw do
+Rails.application.routes.draw do
   #?+>-  root route for the marketplace home page
   root 'home#index'
 
@@ -13,11 +13,7 @@ R/*ails.application.routes.draw do
   # r+4oute for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
 
-  resources :sales do
-    member do
-      post 'create_review'
-    end
-  end
+  resources :reviews, only: [:new,:create]
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
   
