@@ -69,9 +69,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'rspec-rails'
+  gem 'simplecov', require: false
 end
 
 group :test, :development do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
 end
