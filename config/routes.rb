@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  #?+>-  root route for the marketplace home page
-  root 'home#index'
+
+  # root route for the marketplace home page
+  root 'welcome#index'
+
 
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
@@ -17,6 +19,12 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
   
+
+  # routes for listings
+  resources :listings
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
+
 end
+

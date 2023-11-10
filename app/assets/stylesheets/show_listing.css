@@ -1,0 +1,34 @@
+/* app/assets/stylesheets/show_listing.css */
+
+.show-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.show-container h1 {
+    color: #333;
+}
+
+.show-container div {
+    margin-bottom: 15px;
+}
+
+.show-container strong {
+    font-weight: bold;
+}
+
+.show-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.show-container a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+}
