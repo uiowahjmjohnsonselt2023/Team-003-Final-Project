@@ -48,6 +48,8 @@
 
   <!-- existing reviews -->
   <div class="product-detail-reviews">
+    <%= link_to 'Purchase', new_order_path(product_id: @product.id), class: 'btn btn-primary' %>
+
     <h3>Reviews</h3>
     <% @product.reviews.each do |review| %>
       <div class="review">
