@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new, :create]
 
   # routes for orders (purchasing)
-  resources :orders, only: [:new, :create, :show, :index]
+  resources :orders, only: [:new, :create]
 
   # routes for listings
   resources :listings
