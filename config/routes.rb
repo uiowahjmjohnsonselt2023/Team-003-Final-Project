@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   # routes for creating cart items
   resources :cart_items, only: [:create, :update, :destroy]
 
+  # routes for navigation
+  get 'profile', to: 'home#profile'
+  post 'message', to: 'home#profile'
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 

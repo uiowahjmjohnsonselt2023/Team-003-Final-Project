@@ -1,0 +1,27 @@
+<html>
+<%= stylesheet_link_tag "profile" %>
+<%= button_to "Home", root_path, method: :get %>
+<div class="user-information-box">
+  <div style="float:left; width:fit-content;">
+    <h1><%= @user.name %></h1>
+    <p><%= @user.username %> | <%= @user.email %></p>
+  </div>
+  <div style="float:right;">
+    <img src=~/profile_picture.jpg style="height: 128px; width: 128px;">
+  </div>
+  <div style="clear:both"></div>
+  <p><%= @user.bio %></p>
+  <%= button_to "Message", message_path %>
+  <p>Account Created: <%= @user.created_at %></p>
+</div>
+
+<body style="margin-top:10px">
+  <div style="float:left; width:70%; border-right: 5px solid maroon; margin-left: auto">
+    <h1 style="text-align: center; text-decoration: underline;"><%= link_to "Active Listings", root_path %></h1>
+  </div>
+  <div style="float:right; width: 29%">
+    <h1 style="text-align: center; text-decoration: underline;"><%= link_to "Reviews", root_path %></h1>
+  </div>
+  <div style="clear:both"></div>
+</body>
+</html>

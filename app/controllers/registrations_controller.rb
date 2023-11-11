@@ -20,8 +20,7 @@ class RegistrationsController < ApplicationController
         description: "Default Product Description"
       )
       flash[:notice] = 'Signup successful!'
-      redirect_to root_path
-
+      redirect_to login_path
     else
       render 'new'
     end
