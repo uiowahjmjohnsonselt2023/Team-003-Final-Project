@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'orders/new'
+  get 'orders/create'
+  get 'orders/show'
+  get 'orders/index'
 
   # root route for the marketplace home page
   root 'welcome#index'
