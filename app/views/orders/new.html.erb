@@ -1,2 +1,10 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<%= form_with(model: @order, local: true) do |form| %>
+  <div>
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div>
+    <%= form.hidden_field :product_id, value: params[:product_id] %>
+  </div>
+  <%= form.submit "Place Order" %>
+<% end %>
