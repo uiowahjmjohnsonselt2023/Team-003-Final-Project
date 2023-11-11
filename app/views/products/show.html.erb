@@ -27,17 +27,22 @@
   <!-- review form for submitting new reviews -->
   <div class="review-form">
     <h3>Write a Review</h3>
-    <%= form_for @review do |f| %>
+    <%= form_with model: [@product, @review] do |f| %>
     <%= f.label :rating %>
     <%= f.number_field :rating, in: 1..5 %>
-  
+
     <%= f.label :comment %>
     <%= f.text_area :comment %>
-  
-    <%= f.hidden_field :reviewer_id, value: current_user.id %>
-    <%= f.hidden_field :reviewee_id, value: @user.id %>
 
-    <%= f.submit %>
+      <% if current_user && @user %>
+        <%= f.hidden_field :reviewer_id, value: current_user.id %>
+        <%= f.hidden_field :reviewee_id, value: @user.id %>
+
+        <%= f.submit "Submit Review" %>
+      <% else %>
+
+        <p>You must be logged in to submit a review.</p>
+      <% end %>
   <% end %>
   </div>
 

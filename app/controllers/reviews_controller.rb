@@ -5,12 +5,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @product.reviews.build(review_params)
-    @review.user = current_user
+    @review.reviewer = current_user
+    @review.reviewee = @product.owner
 
     if @review.save
       redirect_to product_path(@product), notice: 'Review successfully submitted!'
     else
-      redirect_to product_path(@product), alert: 'There was a problem submitting your review.'
+      render :new, alert: 'There was a problem submitting your review.'
     end
   end
 
@@ -41,6 +42,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-      params.require(:review).permit(:rating, :comment, :reviewer_id, :reviewee_id)
+    params.require(:review).permit(:rating, :comment, :product_id)
   end
 end
