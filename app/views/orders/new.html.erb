@@ -1,10 +1,54 @@
-<%= form_with(model: @order, local: true) do |form| %>
-  <div>
+<%= form_with(model: @order, url: orders_path, local: true) do |form| %>
+
+  <!-- shipping information -->
+  <div class="shipping-information">
+    <h2>Shipping Information</h2>
+
+    <!-- street address -->
+    <div class="field">
+      <%= form.label :street, 'Street Address' %>
+      <%= form.text_field :street %>
+    </div>
+
+    <!-- city -->
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+
+    <!-- postal code -->
+    <div class="field">
+      <%= form.label :postal_code, 'Postal Code' %>
+      <%= form.text_field :postal_code %>
+    </div>
+
+    <!-- payment information -->
+    <div class="payment-information">
+      <h2>Payment Information</h2>
+
+      <!-- credit card number -->
+      <div class="field">
+        <%= form.label :credit_card_number, 'Credit Card Number' %>
+        <%= form.text_field :credit_card_number, placeholder: '**** **** **** ****' %>
+      </div>
+
+      <!-- expiration date -->
+      <div class="field">
+        <%= form.label :expiration_date, 'Expiration Date (MM/YY)' %>
+        <%= form.text_field :expiration_date, placeholder: 'MM/YY' %>
+      </div>
+
+      <!-- CVV -->
+      <div class="field">
+        <%= form.label :cvv, 'CVV' %>
+        <%= form.text_field :cvv, placeholder: '123' %>
+      </div>
+    </div>
+
+    <!-- quantity field -->
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
-  <div>
-    <%= form.hidden_field :product_id, value: params[:product_id] %>
-  </div>
-  <%= form.submit "Place Order" %>
+
+  <%= form.submit 'Place Order' %>
 <% end %>
