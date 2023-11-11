@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
-    @user = @product.user
+    # @user = @product.user
+    @user = User.find(@product.owner_id)
     @review = Review.new
+  end
+
+  def some_action
+    @user = User.find_by(id: some_id)
   end
 
   def add_to_cart

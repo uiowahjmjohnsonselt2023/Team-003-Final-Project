@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
   end
 
   def check_user
-    unless current_user == @review.user
+    unless current_user == @review.reviewer
       redirect_to product_path(@product), alert: 'You do not have permission to delete this review.'
     end
   end
