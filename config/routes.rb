@@ -23,6 +23,22 @@ Rails.application.routes.draw do
   # routes for listings
   resources :listings
 
+  # routes for product details
+  resources :products do
+    member do
+      post 'add_to_cart'
+      post 'message_seller'
+      post 'write_review'
+    end
+    resources :reviews, only: [:create, :destroy]
+  end
+
+  # route for if the cart has a show action to display an individual user's cart
+  resource :cart, only: [:show]
+
+  # routes for creating cart items
+  resources :cart_items, only: [:create, :update, :destroy]
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 

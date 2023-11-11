@@ -11,8 +11,17 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      # create a default product associated with the user
+      @product = @user.products.create(
+        title: "Default Product Title",
+        condition: "New",
+        location: "Default Location",
+        price: 0.0,
+        description: "Default Product Description"
+      )
       flash[:notice] = 'Signup successful!'
       redirect_to root_path
+
     else
       render 'new'
     end
