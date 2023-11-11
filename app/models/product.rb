@@ -3,4 +3,7 @@ class Product < ApplicationRecord
   belongs_to :user, class_name: 'User', foreign_key: 'owner_id'
   has_one_attached :image
   has_many :reviews, dependent: :destroy
+
+  has_many :orders
+
 end
