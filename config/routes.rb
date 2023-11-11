@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
 
   # routes for navigation
-  get 'profile', to: 'home#profile'
+  get 'profile', to: 'home#profile', as: :profile
   post 'message', to: 'home#profile'
 
   # health check route
