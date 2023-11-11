@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   # root route for the marketplace home page
-  root 'home#index'
+  root 'welcome#index'
+
 
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
@@ -10,11 +12,16 @@ Rails.application.routes.draw do
   # routes for forgot your password link (password resets)
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  # route for the registration form
+  # r+4oute for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
 
+  resources :reviews, only: [:new,:create]
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
+  
+
+  # routes for listings
+  resources :listings
 
   # routes for product details
   resources :products do
@@ -34,4 +41,6 @@ Rails.application.routes.draw do
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
+
 end
+
