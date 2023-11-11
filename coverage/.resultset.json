@@ -447,6 +447,7 @@
           0,
           0,
           0,
+          0,
           0
         ],
         "branches": {
@@ -488,6 +489,16 @@
           0,
           0,
           null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/order.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
         ],
         "branches": {
         }
@@ -587,6 +598,11 @@
           0,
           0,
           0,
+          null,
+          0,
+          0,
+          0,
+          null,
           0,
           0,
           0,
@@ -734,6 +750,7 @@
           0,
           0,
           null,
+          0,
           0,
           0,
           0,
@@ -944,6 +961,6 @@
         }
       }
     },
-    "timestamp": 1699677133
+    "timestamp": 1699678773
   }
 }
