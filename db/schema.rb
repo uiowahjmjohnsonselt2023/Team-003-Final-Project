@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
-
+ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id", null: false
     t.bigint "product_id", null: false
@@ -62,6 +59,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "price"
+    t.string "condition"
+    t.string "quantity"
+    t.string "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -73,6 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.bigint "reviewer_id", null: false
@@ -80,26 +89,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comment"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
-    t.index ["reviewee_id"], name: "index_reviews_on_user_id"
-    t.index ["reviewer_id"], name: "index_reviews_on_user_id"
+    t.integer "product_id"
+    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "sales", force: :cascade do |t|
-     t.datetime "created_at", null: false
-     t.datetime "updated_at", null: false
-  end
-  create_table "listings", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "price"
-    t.string "condition"
-    t.string "quantity"
-    t.string "images"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,11 +107,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "verified"
+    t.string "verification_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
@@ -122,5 +120,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_192854) do
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
-
 end
