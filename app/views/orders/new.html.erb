@@ -1,5 +1,17 @@
 <%= form_with(model: @order, url: orders_path, local: true) do |form| %>
 
+  <!-- display cart items -->
+  <div class="cart-items">
+    <h2>Your Cart Items</h2>
+    <ul>
+      <% @cart_items.each do |cart_item| %>
+        <li>
+          <%= cart_item.product.title %> (x<%= cart_item.quantity %>) - <%= number_to_currency(cart_item.product.price * cart_item.quantity) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <!-- shipping information -->
   <div class="shipping-information">
     <h2>Shipping Information</h2>
