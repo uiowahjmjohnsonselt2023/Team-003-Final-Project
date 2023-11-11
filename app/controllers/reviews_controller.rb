@@ -4,9 +4,10 @@ class ReviewsController < ApplicationController
   before_action :check_user, only: [:destroy]
 
   def create
+    @product = Product.find(params[:product_id])
     @review = @product.reviews.build(review_params)
     @review.reviewer = current_user
-    @review.reviewee = @product.owner
+    @review.reviewee_id = @product.owner_id
 
     if @review.save
       redirect_to product_path(@product), notice: 'Review successfully submitted!'
