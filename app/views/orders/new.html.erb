@@ -1,16 +1,18 @@
 <%= form_with(model: @order, url: orders_path, local: true) do |form| %>
 
   <!-- display cart items -->
-  <div class="cart-items">
-    <h2>Your Cart Items</h2>
-    <ul>
+  <h2>Your Cart Items</h2>
+  <ul>
+    <% if @cart_items %>
       <% @cart_items.each do |cart_item| %>
         <li>
           <%= cart_item.product.title %> (x<%= cart_item.quantity %>) - <%= number_to_currency(cart_item.product.price * cart_item.quantity) %>
         </li>
       <% end %>
-    </ul>
-  </div>
+    <% else %>
+      <li>Your cart is empty.</li>
+    <% end %>
+  </ul>
 
   <!-- shipping information -->
   <div class="shipping-information">
