@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
   
-
+  get '/verify/:token', to: 'verification#verify', as: 'verify_account'
   # routes for listings
   resources :listings
 
