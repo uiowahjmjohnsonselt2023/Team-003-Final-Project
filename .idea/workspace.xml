@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6623a924-a258-485e-9baa-9a6be66c5635" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/features/step_definitions/view_product_details.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/view_product_details.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/products.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/reviews.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/delete_reviews.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20231111032914_reviews.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/reviews_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/reviews_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/.last_run.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/.last_run.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/.resultset.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/.resultset.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/support/env.rb" beforeDir="false" afterPath="$PROJECT_DIR$/features/support/env.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/factories/reviews.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20231109234541_create_reviews.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20231109234541_create_reviews.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20231109235230_add_comment_to_reviews.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20231109235230_add_comment_to_reviews.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20231111005704_add_product_to_reviews.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20231111005704_add_product_to_reviews.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/user-login" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/product-details",
+    "git-widget-placeholder": "feature/add-favorites",
     "last_opened_file_path": "/Users/knguyen/SELT_REPOS/Team-003-Final-Project",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -75,7 +65,7 @@
     "nodejs_package_manager_path": "npm",
     "ruby.rails.projectView.checked": "true",
     "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -306,7 +296,7 @@
       <workItem from="1699470010513" duration="255000" />
       <workItem from="1699574040595" duration="343000" />
       <workItem from="1699579229366" duration="307000" />
-      <workItem from="1699636971129" duration="20260000" />
+      <workItem from="1699636971129" duration="26444000" />
     </task>
     <servers />
   </component>

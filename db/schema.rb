@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_11_032914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,15 +83,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.text "content"
     t.integer "rating"
-    t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comment"
-    t.integer "product_id"
-    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
-    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -107,8 +107,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "verified"
-    t.string "verification_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -118,6 +116,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
   add_foreign_key "carts", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
-  add_foreign_key "reviews", "users", column: "reviewee_id"
-  add_foreign_key "reviews", "users", column: "reviewer_id"
+  add_foreign_key "reviews", "users"
 end
