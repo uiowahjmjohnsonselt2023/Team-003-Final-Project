@@ -78,5 +78,11 @@
     <%= form.number_field :quantity %>
   </div>
 
+  <!-- additional instructions or comments -->
+  <div class="additional-instructions">
+    <h2>Additional Instructions or Comments</h2>
+    <%= form.text_area :additional_instructions, rows: 4 %>
+  </div>
+
   <%= form.submit 'Place Order' %>
 <% end %>
