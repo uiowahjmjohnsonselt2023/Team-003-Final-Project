@@ -2,10 +2,17 @@
 
 <p>Your order has been successfully placed and is now being processed.</p>
 
-<!-- display order details -->
+<h2>Order Summary</h2>
+<ul>
+  <% @order.order_items.each do |item| %>
+    <li><%= item.quantity %>x <%= item.product.title %> - <%= number_to_currency(item.product.price * item.quantity) %></li>
+  <% end %>
+</ul>
 
-<!-- provide a link to the feedback form -->
+<p><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
+
+<!-- link to the feedback form -->
 <%= link_to 'Leave Feedback', new_feedback_path(order_id: @order.id), class: 'button' %>
 
-<!-- provide a link to the shipping tracking page -->
+<!-- link to the shipping tracking page -->
 <%= link_to 'Track Shipping', track_shipping_path(order_id: @order.id), class: 'button' %>

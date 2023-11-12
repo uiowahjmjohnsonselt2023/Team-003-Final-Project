@@ -15,22 +15,23 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.status = 'pending'
 
-    if @order.save
-      # call method to handle payment like `process_payment`
+    if @order.valid?
       if process_payment(@order)
-        # Empty the current cart since the order has been placed
-        current_cart.empty_cart!
+        @order.save
+        current_cart.cart_items.each do |item|
 
-        # redirect to the order show page with a success message
-        flash[:success] = "Order successfully placed! You can leave feedback once the order is fulfilled."
-        redirect_to order_path(@order)
+          # save each item as part of the order
+          @order.order_items.create(product: item.product, quantity: item.quantity)
+        end
+        current_cart.empty_cart!
+        redirect_to order_path(@order), notice: "Order was successfully placed."
       else
-        # handle payment failure case
         flash.now[:error] = "There was a problem with the payment. Please try again."
         render :new
       end
     else
-      flash.now[:error] = "There was a problem placing your order. Please check your information."
+      # show validation errors on the form
+      flash.now[:error] = "Please complete all required fields."
       render :new
     end
   end
