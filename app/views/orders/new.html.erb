@@ -73,10 +73,11 @@
       </div>
     </div>
 
-    <!-- quantity field -->
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
+    <!-- save payment information -->
+    <div class="save-payment-info">
+      <%= form.check_box :save_payment_info %>
+      <%= form.label :save_payment_info, 'Save my payment information for future purchases' %>
+    </div>
 
   <!-- additional instructions or comments -->
   <div class="additional-instructions">
@@ -85,4 +86,5 @@
   </div>
 
   <%= form.submit 'Place Order' %>
+  </div>
 <% end %>
