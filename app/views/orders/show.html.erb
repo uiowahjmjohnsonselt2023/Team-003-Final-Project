@@ -1,2 +1,11 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Thank you for your order!</h1>
+
+<p>Your order has been successfully placed and is now being processed.</p>
+
+<!-- display order details -->
+
+<!-- provide a link to the feedback form -->
+<%= link_to 'Leave Feedback', new_feedback_path(order_id: @order.id), class: 'button' %>
+
+<!-- provide a link to the shipping tracking page -->
+<%= link_to 'Track Shipping', track_shipping_path(order_id: @order.id), class: 'button' %>
