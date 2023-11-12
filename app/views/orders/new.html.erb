@@ -8,7 +8,7 @@
         <%= number_to_currency(cart_item.product.price * cart_item.quantity) %>
       </p>
     <% end %>
-    <p><strong>Total:</strong> <%= number_to_currency(@cart_items.sum { |item| item.product.price * item.quantity }) %></p>
+    <p><strong>Total:</strong> <%= number_to_currency(@cart.total_price) %></p>
   </div>
 
   <!-- shipping information -->
