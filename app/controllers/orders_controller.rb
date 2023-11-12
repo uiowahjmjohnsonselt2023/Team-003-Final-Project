@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :require_login, only: [:new, :create]
-  before_action :set_cart, only: [:new, :create]
-
+  before_action :set_cart_and_items, only: [:new, :create]
   def new
     @cart_empty = @cart.cart_items.empty?
     @order = Order.new unless @cart_empty
@@ -35,8 +34,8 @@ class OrdersController < ApplicationController
   private
 
   def set_cart_and_items
-    @cart = current_user.cart || Cart.new # Ensure @cart is not nil
-    @cart_items = @cart.cart_items.presence || [] # Ensure @cart_items is not nil
+    @cart = current_user.cart || Cart.new           # ensure @cart is not nil
+    @cart_items = @cart.cart_items.presence || []   # ensure @cart_items is not nil
   end
 
   def order_params
@@ -46,7 +45,6 @@ class OrdersController < ApplicationController
       :save_payment_info
     )
   end
-
   def process_payment(order)
     true
   end
