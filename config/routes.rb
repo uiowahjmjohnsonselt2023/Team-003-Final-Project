@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'categories/index'
 
   # root route for the marketplace home page
-  root 'welcome#index'
+  root 'home#index'
 
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
