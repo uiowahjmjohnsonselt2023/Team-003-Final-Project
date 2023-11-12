@@ -4,6 +4,7 @@
  *= require_self
  *= require products
  *= require cart
+ *= require orders
  */
 
 /* Customize the Login Page */
