@@ -13,4 +13,6 @@ class OrdersController < ApplicationController
   def create
   end
 end
-
+def order_params
+  params.require(:order).permit(:street, :city, :postal_code, :credit_card_number, :expiration_date, :cvv, :quantity, :email, :phone, :additional_instructions, :save_payment_info)
+end
