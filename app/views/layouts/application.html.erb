@@ -3,7 +3,6 @@
 <head>
   <title>Team 3 Market Application</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="turbo-frame" content="login_form">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -16,13 +15,27 @@
 
 <body>
 <% if flash[:notice] %>
-  <!-- display success message -->
   <div class="flash notice"><%= flash[:notice] %></div>
-
 <% elsif flash[:alert] %>
-  <!-- display error message for failed login -->
   <div class="flash alert"><%= flash[:alert] %></div>
 <% end %>
+
+<header>
+  <!-- Navigation bar -->
+  <nav>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Categories', categories_path %>
+    <%= link_to 'Search', search_path %>
+
+    <% if current_user %>
+      <%= link_to 'Logout', logout_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link' %>
+      <%= image_tag('profile_icon.png', alt: 'Profile', class: 'profile-icon') %>
+    <% else %>
+      <%= link_to 'Login', login_path, class: 'nav-link' %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+    <% end %>
+  </nav>
+</header>
 
 <%= yield %>
 </body>

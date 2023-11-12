@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/index'
+  get 'categories/index'
 
   # root route for the marketplace home page
   root 'welcome#index'
@@ -21,6 +23,12 @@ Rails.application.routes.draw do
 
   # routes for orders (purchasing)
   resources :orders, only: [:new, :create]
+
+  # routes for categories
+  resources :categories, only: [:index]
+
+  # routes for search action
+  get 'search', to: 'search#index', as: 'search'
 
   # routes for listings
   resources :listings
