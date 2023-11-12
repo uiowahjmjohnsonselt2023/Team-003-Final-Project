@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
     # @user = @product.user
     @user = User.find(@product.owner_id)
     @review = Review.new
+    @product.user = current_user
   end
 
   def some_action

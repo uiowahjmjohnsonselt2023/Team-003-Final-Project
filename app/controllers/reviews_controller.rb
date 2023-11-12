@@ -3,16 +3,22 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:destroy]
   before_action :check_user, only: [:destroy]
 
+  def new
+    @review = Review.new
+    @user = @product.user
+  end
   def create
     @product = Product.find(params[:product_id])
     @review = @product.reviews.build(review_params)
     @review.reviewer = current_user
-    @review.reviewee_id = @product.owner_id
+    @review.reviewee = @product.user
 
     if @review.save
       redirect_to product_path(@product), notice: 'Review successfully submitted!'
     else
-      render :new, alert: 'There was a problem submitting your review.'
+      @user = @product.user
+      @reviews = @product.reviews.where.not(id: nil)
+      render 'products/show', alert: 'There was a problem submitting your review.'
     end
   end
 
