@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
   before_action :require_login, only: [:new, :create]
+  before_action :set_cart, only: [:new, :create]
+
   def new
-    @cart = current_user.cart
-    if @cart.cart_items.empty?
-      @cart_empty = true
-    else
-      @cart_items = @cart.cart_items
-      @order = Order.new
-    end
+    @cart_empty = @cart.cart_items.empty?
+    @order = Order.new unless @cart_empty
   end
 
   def create
@@ -18,22 +15,27 @@ class OrdersController < ApplicationController
     if @order.valid?
       if process_payment(@order)
         @order.save
-        current_cart.cart_items.each do |item|
 
-          # save each item as part of the order
+        # save each cart item to the order
+        @cart.cart_items.each do |item|
           @order.order_items.create(product: item.product, quantity: item.quantity)
         end
-        current_cart.empty_cart!
+        @cart.empty_cart!
         redirect_to order_path(@order), notice: "Order was successfully placed."
       else
         flash.now[:error] = "There was a problem with the payment. Please try again."
         render :new
       end
     else
-      # show validation errors on the form
       flash.now[:error] = "Please complete all required fields."
       render :new
     end
+  end
+
+  private
+
+  def set_cart
+    @cart = current_user.cart || Cart.new # Ensure @cart is not nil
   end
 
   def order_params
