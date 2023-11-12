@@ -34,8 +34,9 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_cart
+  def set_cart_and_items
     @cart = current_user.cart || Cart.new # Ensure @cart is not nil
+    @cart_items = @cart.cart_items.presence || [] # Ensure @cart_items is not nil
   end
 
   def order_params
