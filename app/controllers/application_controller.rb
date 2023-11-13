@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_cart
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
 
   private
 
