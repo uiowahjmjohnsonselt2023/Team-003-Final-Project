@@ -1,7 +1,6 @@
-Given('a product is listed in the marketplace with a review') do
-  user = FactoryBot.create(:user)
-  @product = FactoryBot.create(:product, user: user)
-  @review = FactoryBot.create(:review, product: @product, user: user)
+Given(/^a product is listed in the marketplace with a review$/) do
+  @product = create(:product)
+  @review = create(:review, reviewer: @reviewer, reviewee: @reviewee, product: @product) # Create a review associated with the product
 end
 
 Given('I am logged in as the reviewing user') do

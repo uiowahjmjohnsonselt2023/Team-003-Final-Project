@@ -127,9 +127,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_060648) do
     t.datetime "updated_at", null: false
     t.string "comment"
     t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id", null: false
+    t.bigint "user_id"
     t.index ["product_id"], name: "index_reviews_on_product_id"
-    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
@@ -159,6 +158,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_060648) do
   add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
-  add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end
