@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_025118) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_14_055443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -116,8 +116,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_025118) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "owner_id", null: false
-    t.index ["owner_id"], name: "index_products_on_owner_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -160,7 +158,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_025118) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
-  add_foreign_key "products", "users", column: "owner_id"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"

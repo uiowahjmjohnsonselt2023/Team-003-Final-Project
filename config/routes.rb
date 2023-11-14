@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
 
-  resources :orders do
+  resources :orders, only: [:new, :create, :show] do
     resources :feedback, only: [:new, :create]
     get 'tracking/show', to: 'tracking#show', as: :tracking_show
   end
@@ -57,8 +57,9 @@ Rails.application.routes.draw do
       post 'message_seller'
       post 'write_review'
     end
-    resources :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
   end
+
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
