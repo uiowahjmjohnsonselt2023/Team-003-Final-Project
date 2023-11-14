@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   def show
-    product_id = params[:product_id]
-    @product = Product.find(product_id)
+    @product = Product.find(params[:id])
     @reviews = @product.reviews
     @review = Review.new
+
   end
 
   def some_action
