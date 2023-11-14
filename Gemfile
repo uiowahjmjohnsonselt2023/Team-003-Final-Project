@@ -57,7 +57,6 @@ group :development do
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'simplecov'
   gem 'database_cleaner'
@@ -72,7 +71,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rspec-rails'
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
   gem 'faker'

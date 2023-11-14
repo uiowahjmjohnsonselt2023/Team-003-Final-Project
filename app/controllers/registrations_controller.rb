@@ -20,7 +20,7 @@ class RegistrationsController < ApplicationController
         description: "Default Product Description"
       )
 
-      sign_in(@user)
+      session[:user_id] = @user.id
       flash[:notice] = 'Signup successful!'
       redirect_to root_path
 
