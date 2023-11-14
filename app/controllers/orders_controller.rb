@@ -12,21 +12,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if @cart_items.empty?
+    @order = current_user.orders.build(order_params)
+    if @cart.cart_items.empty?
       redirect_to cart_path, alert: "Your cart is empty."
       return
     end
 
-    @order = current_user.orders.build(order_params)
-
     if @order.save
-      @cart_items.each do |cart_item|
+      @cart.cart_items.each do |cart_item|
         @order.order_items.create(product: cart_item.product, quantity: cart_item.quantity)
       end
 
-      @cart.cart_items.destroy_all
+      @cart.destroy
+      session[:cart_id] = nil
       redirect_to order_path(@order), notice: "Your order has been placed."
     else
+      flash.now[:alert] = @order.errors.full_messages.to_sentence
       render :new
     end
   end

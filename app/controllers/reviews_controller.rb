@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
     @review.reviewer = current_user
     @review.reviewee = @product.user
 
-    if @review.save
+    if @review.valid?
+      @review.save
       redirect_to product_path(@product), notice: 'Review successfully submitted!'
     else
       @user = @product.user
       @reviews = @product.reviews.reload
-      render 'products/show', alert: 'There was a problem submitting your review.'
+      render 'products/show', alert: 'There was a problem submitting your review: ' + @review.errors.full_messages.to_sentence
     end
   end
 
