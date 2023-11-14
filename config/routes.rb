@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   # routes for orders (purchasing)
   resources :orders, only: [:new, :create]
 
+  resources :orders do
+    resources :order_items, only: [:create, :update, :destroy]
+  end
+
   # routes for categories
   resources :categories, only: [:index]
 
