@@ -6,6 +6,11 @@ class OrdersController < ApplicationController
     @order = Order.new
     redirect_to cart_path, alert: "Your cart is empty." if @cart_items.empty?
   end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
     @order = current_user.orders.build(order_params)
     if @order.save

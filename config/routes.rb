@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'tracking/show'
+  get 'feedback/new'
+  get 'feedback/create'
   get 'search/index'
   get 'categories/index'
 
@@ -32,6 +35,11 @@ Rails.application.routes.draw do
 
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
+
+  resources :orders, only: [:show] do
+    resources :feedback, only: [:new, :create]
+    get 'tracking', to: 'tracking#show'
+  end
 
   # routes for categories
   resources :categories, only: [:index]
