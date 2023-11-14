@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_064452) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_14_065259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,6 +128,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_064452) do
     t.string "comment"
     t.bigint "reviewer_id", null: false
     t.bigint "user_id"
+    t.bigint "reviewee_id"
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
