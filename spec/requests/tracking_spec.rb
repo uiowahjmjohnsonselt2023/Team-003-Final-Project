@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Trackings", type: :request do
-  describe "GET /show" do
-    it "returns http success" do
-      get tracking_show_path
-      expect(response).to have_http_status(:success)
-    end
+describe "GET /show" do
+  it "returns http success" do
+    tracking = create(:tracking)
+    get tracking_path(tracking)
+    expect(response).to have_http_status(:success)
   end
 end

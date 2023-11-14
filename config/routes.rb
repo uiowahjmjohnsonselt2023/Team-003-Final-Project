@@ -38,7 +38,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:new, :create, :show] do
     resources :feedback, only: [:new, :create]
-    get 'tracking/show', to: 'tracking#show', as: :tracking_show
+    get '/trackings/:id', to: 'trackings#show', as: 'tracking'
+
   end
 
   # routes for categories
