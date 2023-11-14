@@ -21,12 +21,17 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
 
-  # routes for orders (purchasing)
-  resources :orders, only: [:new, :create]
-
-  resources :orders do
-    resources :order_items, only: [:create, :update, :destroy]
+  # routes for orders and cart (purchasing)
+  resources :orders, only: [:new, :create, :show]
+  resources :cart_items, only: [:create, :update, :destroy] do
+    member do
+      patch :increase
+      patch :decrease
+    end
   end
+
+  # route for if the cart has a show action to display an individual user's cart
+  resource :cart, only: [:show]
 
   # routes for categories
   resources :categories, only: [:index]
@@ -46,12 +51,6 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:create, :destroy]
   end
-
-  # route for if the cart has a show action to display an individual user's cart
-  resource :cart, only: [:show]
-
-  # routes for creating cart items
-  resources :cart_items, only: [:create, :update, :destroy]
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
