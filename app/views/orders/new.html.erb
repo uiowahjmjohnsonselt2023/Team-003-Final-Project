@@ -1,6 +1,17 @@
 <%= form_with(model: @order, url: orders_path, local: true) do |form| %>
-  <div class="container">
 
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h3>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
     <!-- left column -->
     <div class="left-column">
       <div class="shipping-information">
@@ -87,6 +98,5 @@
       <%= form.submit 'Place Order', class: 'place-order-button' %>
 
     </div>
-
   </div>
 <% end %>
