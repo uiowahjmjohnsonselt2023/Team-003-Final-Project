@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create, :show, :index]
   before_action :set_cart_items, only: [:new, :create]
 
   def new
@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
       @cart.cart_items.each do |cart_item|
         @order.order_items.create(product: cart_item.product, quantity: cart_item.quantity)
       end
-      # If you want to clear the cart after creating an order:
       @cart.cart_items.destroy_all
       redirect_to order_path(@order), notice: "Your order has been placed."
     else
@@ -40,11 +39,11 @@ class OrdersController < ApplicationController
       )
     end
 
-    def require_login
-      unless current_user
-        flash[:error] = "You must be logged in to access this section"
-        redirect_to new_user_session_path # or your login route
-      end
+  def require_login
+    unless current_user
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_path
+    end
     end
 
     def process_payment(order)

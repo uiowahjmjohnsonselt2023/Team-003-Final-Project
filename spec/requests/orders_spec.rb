@@ -1,32 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe "Orders", type: :request do
-  describe "GET /new" do
-    it "returns http success" do
-      get "/orders/new"
-      expect(response).to have_http_status(:success)
-    end
+  let(:user) { create(:user) }
+  let(:product) { create(:product, user: user) }
+  let(:order_params) do
+    {
+      order: {
+        product_id: product.id,
+      }
+    }
   end
 
-  describe "GET /create" do
-    it "returns http success" do
-      get "/orders/create"
-      expect(response).to have_http_status(:success)
-    end
+  before do
+    post login_path, params: { username: user.username, password: 'password' }
   end
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/orders/show"
-      expect(response).to have_http_status(:success)
+  describe "POST /create" do
+    it "creates an order and redirects to the order's page" do
+      expect {
+        post orders_path, params: order_params
+      }.to change(Order, :count).by(1)
+
+      expect(response).to redirect_to(Order.last)
     end
   end
-
-  describe "GET /index" do
-    it "returns http success" do
-      get "/orders/index"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
+

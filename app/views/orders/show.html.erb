@@ -12,7 +12,7 @@
 <p><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
 
 <!-- link to the feedback form -->
-<%= link_to 'Leave Feedback', new_feedback_path(order_id: @order.id), class: 'button' %>
+<%= link_to 'Leave Feedback', new_order_feedback_path(order_id: @order.id), class: 'button' %>
 
 <!-- link to the shipping tracking page -->
-<%= link_to 'Track Shipping', track_shipping_path(order_id: @order.id), class: 'button' %>
+<%= link_to 'Track Shipping', tracking_show_path(order_id: @order.id), class: 'button' %>
