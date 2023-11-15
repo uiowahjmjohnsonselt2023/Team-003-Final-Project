@@ -27,6 +27,9 @@
     <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
   </div>
 
+  <%= link_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "btn btn-primary" %>
+
+
   <div class="product-detail-description">
     <p><%= @product.description %></p>
   </div>
