@@ -1,7 +1,7 @@
 /* main container of the favorites page */
 .favorites-container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;

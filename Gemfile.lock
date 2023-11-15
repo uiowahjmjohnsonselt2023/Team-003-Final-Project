@@ -79,7 +79,9 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     base64 (0.2.0)
     bcrypt (3.1.19)
+    bcrypt (3.1.19-java)
     bigdecimal (3.1.4)
+    bigdecimal (3.1.4-java)
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
@@ -135,6 +137,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.4)
+    date (3.3.4-java)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -151,6 +154,9 @@ GEM
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
+    ffi (1.16.3-java)
+    ffi (1.16.3-x64-mingw32)
+    ffi (1.16.3-x86-mingw32)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -163,6 +169,7 @@ GEM
     irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
+    jar-dependencies (0.4.1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -183,6 +190,7 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
+    msgpack (1.7.2-java)
     multi_test (1.1.0)
     mutex_m (0.2.0)
     net-imap (0.4.5)
@@ -195,20 +203,34 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
+    nio4r (2.5.9-java)
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogiri (1.15.4-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.15.4-java)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x64-mingw32)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86-mingw32)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
+    pg (1.5.4-x64-mingw32)
+    pg (1.5.4-x86-mingw32)
     psych (5.1.1.1)
       stringio
+    psych (5.1.1.1-java)
+      jar-dependencies (>= 0.1.7)
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
+    puma (6.4.0-java)
+      nio4r (~> 2.0)
     racc (1.7.3)
+    racc (1.7.3-java)
     rack (3.0.8)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -311,6 +333,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.3)
+      tzinfo (>= 1.0.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -324,6 +348,8 @@ GEM
     websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
+    websocket-driver (0.7.6-java)
+      websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
@@ -331,7 +357,12 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  java
+  mswin64
   ruby
+  x64-mingw32
+  x86-mingw32
+  x86-mswin32
   x86_64-linux
 
 DEPENDENCIES
