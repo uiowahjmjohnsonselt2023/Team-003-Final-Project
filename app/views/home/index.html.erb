@@ -1,8 +1,46 @@
-<!-- Marketplace Page View -->
-<h1><%= @greeting %></h1>
-<p>Welcome to the marketplace homepage!</p>
+<header>
+  <nav>
+    <ul class="horizontal-nav">
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li><a href="<%= categories_path %>">Categories</a></li>
+      <li><a href="<%= search_path %>">Search</a></li>
+      <% if current_user %>
+        <li>
+          <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete } %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Login", login_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_registration_path %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welcome to Knockoff eBay</h1>
+  <p>Your Online Marketplace for Great Deals!</p>
+</section>
+
+<section class="featured-products">
+  <h2>Featured Products</h2>
+
+</section>
+
+<section class="about-us">
+  <h2>About Us</h2>
+  <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
+</section>
+
+<footer>
+  <p>&copy; 2023 Knockoff eBay. All rights reserved.</p>
+</footer>
 
 <!-- Sign out link to redirect the user back to the login screen (sessions) -->
 <%= link_to "Logout", logout_path, method: :delete %>
 
 <%= link_to "Profile", profile_path, method: :get%>
+

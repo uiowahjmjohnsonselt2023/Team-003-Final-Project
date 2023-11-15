@@ -1,4 +1,5 @@
 require 'factory_bot_rails'
+require 'faker'
 
 require 'simplecov'
 SimpleCov.start 'rails' do
@@ -50,6 +51,11 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  config.before(:each) do
+    # mock a login method if not using Devise or similar gem
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(create(:user))
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

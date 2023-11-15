@@ -3,7 +3,6 @@
 <head>
   <title>Team 3 Market Application</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="turbo-frame" content="login_form">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -11,16 +10,15 @@
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag 'products', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'cart', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'orders', media: 'all', 'data-turbo-track': 'reload' %>
+
   <%= javascript_importmap_tags %>
 </head>
 
 <body>
 <% if flash[:notice] %>
-  <!-- display success message -->
   <div class="flash notice"><%= flash[:notice] %></div>
-
 <% elsif flash[:alert] %>
-  <!-- display error message for failed login -->
   <div class="flash alert"><%= flash[:alert] %></div>
 <% end %>
 
