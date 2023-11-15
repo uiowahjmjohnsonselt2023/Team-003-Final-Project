@@ -57,7 +57,7 @@ Rails.application.routes.draw do
       post 'add_to_cart'
       post 'message_seller'
       post 'write_review'
-      post 'add_to_favorites', on: :member
+      post 'add_to_favorites'
     end
     resources :reviews, only: [:new, :create, :destroy]
   end

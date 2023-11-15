@@ -27,17 +27,6 @@
     <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
   </div>
 
-  <%= link_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "btn btn-primary" %>
-
-
-  <div class="product-detail-description">
-    <p><%= @product.description %></p>
-  </div>
-
-  <div class="product-detail-interaction">
-    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
-  </div>
-
   <!-- review form for submitting new reviews -->
   <div class="review-form">
     <h3>Write a Review</h3>
@@ -56,8 +45,18 @@
       <% else %>
         <p>You must be logged in to submit a review.</p>
       <% end %>
-  <% end %>
+    <% end %>
   </div>
+
+  <div class="product-detail-interaction">
+    <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "button favorite-button" %>
+    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "button message-seller-button" %>
+  </div>
+
+  <div class="product-detail-description">
+    <p><%= @product.description %></p>
+  </div>
+
 
   <!-- existing reviews -->
   <div class="product-detail-reviews">
