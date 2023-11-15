@@ -18,5 +18,6 @@ class User < ApplicationRecord
   has_many :cart_items, through: :cart
   has_many :products
   has_many :orders
+  has_many :favorites
 end
 
