@@ -491,13 +491,13 @@
           null,
           null,
           1,
-          2,
+          0,
           null,
           1,
-          4,
+          3,
           null,
-          4,
-          4,
+          3,
+          3,
           null,
           null,
           1,
@@ -554,14 +554,10 @@
           1,
           1,
           null,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/favorite.rb": {
-        "lines": [
           1,
-          1,
-          1,
+          2,
+          null,
+          null,
           null
         ]
       },
@@ -570,23 +566,30 @@
           1,
           null,
           1,
-          0,
+          3,
+          2,
           null,
-          1,
-          1,
-          1,
           1,
           null,
           null,
           1,
           0,
           null,
+          1,
+          0,
+          0,
+          0,
+          null,
           null,
           1,
+          0,
+          null,
+          null,
           1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           1,
@@ -631,67 +634,6 @@
           null
         ]
       },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/review.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/favorites_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          null
-        ]
-      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart_item.rb": {
         "lines": [
           0,
@@ -724,6 +666,16 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/favorite.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/listing.rb": {
         "lines": [
           0,
@@ -739,6 +691,25 @@
           0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/review.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
           0,
           0,
           0,
@@ -797,6 +768,52 @@
           0,
           0,
           0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/favorites_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null
         ],
         "branches": {
         }
@@ -1326,6 +1343,6 @@
         }
       }
     },
-    "timestamp": 1700075168
+    "timestamp": 1700079298
   }
 }

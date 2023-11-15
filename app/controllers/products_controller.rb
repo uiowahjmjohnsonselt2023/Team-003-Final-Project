@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
                   Product.all
                 end
   end
+
+
   def index
     @products = Product.all
   end
