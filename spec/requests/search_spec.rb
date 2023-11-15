@@ -39,3 +39,4 @@ RSpec.describe "SearchProducts", type: :request do
     end
   end
 end
+
