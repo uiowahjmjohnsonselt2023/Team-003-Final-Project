@@ -4,8 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 1250px;
-    margin: 0 auto; /* Center the container */
-    gap: 20px; /* Space between columns */
+    margin: 0 auto;
+    gap: 20px;
 }
 
 .left-column,
@@ -65,3 +65,71 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #57667a;
 }
+
+.order-confirmation {
+    background-color: #f4f4f8;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-confirmation h1,
+.order-confirmation p {
+    text-align: center;
+    margin: 30px;
+    display: block;
+}
+
+.order-confirmation h2 {
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.order-summary {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+.order-summary li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.order-summary li:last-child {
+    border-bottom: none;
+    text-align: center;
+}
+
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c6ac4;
+    border-radius: 4px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #4e5ba6;
+}
+

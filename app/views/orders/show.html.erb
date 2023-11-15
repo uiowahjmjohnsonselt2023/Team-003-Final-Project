@@ -1,18 +1,18 @@
-<h1>Thank you for your order!</h1>
+<div class="order-confirmation">
+  <h1>Thank you for your order!</h1>
+  <p>Your order has been successfully placed and is now being processed.</p>
 
-<p>Your order has been successfully placed and is now being processed.</p>
+  <h2>Order Summary</h2>
+  <ul class="order-summary">
+    <% @order.order_items.each do |item| %>
+      <li><%= item.quantity %>x <%= item.product.title %> - <%= number_to_currency(item.product.price * item.quantity) %></li>
+    <% end %>
+  </ul>
 
-<h2>Order Summary</h2>
-<ul>
-  <% @order.order_items.each do |item| %>
-    <li><%= item.quantity %>x <%= item.product.title %> - <%= number_to_currency(item.product.price * item.quantity) %></li>
-  <% end %>
-</ul>
+  <p class="total-price"><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
 
-<p><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
-
-<!-- link to the feedback form -->
-<%= link_to 'Leave Feedback', new_order_feedback_path(order_id: @order.id), class: 'button' %>
-
-<!-- link to the shipping tracking page -->
-<%= link_to 'Track Shipping', tracking_show_path(order_id: @order.id), class: 'button' %>
+  <div class="button-container">
+    <%= link_to 'Leave Feedback', new_order_feedback_path(order_id: @order.id), class: 'button' %>
+    <%= link_to 'Track Shipping', tracking_show_path(order_id: @order.id), class: 'button' %>
+  </div>
+</div>
