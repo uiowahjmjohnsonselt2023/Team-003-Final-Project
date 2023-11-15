@@ -512,6 +512,10 @@
           0,
           0,
           0,
+          null,
+          0,
+          0,
+          null,
           0
         ],
         "branches": {
@@ -646,6 +650,9 @@
           0,
           0,
           0,
+          null,
+          0,
+          0,
           0,
           null
         ],
@@ -700,6 +707,14 @@
           0,
           null,
           0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/favorites_controller.rb": {
+        "lines": [
           0,
           0
         ],
@@ -801,9 +816,15 @@
           0,
           0,
           0,
-          null,
           0,
           null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -1273,8 +1294,16 @@
         ],
         "branches": {
         }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/favorites_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1700022037
+    "timestamp": 1700032128
   }
 }
