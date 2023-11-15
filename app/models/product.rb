@@ -7,4 +7,8 @@ class Product < ApplicationRecord
   has_many :favorites
   has_many :favorited_by, through: :favorites, source: :user
 
+  def self.search(query)
+    where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
+  end
+
 end
