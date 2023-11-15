@@ -1,0 +1,101 @@
+<%= form_with(model: @order, url: orders_path, local: true) do |form| %>
+
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h3>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <!-- left column -->
+    <div class="left-column">
+      <div class="shipping-information">
+        <h2>Shipping Information</h2>
+
+        <!-- street address -->
+        <div class="field">
+          <%= form.label :street, 'Street Address' %>
+          <%= form.text_field :street %>
+        </div>
+
+        <!-- city -->
+        <div class="field">
+          <%= form.label :city %>
+          <%= form.text_field :city %>
+        </div>
+
+        <!-- postal code -->
+        <div class="field">
+          <%= form.label :postal_code, 'Postal Code' %>
+          <%= form.text_field :postal_code %>
+        </div>
+      </div>
+
+      <div class="payment-information">
+        <h2>Payment Information</h2>
+
+        <!-- credit card number -->
+        <div class="field">
+          <%= form.label :credit_card_number, 'Credit Card Number' %>
+          <%= form.text_field :credit_card_number, placeholder: '**** **** **** ****' %>
+        </div>
+
+        <!-- expiration date -->
+        <div class="field">
+          <%= form.label :expiration_date, 'Expiration Date (MM/YY)' %>
+          <%= form.text_field :expiration_date, placeholder: 'MM/YY' %>
+        </div>
+
+        <!-- CVV -->
+        <div class="field">
+          <%= form.label :cvv, 'CVV' %>
+          <%= form.text_field :cvv, placeholder: '123' %>
+        </div>
+
+        <!-- save payment information -->
+        <div class="save-payment-info">
+          <%= form.check_box :save_payment_info %>
+          <%= form.label :save_payment_info, 'Save my payment information for future purchases' %>
+        </div>
+      </div>
+    </div>
+
+    <!-- right column -->
+    <div class="right-column">
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <% @cart_items.each do |cart_item| %>
+          <p>
+            <%= cart_item.product.title %> (x<%= cart_item.quantity %>) -
+            <%= number_to_currency(cart_item.product.price * cart_item.quantity) %>
+          </p>
+        <% end %>
+        <p><strong>Total:</strong> <%= number_to_currency(@cart.total_price) %></p>
+      </div>
+
+      <div class="contact-information">
+        <h2>Contact Information</h2>
+        <div class="field">
+          <%= form.label :email, 'Email' %>
+          <%= form.email_field :email %>
+        </div>
+        <div class="field">
+          <%= form.label :phone, 'Phone Number' %>
+          <%= form.telephone_field :phone %>
+        </div>
+      </div>
+
+      <div class="additional-instructions">
+        <h2>Additional Instructions or Comments</h2>
+        <%= form.text_area :additional_instructions, rows: 4 %>
+      </div>
+
+      <%= form.submit 'Place Order', class: 'place-order-button' %>
+    </div>
+  </div>
+<% end %>

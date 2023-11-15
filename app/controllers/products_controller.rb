@@ -1,6 +1,23 @@
 class ProductsController < ApplicationController
+
+  def index
+    @products = Product.all
+  end
   def show
     @product = Product.find(params[:id])
+    @reviews = @product.reviews
+    @review = Review.new
+  end
+
+  def some_action
+    @user = User.find_by(id: some_id)
+  end
+
+  def add_to_favorites
+    @product = Product.find(params[:id])
+    current_user.favorites.create(product: @product)
+    flash[:notice] = "Product added to favorites."
+    redirect_to product_path(@product)
   end
 
   def add_to_cart

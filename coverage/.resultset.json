@@ -385,215 +385,262 @@
   },
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/application_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/cart_items_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/cart_items_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/carts_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/carts_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/categories_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/products_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/favorites_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/reviews_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/feedback_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/helpers/welcome_helper.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/order_items_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/orders_helper.rb": {
         "lines": [
-          null,
           1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          8,
-          null,
-          null,
-          8,
-          4,
-          4,
-          null,
-          null,
-          null,
-          4,
-          8,
-          4,
-          null,
-          null,
-          null,
-          null,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
-          null,
-          null,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/application_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/products_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/reviews_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/search_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/tracking_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/welcome_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
+          1,
           null,
           1,
-          1,
-          0,
-          null,
           null,
           1,
           0,
           null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/reviews_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          2,
-          null,
-          2,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
           0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          null,
           0,
           null,
           null,
           1,
           0,
           0,
-          null,
+          0,
           null,
           null,
           1,
           2,
           null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/review.rb": {
-        "lines": [
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          4,
           null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/user.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          4,
+          4,
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
+          0,
           null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/product.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/user.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/product.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/favorite.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/products_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          0,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/review.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
           1,
           1,
           1,
@@ -601,77 +648,52 @@
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/carts_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/favorites_controller.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
           0,
           0,
           null,
           0,
           null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
           0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
           0,
-          0
-        ],
-        "branches": {
-        }
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null
+        ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/cart_items_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart_item.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/home_controller.rb": {
-        "lines": [
-          0,
           0,
           0,
           0,
@@ -684,10 +706,26 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/listings_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/order_item.rb": {
         "lines": [
           0,
-          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/tracking.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/listing.rb": {
+        "lines": [
           0,
           0,
           0,
@@ -695,16 +733,6 @@
           0,
           0,
           0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
           0,
           0,
           0,
@@ -720,7 +748,474 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/feedback.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/order.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/carts_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/categories_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/orders_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/listings_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/search_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/feedback_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/order_items_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/reviews_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/tracking_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/cart_items_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/password_resets_controller.rb": {
         "lines": [
           0,
           0,
@@ -787,44 +1282,7 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/products_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/registrations_controller.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/registrations_controller.rb": {
         "lines": [
           null,
           0,
@@ -838,7 +1296,6 @@
           null,
           0,
           0,
-          0,
           null,
           0,
           0,
@@ -848,6 +1305,9 @@
           0,
           0,
           0,
+          null,
+          0,
+          0,
           0,
           0,
           0,
@@ -857,67 +1317,6 @@
           0,
           null,
           null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/welcome_controller.rb": {
-        "lines": [
-          0,
-          null,
-          0,
-          null,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/cart.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/cart_item.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/listing.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -927,6 +1326,6 @@
         }
       }
     },
-    "timestamp": 1699670546
+    "timestamp": 1700075168
   }
 }
