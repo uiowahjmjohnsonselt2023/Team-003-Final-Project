@@ -2,9 +2,12 @@
   <nav>
     <ul class="horizontal-nav">
       <li><a href="<%= root_path %>">Home</a></li>
-      <li><a href="<%= categories_path %>">Categories</a></li>
       <li><a href="<%= search_path %>">Search</a></li>
+      <li><a href="<%= categories_path %>">Categories</a></li>
       <li><a href="<%= favorites_path %>">Favorites</a></li>
+      <li><a href="<%= listings_path %>">Create Listing</a></li>
+      <li><a href="<%= profile_path %>">Profile</a></li>
+
 
       <% if current_user %>
         <li>
@@ -40,6 +43,3 @@
 <footer>
   <p>&copy; 2023 Knockoff eBay. All rights reserved.</p>
 </footer>
-
-<%= link_to "Profile", profile_path, method: :get%>
-
