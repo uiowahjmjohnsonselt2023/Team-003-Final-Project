@@ -8,35 +8,41 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by(id: params[:id])
+    if @order.nil?
+      redirect_to root_path, alert: "Order not found."
+    end
   end
 
   def create
-    @order = current_user.orders.build(order_params)
-    if @cart.cart_items.empty?
+    @cart = current_user.cart
+    @cart_items = @cart.cart_items if @cart.present?
+
+    if @cart_items.blank?
       redirect_to cart_path, alert: "Your cart is empty."
       return
     end
 
+    @order = current_user.orders.build(order_params)
+
     if @order.save
-      @cart.cart_items.each do |cart_item|
+      @cart_items.each do |cart_item|
         @order.order_items.create(product: cart_item.product, quantity: cart_item.quantity)
       end
-
       @cart.destroy
       session[:cart_id] = nil
       redirect_to order_path(@order), notice: "Your order has been placed."
     else
       flash.now[:alert] = @order.errors.full_messages.to_sentence
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-  private
 
+  private
   def set_cart_items
     @cart = current_user.cart
-    @cart_items = @cart&.cart_items || []
+    @cart_items = @cart.cart_items if @cart.present?
   end
 
   def order_params
@@ -58,6 +64,8 @@ class OrdersController < ApplicationController
     true
   end
 end
+
+
 
 
 
