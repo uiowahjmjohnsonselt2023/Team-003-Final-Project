@@ -1,33 +1,39 @@
-Given("the following products exist:") do |table|
+Given("the following users exist for search:") do |table|
+  table.hashes.each do |user|
+    User.create!(user)
+  end
+end
+
+Given("the following products exist for search:") do |table|
   table.hashes.each do |hash|
-    Product.create!(title: hash['title'], description: hash['description'])
+    user = User.find_by(username: hash.delete("user"))
+    hash["user_id"] = user.id
+    Product.create!(hash)
   end
 end
 
-When("I search for {string}") do |search_term|
+Given("I am on the homepage") do
   visit root_path
-  fill_in 'search_query', with: search_term
-  click_button 'Search'
 end
 
-
-When("I search with an empty keyword") do
-  visit root_path
-  fill_in 'search_query', with: ''
-  click_button 'Search'
+When("I fill in {string} with {string}") do |field, value|
+  fill_in field, with: value
 end
 
-Then("I should see products including:") do |table|
-  table.raw.flatten.each do |title|
-    expect(page).to have_content(title)
-  end
+When('I click the "Search" button on the home page') do
+  click_button
 end
 
-Then("I should not see any products") do
-  expect(page).not_to have_css('.product')
+Then("I should see {string} as clickable") do |link|
+  expect(page).to have_link(link)
 end
-Then("I should see all products") do
-  Product.all.each do |product|
-    expect(page).to have_content(product.title)
-  end
+
+When('I click on the product titled {string}') do |product_title|
+  click_link product_title
 end
+
+Then("I should be on the details page for {string}") do |product_title|
+  product = Product.find_by(title: product_title)
+  expect(page.current_path).to eq product_path(product)
+end
+

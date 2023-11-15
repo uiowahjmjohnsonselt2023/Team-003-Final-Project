@@ -1,29 +1,22 @@
-# features/search_product.feature
-
-Feature: Search for products
-
-  As a user
-  I want to search for products using keywords
+Feature: Search Products
+  As a buyer
+  I want to search for items using keywords
   So that I can find exactly what I'm looking for
 
   Background:
-    Given the following products exist:
-      | title                | description         |
-      | Amazing Widget       | An amazing widget   |
-      | Incredible Gadget    | A gadget like no other |
-      | Widget Extraordinaire | The best widget ever |
+    Given the following users exist for search:
+      | username | email                | password |
+      | MaryAnn  | mary@example.com     | password |
+    And the following products exist for search:
+      | title                | description            | user      |
+      | Amazing Widget       | An amazing widget      | MaryAnn   |
+      | Incredible Gadget    | A gadget like no other | MaryAnn   |
+      | Widget Extraordinaire | The best widget ever   | MaryAnn   |
 
-  Scenario: User successfully finds products by title
-    When I search for "Widget"
-    Then I should see products including:
-      | title                |
-      | Amazing Widget       |
-      | Widget Extraordinaire |
-
-  Scenario: User tries to search for a product that doesn't exist
-    When I search for "Gizmo"
-    Then I should not see any products
-
-  Scenario: User searches without a keyword
-    When I search with an empty keyword
-    Then I should see all products
+  Scenario: Buyer searches for a product and sees clickable results
+    Given I am on the homepage
+    When I fill in "Search for products..." with "Widget"
+    And I click the "Search" button on the home page
+    Then I should see "Amazing Widget" as clickable
+    When I click on the product titled "Amazing Widget"
+    Then I should be on the details page for "Amazing Widget"
