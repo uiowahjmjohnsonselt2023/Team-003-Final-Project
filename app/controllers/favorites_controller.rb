@@ -3,29 +3,38 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @favorites = current_user.favorite_products
+    @favorites = current_user.favorites
+    @favorite_products = current_user.favorite_products
   end
   def create
     if Favorite.create(favorited: @product, user: current_user)
       redirect_to @product, notice: 'Product has been favorited'
     else
-      redirect_to @product, alert: 'Something went wrong...*sad panda*'
+      redirect_to @product, alert: 'Something went wrong...'
     end
   end
 
   def destroy
-    Favorite.where(favorited_id: @product.id, user_id: current_user.id).first.destroy
-    redirect_to @product, notice: 'Product is no longer in favorites'
+    favorite = current_user.favorites.find_by(product_id: @product.id)
+    if favorite
+      favorite.destroy
+      redirect_to favorites_path, notice: 'Favorite was successfully removed.'
+    else
+      redirect_to favorites_path, alert: 'Product was not found in your favorites'
+    end
   end
 
   private
 
   def set_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find_by(id: params[:id])
+    if @product.nil?
+      redirect_to favorites_path, alert: 'Product not found'
+    end
   end
 
   def authenticate_user
-    redirect_to root_path unless user_signed_in?
+    redirect_to root_path unless logged_in?
   end
 end
 

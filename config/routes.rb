@@ -51,7 +51,8 @@ Rails.application.routes.draw do
   # routes for listings
   resources :listings
 
-  # routes for product details
+  resources :favorites, only: [:index, :create, :destroy]
+
   resources :products do
     member do
       post 'add_to_cart'
@@ -61,10 +62,6 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:new, :create, :destroy]
   end
-
-  resources :favorites, only: [:create, :destroy, :index]
-
-
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
 

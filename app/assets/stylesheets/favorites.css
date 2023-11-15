@@ -1,0 +1,66 @@
+/* main container of the favorites page */
+.favorites-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* title of the favorites page */
+.favorites-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* individual favorite items */
+.favorite-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* product title within each favorite item */
+.favorite-product-title {
+    font-size: 18px;
+    color: #333;
+}
+
+    /* 'View' and 'Remove from Favorites' links */
+    .favorite-action-link {
+        text-decoration: none;
+        color: #064b96;
+        margin-right: 15px;
+    }
+
+    /* 'Remove from Favorites' button */
+    .remove-favorite-button {
+        background-color: #b94e4e;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* add responsiveness for smaller screens */
+    @media (max-width: 768px) {
+        .favorites-container {
+            width: 90%; /* make the container wider on small screens */
+        }
+
+        .favorite-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .favorite-action-link,
+        .remove-favorite-button {
+            margin-top: 10px;
+        }
+    }

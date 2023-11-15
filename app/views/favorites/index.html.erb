@@ -1,7 +1,10 @@
-<h1>My Favorites</h1>
-<% current_user.favorite_products.each do |product| %>
-  <div class="favorite-item">
-    <%= link_to product.title, product %>
-    <%= button_to 'Remove', favorite_path(product), method: :delete %>
-  </div>
-<% end %>
+<div class="favorites-container">
+  <h2 class="favorites-title">My Favorites</h2>
+  <% @favorite_products.each do |product| %>
+    <div class="favorite-item">
+      <span class="favorite-product-title"><%= product.title %></span>
+      <%= link_to 'View Product', product, class: 'favorite-action-link' %>
+      <%= button_to 'Remove from Favorites', favorite_path(product), method: :delete, class: 'remove-favorite-button' %>
+    </div>
+  <% end %>
+</div>
