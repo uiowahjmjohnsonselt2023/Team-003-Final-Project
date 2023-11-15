@@ -62,6 +62,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
+  resources :favorites, only: [:create, :destroy, :index]
+
+
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
 

@@ -3,9 +3,8 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @favorites = current_user.favorites
+    @favorites = current_user.favorite_products
   end
-
   def create
     if Favorite.create(favorited: @product, user: current_user)
       redirect_to @product, notice: 'Product has been favorited'

@@ -4,6 +4,8 @@
       <li><a href="<%= root_path %>">Home</a></li>
       <li><a href="<%= categories_path %>">Categories</a></li>
       <li><a href="<%= search_path %>">Search</a></li>
+      <li><a href="<%= favorites_path %>">Favorites</a></li>
+
       <% if current_user %>
         <li>
           <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete } %>
@@ -38,9 +40,6 @@
 <footer>
   <p>&copy; 2023 Knockoff eBay. All rights reserved.</p>
 </footer>
-
-<!-- Sign out link to redirect the user back to the login screen (sessions) -->
-<%= link_to "Logout", logout_path, method: :delete %>
 
 <%= link_to "Profile", profile_path, method: :get%>
 
