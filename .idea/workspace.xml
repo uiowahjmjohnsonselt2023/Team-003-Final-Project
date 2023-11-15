@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6623a924-a258-485e-9baa-9a6be66c5635" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/favorites.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/add_to_favorites.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/step_definitions/add_to_favorites.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/favorites_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/favorites_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/favorites/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/favorites/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/.resultset.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/.resultset.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/requests/favorites_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/favorites_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,7 +327,7 @@
       <workItem from="1699574040595" duration="343000" />
       <workItem from="1699579229366" duration="307000" />
       <workItem from="1699636971129" duration="52103000" />
-      <workItem from="1700063589624" duration="6134000" />
+      <workItem from="1700063589624" duration="7802000" />
     </task>
     <servers />
   </component>
