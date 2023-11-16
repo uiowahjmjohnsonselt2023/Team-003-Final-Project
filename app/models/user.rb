@@ -40,5 +40,10 @@ class User < ApplicationRecord
              BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  # calculates the average rating of received reviews
+  def average_rating
+    received_reviews.average(:rating).to_f.round(2)
+  end
 end
 
