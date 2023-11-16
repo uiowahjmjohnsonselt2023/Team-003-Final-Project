@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
     @reviews = @product.reviews
     # initialize an empty review object for the form
     @review = Review.new
+
+    # show seller's rating
+    @seller_rating = @product.user.average_rating
   end
 
   # add a product to the user's favorites
