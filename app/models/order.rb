@@ -21,4 +21,13 @@ class Order < ApplicationRecord
   def total_price
     order_items.sum { |item| item.quantity * item.product.price }
   end
+
+  after_create :increment_product_sales_count
+
+  private
+
+  def increment_product_sales_count
+    product.increment!(:sales_count)
+  end
+
 end

@@ -76,17 +76,25 @@ class ProductsController < ApplicationController
     when 'newest'
       'created_at DESC'
     when 'best_selling'
-      # You will need to implement logic to track best-selling products
-      # For example: 'sales_count DESC'
     when 'price_asc'
       'price ASC'
     when 'price_desc'
       'price DESC'
     when 'featured'
-      # Assuming you have a boolean field `featured` in your products table
       'featured DESC, created_at DESC'
     else
-      'created_at DESC' # default sorting by newest
+      'created_at DESC'
+    end
+
+    def apply_sorting(products, sort_option)
+      case sort_option
+      when 'best_selling'
+        products.best_selling
+      when 'featured'
+        products.featured
+      else
+        products.order(sort_by_params(sort_option))
+      end
     end
 
   # define strong parameters for the review

@@ -14,4 +14,7 @@ class Product < ApplicationRecord
   scope :by_category, ->(category) { where(category: category) if category.present? }
   scope :by_condition, ->(condition) { where(condition: condition) if condition.present? }
 
+  scope :best_selling, -> { order(sales_count: :desc) }
+  scope :featured, -> { where(featured: true) }
+
 end
