@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'tracking/show'
+  get 'feedback/new'
+  get 'feedback/create'
+  get 'search/index'
+  get 'categories/index'
 
   # root route for the marketplace home page
-  root 'welcome#index'
-
+  root 'home#index'
 
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
@@ -12,27 +16,60 @@ Rails.application.routes.draw do
   # routes for forgot your password link (password resets)
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  # r+4oute for the registration form
+  # route for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
 
   resources :reviews, only: [:new,:create]
+
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
-  
+
+  # routes for orders and cart (purchasing)
+  resources :orders, only: [:new, :create, :show]
+  resources :cart_items, only: [:create, :update, :destroy] do
+    member do
+      patch :increase
+      patch :decrease
+    end
+  end
+
+  # route for if the cart has a show action to display an individual user's cart
+  resource :cart, only: [:show]
+
+  resources :orders, only: [:new, :create, :show] do
+    resources :feedback, only: [:new, :create]
+    get '/trackings/:id', to: 'trackings#show', as: 'tracking'
+
+  end
+
+  # routes for categories
+  resources :categories, only: [:index]
+
+  # routes for search action
+  get 'search', to: 'search#index', as: 'search'
 
   # routes for listings
   resources :listings
 
-  # routes for product details
+  resources :favorites, only: [:index, :create, :destroy]
+
   resources :products do
+    # existing member routes
     member do
       post 'add_to_cart'
       post 'message_seller'
       post 'write_review'
+      post 'add_to_favorites'
     end
-    resources :reviews, only: [:create, :destroy]
-  end
 
+    # routes for reviews
+    resources :reviews, only: [:new, :create, :destroy]
+
+    # collection route for searching products
+    collection do
+      get 'search' # route to a search action in ProductsController
+    end
+  end
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
 

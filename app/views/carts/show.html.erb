@@ -15,6 +15,10 @@
       <%= button_to 'Remove item', cart_item_path(cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
+
+  <!-- button to proceed to the orders page -->
+  <%= link_to 'Proceed to Checkout', new_order_path, class: 'btn btn-primary' %>
+
 <% else %>
   <p>Your cart is empty.</p>
 <% end %>

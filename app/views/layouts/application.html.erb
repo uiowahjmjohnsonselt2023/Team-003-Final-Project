@@ -3,7 +3,6 @@
 <head>
   <title>Team 3 Market Application</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="turbo-frame" content="login_form">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -11,16 +10,47 @@
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag 'products', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'cart', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'orders', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'favorites' %>
+
   <%= javascript_importmap_tags %>
 </head>
 
 <body>
-<% if flash[:notice] %>
-  <!-- display success message -->
-  <div class="flash notice"><%= flash[:notice] %></div>
+<header>
+  <nav>
+    <ul class="horizontal-nav">
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li>
+        <%= form_with(url: search_products_path, method: :get, local: true, id: "nav-search-form") do |form| %>
+          <%= form.search_field :query, placeholder: "Search for products...", aria_label: "Search", class: "nav-search-field" %>
+          <button class="nav-search-button">Search</button>
+        <% end %>
+      </li>
+      <li><a href="<%= categories_path %>">Categories</a></li>
+      <li><a href="<%= favorites_path %>">Favorites</a></li>
+      <li><a href="<%= listings_path %>">Create Listing</a></li>
+      <li><a href="<%= profile_path %>">Profile</a></li>
 
+      <% if current_user %>
+        <li>
+          <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete } %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Login", login_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_registration_path %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+
+<% if flash[:notice] %>
+  <div class="flash notice"><%= flash[:notice] %></div>
 <% elsif flash[:alert] %>
-  <!-- display error message for failed login -->
   <div class="flash alert"><%= flash[:alert] %></div>
 <% end %>
 

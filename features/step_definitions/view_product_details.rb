@@ -1,15 +1,17 @@
-Given('a product is listed in the marketplace with a review') do
-  user = FactoryBot.create(:user)
-  @product = FactoryBot.create(:product, user: user)
-  @review = FactoryBot.create(:review, product: @product, user: user)
+Given(/^a product is listed in the marketplace with a review$/) do
+  @product = create(:product)
+  @user = create(:user)
+  @review = create(:review, product: @product, reviewer: @user, reviewee: @user, comment: "This product is great!", rating: 5)
 end
 
 Given('I am logged in as the reviewing user') do
   page.set_rack_session(user_id: @review.user.id)
 end
 
-When('I visit the product details page') do
-  visit product_path(@product)
+When("I visit the product details page") do
+  @product = create(:product)
+  @product_id = @product.id
+  visit product_path(@product_id)
 end
 
 Then('I should see the product details') do
@@ -23,7 +25,8 @@ Then('I should see an {string} button') do |button_text|
 end
 
 When('I click on the {string} button for the review') do |button_text|
-  within('.review', text: @review.content) do
+  review_element = find('.review', text: @review.content, wait: 10)
+  within(review_element) do
     click_button(button_text)
   end
 end

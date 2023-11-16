@@ -1,0 +1,3 @@
+<%= form_with model: Feedback.new, url: order_feedback_index_path(order_id: @order.id) do |form| %>
+  <%= form.submit 'Submit Feedback' %>
+<% end %>

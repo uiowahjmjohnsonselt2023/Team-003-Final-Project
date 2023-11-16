@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_16_045727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,23 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "content"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_feedbacks_on_order_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -70,6 +87,35 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "quantity"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.string "credit_card_number"
+    t.string "expiration_date"
+    t.string "cvv"
+    t.string "email"
+    t.string "phone"
+    t.text "additional_instructions"
+    t.boolean "save_payment_info"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -79,22 +125,33 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count", default: 0
+    t.boolean "featured", default: false
+    t.float "average_rating", default: 0.0
+    t.string "category"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.text "content"
     t.integer "rating"
-    t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comment"
-    t.integer "product_id"
-    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
+    t.bigint "reviewer_id", null: false
+    t.bigint "user_id"
+    t.bigint "reviewee_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "sales", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trackings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,8 +171,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_005704) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "favorites", "products"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "feedbacks", "orders"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
-  add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end

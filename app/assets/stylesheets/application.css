@@ -2,13 +2,11 @@
  *
  *= require_tree .
  *= require_self
- *= require products
- *= require cart
  */
 
 /* Customize the Login Page */
 body {
-    background-color: #ffdfa3;
+    background-color: #858ea1;
 }
 
 /* login container form */
@@ -16,7 +14,7 @@ body {
     max-width: 400px;
     margin: 100px auto;
     padding: 80px;
-    background: #ffecd3;
+    background: #dadae0;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -82,7 +80,7 @@ body {
     max-width: 400px;
     margin: 100px auto;
     padding: 80px;
-    background: #ffecd3;
+    background: #dadae0;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -145,14 +143,48 @@ body {
 
 /* alert (error) flash message */
 .flash.alert {
-    background-color: #d9534f;
+    background-color: #cc4b47;
     color: #ffffff;
 }
 
 /* forgot your password link */
 .field a {
     float: right;
-    margin-top: -19px;
+    margin-top: -50px;
+    font-size: 15px;
+}
+
+.horizontal-nav li {
+    margin: 0 10px;
+}
+
+#nav-search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-search-field {
+    padding: 5px 10px;
     font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    line-height: 1.5;
+}
+
+.nav-search-button {
+    padding: 5px 15px;
+    background-color: #3b4777;
+    font-size: 14px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-search-button:hover {
+    background-color: #384b64;
 }
 
