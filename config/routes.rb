@@ -80,6 +80,16 @@ Rails.application.routes.draw do
   get 'profile', to: 'home#profile', as: :profile
   post 'message', to: 'home#profile'
 
+  resources :users do
+    collection do
+      get :admin
+    end
+    member do
+      patch :verify
+      patch :unverify
+    end
+  end
+
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
 

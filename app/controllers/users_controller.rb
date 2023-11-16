@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:verify, :unverify]
   before_action :check_admin, only: [:verify, :unverify]
 
+  def admin
+    @users = User.all
+  end
+
   def verify
     @user.verify!
     redirect_back(fallback_location: root_path, notice: 'User successfully verified.')
