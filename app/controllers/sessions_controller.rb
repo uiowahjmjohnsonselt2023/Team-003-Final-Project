@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
       # respond with a Turbo Stream to update the login form or other parts of the page
       respond_to do |format|
-        format.html { redirect_to profile_path }
+        format.html { redirect_to login_path }
         format.turbo_stream { render turbo_stream: turbo_stream.replace('login_form', partial: 'shared/login_success') }
       end
     else

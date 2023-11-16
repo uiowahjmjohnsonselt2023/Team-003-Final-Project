@@ -54,13 +54,21 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index, :create, :destroy]
 
   resources :products do
+    # existing member routes
     member do
       post 'add_to_cart'
       post 'message_seller'
       post 'write_review'
       post 'add_to_favorites'
     end
+
+    # routes for reviews
     resources :reviews, only: [:new, :create, :destroy]
+
+    # collection route for searching products
+    collection do
+      get 'search' # route to a search action in ProductsController
+    end
   end
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
