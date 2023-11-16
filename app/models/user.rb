@@ -40,5 +40,15 @@ class User < ApplicationRecord
              BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  # verify a user
+  def verify!
+    update(verified: true)
+  end
+
+  # unverify a user
+  def unverify!
+    update(verified: false)
+  end
 end
 
