@@ -2,8 +2,6 @@
  *
  *= require_tree .
  *= require_self
- *= require products
- *= require cart
  */
 
 /* Customize the Login Page */
@@ -145,7 +143,7 @@ body {
 
 /* alert (error) flash message */
 .flash.alert {
-    background-color: #d9534f;
+    background-color: #cc4b47;
     color: #ffffff;
 }
 
@@ -156,49 +154,37 @@ body {
     font-size: 15px;
 }
 
-.search-form {
-    flex: 1;
+.horizontal-nav li {
+    margin: 0 10px;
+}
+
+#nav-search-form {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.search-button {
-    flex-shrink: 0;
-    padding: 5px 12px;
-    font-size: 14px;
+.nav-search-field {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    line-height: 1.5;
+}
+
+.nav-search-button {
+    padding: 5px 15px;
     background-color: #3b4777;
-    color: white;
-    border: 1px solid #3071a9;
-    border-radius: 4px;
-    text-transform: uppercase;
-    transition: background-color 0.3s;
-}
-
-
-.search-button:hover {
-    background-color: #357abd;
-}
-
-.search-query-field {
-    padding: 2px;
-    flex-grow: 1;
-    margin-right: 10px;
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     font-size: 14px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-    .horizontal-nav {
-        flex-direction: column;
-    }
-
-    .search-form {
-        width: 100%; /* Full width on smaller screens */
-    }
-
-    .search-query-field {
-        width: auto;
-    }
+.nav-search-button:hover {
+    background-color: #384b64;
 }
+

@@ -11,4 +11,7 @@ class Product < ApplicationRecord
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
 
+  scope :by_category, ->(category) { where(category: category) if category.present? }
+  scope :by_condition, ->(condition) { where(condition: condition) if condition.present? }
+
 end
