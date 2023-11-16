@@ -13,14 +13,15 @@
   <%= form.label :price_range, 'Price Range', class: "filter-label" %>
   <%= form.select :price_range, options_for_select(['$0 - $50', '$51 - $100', '$101+'], selected: params[:price_range]), include_blank: true, class: 'filter-field' %>
 
-  <%= form.label :sort_by, 'Sort by', class: "filter-label" %>
-  <%= form.select :sort_by, options_for_select([
-                                                 ['Newest', 'newest'],
-                                                 ['Best Selling', 'best_selling'],
-                                                 ['Price: Low to High', 'price_asc'],
-                                                 ['Price: High to Low', 'price_desc'],
-                                                 ['Featured', 'featured']
-                                               ], selected: params[:sort_by]), include_blank: true, class: 'filter-field' %>
+  <%= form.label :sort_by, 'Sort by' %>
+  <%= form.select :sort_by, options_for_select({
+                                                 'Newest' => 'newest',
+                                                 'Best Selling' => 'best_selling',
+                                                 'Price: Low to High' => 'price_low_to_high',
+                                                 'Price: High to Low' => 'price_high_to_low',
+                                                 'Featured' => 'featured',
+                                                 'Highest Rating' => 'rating'
+                                               }, selected: params[:sort_by]), include_blank: true %>
 
   <%= form.submit "Filter Results", class: "filter-button" %>
 <% end %>

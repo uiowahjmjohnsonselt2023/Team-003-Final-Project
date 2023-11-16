@@ -1,29 +1,68 @@
 class ProductsController < ApplicationController
 
-  # search for products based on the provided query (search bar on the navigation bar)
+  # search for products based on the provided query and filters
   def search
     @products = Product.all
 
-    # existing search logic
-    @products = @products.order(sort_by_params(params[:sort_by])) if params[:sort_by].present?
+    apply_search_query(params[:query])
+    apply_filters(params[:category], params[:condition], params[:price_range])
+    apply_sorting(params[:sort_by])
+  end
 
-    # if there's a search query, filter products by title or description
-    if params[:query].present?
-      @products = @products.where('LOWER(title) LIKE :search OR LOWER(description) LIKE :search', search: "%#{params[:query].downcase}%")
+  private
+
+  # apply search query on products
+  def apply_search_query(query)
+    if query.present?
+      search_term = "%#{query.downcase}%"
+      @products = @products.where('LOWER(title) LIKE :search OR LOWER(description) LIKE :search', search: search_term)
     end
+  end
 
-    # filter by category if the category parameter is present
-    @products = @products.where(category: params[:category]) if params[:category].present?
+  # apply category, condition, and price range filters
+  def apply_filters(category, condition, price_range)
+    @products = @products.where(category: category) if category.present?
+    @products = @products.where(condition: condition) if condition.present?
 
-    # filter by condition if the condition parameter is present
-    @products = @products.where(condition: params[:condition]) if params[:condition].present?
-
-    # filter by price range if the price_range parameter is present
-    if params[:price_range].present?
-      range = params[:price_range].split('-').map { |p| p.delete('$').to_i }
+    if price_range.present?
+      range = price_range.split('-').map { |p| p.delete('$').to_i }
       @products = @products.where(price: range[0]..range[-1])
     end
   end
+
+  # sort products based on the selected criteria
+  def apply_sorting(sort_by)
+    case sort_by
+    when 'rating'
+      @products = @products.joins(:reviews)
+                           .select('products.*, COALESCE(AVG(reviews.rating), 0) as average_rating')
+                           .group('products.id')
+                           .order('average_rating DESC')
+    end
+  end
+
+  # determine the sorting criteria based on the provided sort_by parameter
+  def sort_by_params(sort_by)
+    case sort_by
+    when 'newest'
+      { created_at: :desc }
+    when 'best_selling'
+      { sales_count: :desc }
+    when 'price_low_to_high'
+      { price: :asc }
+    when 'price_high_to_low'
+      { price: :desc }
+    when 'featured'
+      { featured: :desc, created_at: :desc }
+    when 'rating'
+      # Ensure you have an average_rating method or column in your Product model
+      'average_rating DESC'
+    else
+      { created_at: :desc } # default sorting by newest
+    end
+  end
+end
+
 
   # display a list of all products
   def index
@@ -102,6 +141,5 @@ class ProductsController < ApplicationController
     params.require(:review).permit(:content, :rating)
   end
   end
-end
 
 
