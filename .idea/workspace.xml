@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c7ad5a5-7335-4f0b-977c-c3250d8c04ec" name="Changes" comment="" />
+    <list default="true" id="5c7ad5a5-7335-4f0b-977c-c3250d8c04ec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/views/password_resets/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/password_resets/new.html.erb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
