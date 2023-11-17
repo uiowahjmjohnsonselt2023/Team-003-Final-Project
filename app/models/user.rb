@@ -53,7 +53,8 @@ class User < ApplicationRecord
 
   # calculates the average rating of received reviews
   def average_rating
-    received_reviews.average(:rating).to_f.round(2)
+    received_reviews.average(:rating).to_f.round(2) if received_reviews.any?
+  end
 
   # verify a user
   def verify!
@@ -63,7 +64,6 @@ class User < ApplicationRecord
   # unverify a user
   def unverify!
     update(verified: false)
-  end
   end
 end
 

@@ -225,8 +225,26 @@
     margin: 0;
 }
 
-.rating-value {
+.product-rating-value {
     font-weight: bold;
     color: #0d5b1d;
 }
+
+.seller-name {
+    font-weight: bold;
+}
+
+.header-verified-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+
+.verified {
+    color: green;
+}
+
+
 

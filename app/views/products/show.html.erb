@@ -1,17 +1,32 @@
 <div class="product-detail-container">
   <div class="product-detail-header">
     <h1><%= @product.title %></h1>
-    <p>
+    <p class="seller-info">
       Listed by
       <% if @product.user %>
-        <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
+    <span class="seller-name">
+      <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
+    </span>
+
+        <!-- display seller verification status -->
+        <span class="seller-verification-status">
+      <% if @product.user.verified %>
+        <span class="verified">Verified Seller</span>
+      <% end %>
+    </span>
       <% end %>
       | Condition: <%= @product.condition %>
     </p>
     <p>Ships from: <%= @product.location %></p>
+
+    <!-- display the product rating -->
     <% if @seller_rating %>
       <div class="seller-info">
         <p class="product-rating">Product Rating: <span class="rating-value"><%= @seller_rating %></span> / 5</p>
+      </div>
+    <% else %>
+      <div class="seller-info">
+        <p class="product-rating">Product Rating: No ratings yet.</p>
       </div>
     <% end %>
   </div>
