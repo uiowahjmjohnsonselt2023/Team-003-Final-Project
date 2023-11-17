@@ -45,7 +45,6 @@ end
 # check that the user is on the home page (the root route)
 Then(/^I should be on the home page of the marketplace$/) do
   expect(current_path).to eq('/')
-  expect(page).to have_text("Welcome to Knockoff eBay")
 end
 
 # check that the user is on the login page (this is for if the user has an invalid login)

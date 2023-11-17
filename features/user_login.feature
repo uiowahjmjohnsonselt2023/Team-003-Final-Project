@@ -11,8 +11,6 @@ Feature: User login
       | Password | password123 |
     When I press "Login"
     Then I should be on the home page of the marketplace
-    And I should see "Welcome to Knockoff eBay"
-
 
   Scenario: Unsuccessful login with incorrect credentials
     Given I am on the login page

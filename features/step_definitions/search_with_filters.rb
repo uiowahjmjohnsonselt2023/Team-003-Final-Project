@@ -6,9 +6,28 @@ Given('a user exists') do
   @user = User.create!(username: 'TestUser', email: 'test@example.com', password: 'password')
 end
 
-Given('the following searchable products exist:') do |table|
-  table.hashes.each do |product_attrs|
-    Product.create!(product_attrs.merge(user: @user))
+Given(/^the following searchable products exist:$/) do |table|
+  user = User.create!(name: 'mary', username: 'maryAnn', email: 'maryann@example.com', password: 'password')
+
+  table.hashes.each do |product_attributes|
+    # extract product attributes from the table
+    title = product_attributes['title']
+    description = product_attributes['description']
+    price = product_attributes['price']
+    condition = product_attributes['condition']
+    category_name = product_attributes['category']  # Assuming 'category' is provided in the table
+
+    # find or create the category (you might need to adapt this based on your application's logic)
+    category = Category.find_or_create_by(name: category_name)
+
+    # create the product with the associated category
+    user.products.create!(
+      title: title,
+      description: description,
+      price: price,
+      condition: condition,
+      category: category
+    )
   end
 end
 
