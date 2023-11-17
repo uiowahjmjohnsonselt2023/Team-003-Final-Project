@@ -20,7 +20,21 @@ Product.create(
   updated_at: Time.now
 )
 
-categories = ['Electronics', 'Books', 'Clothing', 'Toys', 'Furniture']
-categories.each do |category_name|
-  Category.find_or_create_by(name: category_name)
+categories = {
+  'Electronics' => 'electronics_icon.png',
+  'Books' => 'books_icon.png',
+  'Clothing' => 'clothing_icon.png',
+  'Toys' => 'toys_icon.png',
+  'Furniture' => 'furniture_icon.png'
+}
+
+categories.each do |name, filename|
+  category = Category.find_or_create_by(name: name)
+
+  file_path = Rails.root.join('app', 'assets', 'images', filename)
+  if File.exists?(file_path)
+    file = File.open(file_path)
+    category.image.attach(io: file, filename: filename) if category.image.attached? == false
+    file.close
+  end
 end

@@ -47,6 +47,8 @@ class ProductsController < ApplicationController
     apply_search_query(params[:query])
     apply_filters(params[:category], params[:condition], params[:price_range])
     apply_sorting(params[:sort_by])
+
+    render 'search'
   end
 
   private

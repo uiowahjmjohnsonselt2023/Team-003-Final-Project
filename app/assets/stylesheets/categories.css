@@ -1,0 +1,21 @@
+.categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.category-card {
+    flex-basis: calc(33.333% - 10px); /* Adjust the basis as needed */
+    text-align: center;
+}
+
+.category-image {
+    width: 100%; /* Adjust the width as needed */
+    max-width: 200px; /* Adjust the max width as needed */
+    height: auto;
+}
+
+.category-name {
+    margin-top: 8px;
+}
