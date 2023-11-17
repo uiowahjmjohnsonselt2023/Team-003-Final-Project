@@ -1,13 +1,15 @@
-<h1>Categories</h1>
-<div class="categories-grid">
-  <% Category.all.each do |category| %>
-    <div class="category-card">
-      <%= link_to search_products_path(category: category.name), class: "category-link" do %>
-        <% if category.image.attached? %>
-          <%= image_tag(category.image, alt: category.name, class: "category-image") %>
+<div class="categories-page">
+  <h1>Categories</h1>
+  <div class="categories-grid">
+    <% Category.all.each do |category| %>
+      <div class="category-card">
+        <%= link_to search_products_path(category: category.name), class: "category-link" do %>
+          <% if category.image.attached? %>
+            <%= image_tag(category.image, alt: category.name, class: "category-image") %>
+          <% end %>
+          <div class="category-name"><%= category.name %></div>
         <% end %>
-        <div class="category-name"><%= category.name %></div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

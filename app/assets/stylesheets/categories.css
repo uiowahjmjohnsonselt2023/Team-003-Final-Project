@@ -1,21 +1,45 @@
+/* overall page adjustments */
+.categories-page {
+    background-color: #858ea1; /* Light gray background for the whole page */
+    padding: 20px;
+    text-align: center; /* center align the category titles */
+}
+
+/* grid container styling */
 .categories-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px; /* Adjust the gap as needed */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
 }
 
+/* individual category card styling */
 .category-card {
-    flex-basis: calc(33.333% - 10px); /* Adjust the basis as needed */
-    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
 
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+/* image styling */
 .category-image {
-    width: 100%; /* Adjust the width as needed */
-    max-width: 200px; /* Adjust the max width as needed */
+    width: 100%;
     height: auto;
+    max-width: 120px;
+    margin-bottom: 10px;
 }
 
+/* title styling */
 .category-name {
-    margin-top: 8px;
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+    margin: 0;
 }
