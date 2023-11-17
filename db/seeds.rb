@@ -19,3 +19,8 @@ Product.create(
   created_at: Time.now,
   updated_at: Time.now
 )
+
+categories = ['Electronics', 'Books', 'Clothing', 'Toys', 'Furniture']
+categories.each do |category_name|
+  Category.find_or_create_by(name: category_name)
+end

@@ -39,11 +39,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :show] do
     resources :feedback, only: [:new, :create]
     get '/trackings/:id', to: 'trackings#show', as: 'tracking'
-
   end
 
   # routes for categories
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
 
   # routes for search action
   get 'search', to: 'search#index', as: 'search'

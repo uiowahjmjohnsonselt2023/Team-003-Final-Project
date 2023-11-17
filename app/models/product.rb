@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
+  belongs_to :category
+
   has_one_attached :image
   has_many :reviews, dependent: :destroy
   has_many :orders
@@ -16,5 +18,4 @@ class Product < ApplicationRecord
 
   scope :best_selling, -> { order(sales_count: :desc) }
   scope :featured, -> { where(featured: true) }
-
 end

@@ -1,0 +1,9 @@
+<h1><%= @category.name %></h1>
+<div class="category-products">
+  <% @products.each do |product| %>
+    <div class="product">
+      <!-- display product details and link to the product show page -->
+      <%= link_to product.title, product_path(product), class: "product-link" %>
+    </div>
+  <% end %>
+</div>

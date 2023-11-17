@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_17_025030) do
-ActiveRecord::Schema[7.1].define(version: 2023_11_16_203622) do
-ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_17_063244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +57,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -133,6 +137,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
     t.boolean "featured", default: false
     t.float "average_rating", default: 0.0
     t.string "category"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -185,12 +191,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end
-end
-end
-
-
