@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+  <div>
+    <p><%= user.username %></p>
+    <% if user.verified %>
+      <%= link_to 'Unverify User', unverify_user_path(user), method: :patch %>
+    <% else %>
+      <%= link_to 'Verify User', verify_user_path(user), method: :patch %>
+    <% end %>
+  </div>
+<% end %>
