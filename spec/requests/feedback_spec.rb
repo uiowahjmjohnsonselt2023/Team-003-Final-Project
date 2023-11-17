@@ -16,4 +16,3 @@ RSpec.describe FeedbackController, type: :request do
     end
   end
 end
-
