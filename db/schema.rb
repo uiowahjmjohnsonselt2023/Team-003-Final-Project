@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.1].define(version: 2023_11_17_025030) do
 ActiveRecord::Schema[7.1].define(version: 2023_11_16_203622) do
-=======
 ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
->>>>>>> feature/reset-password
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -173,10 +170,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
     t.string "reset_token"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-<<<<<<< HEAD
     t.boolean "verified"
-=======
->>>>>>> feature/reset-password
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -197,4 +191,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_195544) do
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end
 end
+end
+
 
