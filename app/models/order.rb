@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :product
+
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
 
@@ -28,7 +28,8 @@ class Order < ApplicationRecord
   private
 
   def increment_product_sales_count
-    product.increment!(:sales_count)
+    order_items.each do |order_item|
+      order_item.product.increment!(:sales_count, order_item.quantity)
+    end
   end
-
 end

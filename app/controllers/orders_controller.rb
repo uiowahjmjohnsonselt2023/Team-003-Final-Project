@@ -11,12 +11,14 @@ class OrdersController < ApplicationController
   # show details of an order
   def show
     @order = Order.find_by(id: params[:id])
-    if @order.nil?
+    unless @order
+      # if the order is not found, redirect to a safe page with an error message
       redirect_to root_path, alert: "Order not found."
+      return
     end
   end
 
-  # create a new order
+  # show details of an order
   def create
     @cart = current_user.cart
     @cart_items = @cart.cart_items if @cart.present?
@@ -29,10 +31,9 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
 
     if @order.save
-      # Fetch the products from cart items and update their sales_count
+      # iterate through the cart items and add associated products to the order
       @cart_items.each do |cart_item|
         product = cart_item.product
-        product.increment!(:sales_count, cart_item.quantity)
         @order.order_items.create(product: product, quantity: cart_item.quantity)
       end
 
@@ -44,6 +45,7 @@ class OrdersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   private
 
