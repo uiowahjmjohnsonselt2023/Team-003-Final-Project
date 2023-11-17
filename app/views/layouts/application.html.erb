@@ -12,7 +12,6 @@
   <%= stylesheet_link_tag 'cart', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'orders', media: 'all', 'data-turbo-track': 'reload' %>
   <%= stylesheet_link_tag 'favorites' %>
-
   <%= javascript_importmap_tags %>
 </head>
 
@@ -28,10 +27,25 @@
         <% end %>
       </li>
       <li><a href="<%= categories_path %>">Categories</a></li>
-      <li><a href="<%= favorites_path %>">Favorites</a></li>
       <li><a href="<%= listings_path %>">Create Listing</a></li>
-      <li><a href="<%= cart_path %>">Cart</a></li>
-      <li><a href="<%= profile_path %>">Profile</a></li>
+      <li>
+        <%= link_to cart_path do %>
+          <%= image_tag("cart_icon.png", alt: "Cart", class: "cart-nav-icon") %>
+          <span class="nav-label">Cart</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to favorites_path do %>
+          <%= image_tag("favorites_icon.png", alt: "Favorites", class: "favorite-nav-icon") %>
+          <span class="nav-label">Favorites</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to profile_path do %>
+          <%= image_tag("profile_icon.png", alt: "Profile", class: "profile-nav-icon") %>
+          <span class="nav-label">Profile</span>
+        <% end %>
+      </li>
 
 
       <% if current_user %>

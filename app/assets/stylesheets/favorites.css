@@ -1,7 +1,7 @@
 /* main container of the favorites page */
 .favorites-container {
     max-width: 600px;
-    margin: auto;
+    margin: 100px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -13,7 +13,8 @@
     text-align: center;
     font-size: 24px;
     color: #333;
-    margin-bottom: 20px;
+    margin-top: 20px;
+
 }
 
 /* individual favorite items */
