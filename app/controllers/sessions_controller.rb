@@ -1,8 +1,5 @@
 # This controller for handles user sessions, including login and logout actions
 class SessionsController < ApplicationController
-  # displays the login form
-  def new
-  end
 
   # authenticate user login credentials
   def create
@@ -12,7 +9,6 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully.'
-      # redirect_to root_path
 
       # respond with a Turbo Stream to update the login form or other parts of the page
       respond_to do |format|
@@ -25,10 +21,6 @@ class SessionsController < ApplicationController
       flash.now[:alert] = 'Username or password is invalid'
       render :new
     end
-  end
-
-  # forgot password functionality
-  def forgot_password
   end
 
   # log out the user and redirect to the root page (back to the login form)

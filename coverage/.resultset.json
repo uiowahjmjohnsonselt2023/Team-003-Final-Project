@@ -470,6 +470,7 @@
         ]
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
         "lines": [
           null,
@@ -515,15 +516,12 @@
         ]
       },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/application_controller.rb": {
+=======
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/mailers/user_mailer.rb": {
+>>>>>>> feature/reset-password
         "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
           0,
+<<<<<<< HEAD
           null,
           0,
           0,
@@ -1036,6 +1034,12 @@
           null,
           null
         ]
+=======
+          0
+        ],
+        "branches": {
+        }
+>>>>>>> feature/reset-password
       },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/categories_controller.rb": {
 =======
@@ -1186,6 +1190,32 @@
           1,
           null
         ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/product.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
       },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/product.rb": {
         "lines": [
@@ -1384,6 +1414,7 @@
           0,
           0,
           0,
+<<<<<<< HEAD
           null,
           null,
           0,
@@ -1394,6 +1425,8 @@
           0,
           0,
           0,
+=======
+>>>>>>> feature/reset-password
           0,
           null
         ],
@@ -1440,7 +1473,10 @@
         "branches": {
         }
       },
+<<<<<<< HEAD
 >>>>>>> feature/verified-user
+=======
+>>>>>>> feature/reset-password
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/carts_controller.rb": {
         "lines": [
           0,
@@ -1726,7 +1762,10 @@
         "branches": {
         }
       },
+<<<<<<< HEAD
 >>>>>>> feature/verified-user
+=======
+>>>>>>> feature/reset-password
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/listings_controller.rb": {
         "lines": [
           0,
@@ -1831,7 +1870,10 @@
         }
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> feature/reset-password
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/home_controller.rb": {
         "lines": [
           0,
@@ -2090,7 +2132,11 @@
         }
       }
     },
+<<<<<<< HEAD
     "timestamp": 1700167191
 >>>>>>> feature/verified-user
+=======
+    "timestamp": 1700160393
+>>>>>>> feature/reset-password
   }
 }
