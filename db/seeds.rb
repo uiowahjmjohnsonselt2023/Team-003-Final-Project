@@ -25,7 +25,9 @@ categories = {
   'Books' => 'books_icon.png',
   'Clothing' => 'clothing_icon.png',
   'Toys' => 'toys_icon.png',
-  'Furniture' => 'furniture_icon.png'
+  'Furniture' => 'furniture_icon.png',
+  'Arts and Crafts' => 'arts_icon.png',
+  'Kitchen Appliances' => 'kitchen_icon.png'
 }
 
 categories.each do |name, filename|
