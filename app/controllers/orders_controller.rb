@@ -29,9 +29,13 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
 
     if @order.save
+      # Fetch the products from cart items and update their sales_count
       @cart_items.each do |cart_item|
-        @order.order_items.create(product: cart_item.product, quantity: cart_item.quantity)
+        product = cart_item.product
+        product.increment!(:sales_count, cart_item.quantity)
+        @order.order_items.create(product: product, quantity: cart_item.quantity)
       end
+
       @cart.destroy
       session[:cart_id] = nil
       redirect_to order_path(@order), notice: "Your order has been placed."

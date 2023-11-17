@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
     if @review.save
       flash[:notice] = "Review successfully submitted!"
-      redirect_to product_path(@product)
+      redirect_to products_path(@product)
     else
       flash[:alert] = "There was a problem submitting your review."
       render :show

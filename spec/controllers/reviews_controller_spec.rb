@@ -2,53 +2,50 @@ require 'rails_helper'
 
 RSpec.describe ReviewsController, type: :controller do
   describe 'POST #create' do
-    let(:reviewer) { FactoryBot.create(:user) }
-    let(:reviewee) { FactoryBot.create(:user) }
-    let(:product) { FactoryBot.create(:product)}
- 
-    it 'creates a review and redirects to home page' do
-      allow(controller).to receive(:current_user).and_return(reviewer)
-  
-      review_params = { rating: 4, comment: 'Great experience', reviewer_id: reviewer.id, reviewee_id: reviewee.id, product_id: product.id }
-  
-      post :create, params: { review: review_params, product_id: product.id } # Ensure product_id is passed
-  
-      expect(response).to redirect_to(products_path + "/#{product.id}")
-      expect(flash[:notice]).to eq('Review successfully submitted!')
-      end
+    let(:user) { FactoryBot.create(:user) }
+    let(:product) { FactoryBot.create(:product, user: user) }
+    let(:review_params) do
+      {
+        rating: 5,
+        comment: 'I really enjoyed this product.',
+        reviewer_id: user.id,
+        reviewee_id: product.user.id,
+        product_id: product.id
+      }
+    end
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:product) { FactoryBot.create(:product, user: user) }
+    before do
+      # Stub current_user method to return the user
+      allow(controller).to receive(:current_user).and_return(user)
+      session[:user_id] = user.id
+    end
 
-  before do
-    session[:user_id] = user.id
-  end
-
-  describe "POST #create" do
-    context "with valid attributes" do
-      it "creates a review" do
-        review_params = {
-          rating: 5,
-          comment: "I really enjoyed this product."
-        }
-
+    context 'with valid attributes' do
+      it 'creates a review and redirects to the product page with a success message' do
         expect {
           post :create, params: { product_id: product.id, review: review_params }
         }.to change(Review, :count).by(1)
 
-      invalid_review_params = { rating: 6, comment: 'This is way too long, way too long...', reviewer_id: reviewer.id, reviewee_id: reviewee.id, product_id: product.id }
-
-      post :create, params: { review: invalid_review_params, product_id: product.id }
-
-      expect(response).to redirect_to(products_path + "/#{product.id}")
-      expect(flash[:alert]).to eq('There was a problem submitting your review.')
         expect(response).to redirect_to(product_path(product))
         expect(flash[:notice]).to eq('Review successfully submitted!')
       end
     end
-  end
+
+    context 'with invalid attributes' do
+      it 'does not create a review and re-renders the product page with an alert' do
+        invalid_review_params = { rating: 6, comment: 'This is way too long...' }
+
+        expect {
+          post :create, params: { product_id: product.id, review: invalid_review_params }
+        }.not_to change(Review, :count)
+
+        expect(response).to have_http_status(:ok)
+        expect(response).to render_template('products/show')
+      end
+    end
   end
 end
+
 
 
 

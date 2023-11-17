@@ -29,7 +29,7 @@ RSpec.describe "Favorites", type: :request do
       favorite = user.favorites.create!(product: product)
 
       expect {
-        delete favorite_path(favorite)
+        delete favorite_path(product, favorite)
       }.to change(user.favorites, :count).by(-1)
 
       expect(response).to redirect_to(favorites_path)
@@ -38,4 +38,6 @@ RSpec.describe "Favorites", type: :request do
     end
   end
 end
+
+
 

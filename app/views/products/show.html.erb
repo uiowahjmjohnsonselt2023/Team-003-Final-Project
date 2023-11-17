@@ -1,4 +1,4 @@
-<% if @review.errors.any? %>
+<% if @review && @review.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h3>
     <ul>
@@ -14,9 +14,11 @@
     <h1><%= @product.title %></h1>
     <p>Listed by <%= @product.user.name if @product.user %> | Condition: <%= @product.condition %></p>
     <p>Ships from: <%= @product.location %></p>
-    <div class="seller-info">
-      <p>Average Rating: <%= @seller_rating %> / 5</p>
-    </div>
+    <% if @seller_rating %>
+      <div class="seller-info">
+        <p>Average Rating: <%= @seller_rating %> / 5</p>
+      </div>
+    <% end %>
   </div>
 
   <div class="product-detail-image">
@@ -33,7 +35,7 @@
   <!-- review form for submitting new reviews -->
   <div class="review-form">
     <h3>Write a Review</h3>
-    <%= form_with model: [@product, @review], local: true do |f| %>
+    <%= form_with model: [@product, @review || Review.new], local: true do |f| %>
       <%= f.label :rating %>
       <%= f.number_field :rating, in: 1..5 %>
 
@@ -60,15 +62,14 @@
     <p><%= @product.description %></p>
   </div>
 
-
   <!-- existing reviews -->
   <div class="product-detail-reviews">
     <h3>Reviews</h3>
-    <% if @reviews.present? %> <!-- Ensure that @reviews is not nil or empty -->
+    <% if @reviews.present? %>
       <% @reviews.each do |review| %>
         <div class="review">
           <strong>Rating:</strong> <%= review.rating %><br>
-          <strong>Review:</strong> <%= review.content %><br>
+          <strong>Review:</strong> <%= review.comment %><br>
           <strong>Written by:</strong> <%= review.reviewer.username %><br>
 
           <!-- Add a delete button for the review if the current user is the author -->

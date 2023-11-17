@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :set_product, only: [:create]      # ensures the product is set before creating a review
-  before_action :set_review, only: [:destroy]      # finds the review before attempting to destroy it
-  before_action :check_user, only: [:destroy]      # verifies if the current user is authorized to delete the review
-  before_action :authenticate_user!                # ensures that a user is logged in before any review action
+  before_action :set_product, only: [:create, :destroy]   # ensures the product is set before creating or destroying a review
+  before_action :set_review, only: [:destroy]             # finds the review before attempting to destroy it
+  before_action :check_user, only: [:destroy]             # verifies if the current user is authorized to delete the review
+  before_action :authenticate_user!                       # ensures that a user is logged in before any review action
 
   # POST /products/:product_id/reviews
   # creates a new review for a product
@@ -27,9 +27,9 @@ class ReviewsController < ApplicationController
   # delete a review for a product
   def destroy
     if @review.destroy
-      redirect_to product_path(@product), notice: 'Review was successfully deleted.'
+      redirect_to product_path(@product), notice: 'Review was successfully deleted.', status: :see_other
     else
-      redirect_to product_path(@product), alert: 'Review could not be found or you do not have permission to delete it.'
+      redirect_to product_path(@product), alert: 'Review could not be found or you do not have permission to delete it.', status: :see_other
     end
   end
 
@@ -37,12 +37,22 @@ class ReviewsController < ApplicationController
 
   # sets the product based on the product_id passed in the parameters
   def set_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find_by(id: params[:product_id])
+    unless @product
+      redirect_to products_path, alert: 'Product not found.'
+      return
+    end
   end
 
   # sets the review based on the id passed in the parameters
   def set_review
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id])
+
+    # redirect with an error message if the review is not found
+    unless @review
+      redirect_to products_path, alert: 'Review not found.'
+      return
+    end
   end
 
   # checks if the current_user is authorized to delete the review

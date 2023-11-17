@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe FeedbackController, type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let(:order) { FactoryBot.create(:order, user: user) }
+  let(:product) { FactoryBot.create(:product) }
+  let(:order) { FactoryBot.create(:order, user: user, product: product) }
 
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
