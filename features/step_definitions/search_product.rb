@@ -4,29 +4,17 @@ Given("the following users exist for search:") do |table|
   end
 end
 
-Given('a product is listed in the marketplace with a review') do
-  # ensure a category exists
-  category = Category.find_or_create_by(name: 'Electronics')
-
-  # create a user if not already present
-  user = User.find_or_create_by(username: 'ExampleUser', email: 'user@example.com', password: 'password')
-
-  # create a product with the given details and the existing category
-  product = Product.create!(
-    title: 'Amazing Widget',
-    description: 'An amazing widget description',
-    user: user,
-    category: category,
-    price: 50.00
-  )
-
-  # create a review for the product
-  Review.create!(
-    rating: 5,
-    comment: 'Great product!',
-    product: product,
-    reviewer: user
-  )
+Given("the following products exist for search:") do |table|
+  table.hashes.each do |hash|
+    user = User.find_by(username: hash[:user])
+    category = Category.find_or_create_by(name: hash[:category])
+    Product.create!(
+      title: hash[:title],
+      description: hash[:description],
+      user: user,
+      category: category
+    )
+  end
 end
 
 Given("I am on the homepage") do

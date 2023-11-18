@@ -4,8 +4,13 @@ RSpec.describe "Favorites", type: :request do
   let!(:user) do
     User.create!(username: "MaryAnn", email: "maryann@example.com", password: "password")
   end
+
+  let!(:category) do
+    Category.create!(name: "Some Category")
+  end
+
   let!(:product) do
-    Product.create!(title: "Amazing Widget", price: 19.99, description: "An amazing widget", user: user)
+    Product.create!(title: "Amazing Widget", price: 19.99, description: "An amazing widget", user: user, category: category)
   end
 
   before do

@@ -26,10 +26,13 @@ class ReviewsController < ApplicationController
 
   # delete a review for a product
   def destroy
+    @review = Review.find(params[:id])
     if @review.destroy
-      redirect_to product_path(@product), notice: 'Review was successfully deleted.', status: :see_other
+      flash[:notice] = 'Review was successfully deleted.'
+      redirect_to product_path(@review.product), status: :see_other
     else
-      redirect_to product_path(@product), alert: 'Review could not be found or you do not have permission to delete it.', status: :see_other
+      flash[:alert] = 'Review could not be found or you do not have permission to delete it.'
+      redirect_to product_path(@review.product), status: :see_other
     end
   end
 

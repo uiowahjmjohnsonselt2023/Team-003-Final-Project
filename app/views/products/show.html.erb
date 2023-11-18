@@ -22,7 +22,7 @@
     <!-- display the product rating -->
     <% if @seller_rating %>
       <div class="seller-info">
-        <p class="product-rating">Product Rating: <span class="rating-value"><%= @seller_rating %></span> / 5</p>
+        <p class="product-rating">Average Rating: <%= @seller_rating %> / 5</p>
       </div>
     <% else %>
       <div class="seller-info">

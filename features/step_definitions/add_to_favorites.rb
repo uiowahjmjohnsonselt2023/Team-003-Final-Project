@@ -5,9 +5,12 @@ Given("the following users exist:") do |table|
 end
 
 Given("the following products exist:") do |table|
-  user = User.first || User.create!(username: "MaryAnn", password: "password", password_confirmation: "password")
+  user = User.first || User.create!(username: "MaryAnn", email: "mary@example.com", password: "password", password_confirmation: "password")
+
+  category = Category.first || Category.create!(name: "Default Category")
+
   table.hashes.each do |product_attributes|
-    Product.create!(product_attributes.merge(user: user))
+    Product.create!(product_attributes.merge(user: user, category: category))
   end
 end
 

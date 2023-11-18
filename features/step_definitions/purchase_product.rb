@@ -9,9 +9,19 @@ Given('I am a logged-in user') do
 end
 
 Given('I have a product in my cart') do
-  @cart = @user.cart || @user.create_cart
-  product = Product.create!(title: 'Example Product', price: 9.99, user: @user)
+  # create a category
+  category = Category.create!(name: 'Electronics')
 
+  # create a product associated with the category
+  product = Product.create!(
+    title: 'Example Product',
+    price: 9.99,
+    user: @user,
+    category: category
+  )
+
+  # Create a cart and add the product to the cart
+  @cart = @user.cart || @user.create_cart
   CartItem.create!(product: product, cart: @cart, quantity: 1)
 end
 

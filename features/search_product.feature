@@ -5,13 +5,11 @@ Feature: Search Products
 
   Background:
     Given the following users exist for search:
-      | username | email                | password |
-      | MaryAnn  | mary@example.com     | password |
+      | username | email            | password |
+      | MaryAnn  | mary@example.com | password |
     And the following products exist for search:
-      | title                | description            | user      |
-      | Amazing Widget       | An amazing widget      | MaryAnn   |
-      | Incredible Gadget    | A gadget like no other | MaryAnn   |
-      | Widget Extraordinaire | The best widget ever   | MaryAnn   |
+      | title          | description      | user    | category |
+      | Amazing Widget | An amazing widget| MaryAnn | Widgets  |
 
   Scenario: Buyer searches for a product and sees clickable results
     Given I am on the homepage

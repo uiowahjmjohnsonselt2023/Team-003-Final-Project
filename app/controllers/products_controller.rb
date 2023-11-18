@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @review = Review.new
 
     # show seller's rating
-    @seller_rating = @product.user.average_rating
+    @seller_rating = @product.user.average_rating.round(1)
   end
 
   # add a product to the user's favorites

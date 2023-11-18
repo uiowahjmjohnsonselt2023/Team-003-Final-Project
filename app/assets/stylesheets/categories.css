@@ -11,7 +11,7 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     justify-items: center;
-    align-items: center;
+    align-items: start; /* changed from center to start to align items at the top */
 }
 
 /* individual category card styling */
@@ -22,6 +22,10 @@
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
+    display: flex; /* use flexbox for alignment */
+    flex-direction: column; /* stack items vertically */
+    align-items: center; /* center items horizontally */
+    height: 200px; /* set a fixed height */
 }
 
 .category-card:hover {
@@ -30,9 +34,9 @@
 
 /* image styling */
 .category-image {
-    width: 100%;
-    height: auto;
-    max-width: 120px;
+    width: auto; /* adjust width to auto so images keep their aspect ratio */
+    height: 120px; /* fixed height for all images */
+    object-fit: contain; /* make sure images fit well without stretching */
     margin-bottom: 10px;
 }
 
@@ -42,4 +46,17 @@
     color: #333;
     font-weight: bold;
     margin: 0;
+    text-decoration: none; /* remove underline from links */
 }
+
+/* link styling (assuming category names are wrapped in 'a' tags) */
+.category-link {
+    text-decoration: none;
+    color: inherit; /* make sure links use the color defined by .category-name */
+}
+
+.category-link:hover,
+.category-link:focus {
+    text-decoration: none;
+}
+
