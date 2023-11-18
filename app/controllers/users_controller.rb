@@ -7,13 +7,21 @@ class UsersController < ApplicationController
   end
 
   def verify
-    @user.verify!
-    redirect_back(fallback_location: root_path, notice: 'User successfully verified.')
+    user = User.find(params[:id])
+    if user.verify!
+      redirect_to root_path, notice: 'User was successfully verified.'
+    else
+      redirect_to root_path, alert: 'User could not be verified.'
+    end
   end
 
   def unverify
-    @user.unverify!
-    redirect_back(fallback_location: root_path, notice: 'User verification removed.')
+    user = User.find(params[:id])
+    if user.unverify!
+      redirect_to root_path, notice: 'User was successfully unverified.'
+    else
+      redirect_to root_path, alert: 'User could not be unverified.'
+    end
   end
 
   private
