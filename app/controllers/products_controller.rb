@@ -41,6 +41,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def message_seller
+    @product = Product.find(params[:id])
+    redirect_to new_message_path(seller_id: @product.user_id)
+  end
+
   # search for products based on the provided query and filters
   def search
     @products = Product.all

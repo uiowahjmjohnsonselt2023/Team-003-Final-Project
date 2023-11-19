@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     # existing member routes
     member do
       post 'add_to_cart'
-      post 'message_seller'
+      get :message_seller
       post 'write_review'
       post 'add_to_favorites'
     end
