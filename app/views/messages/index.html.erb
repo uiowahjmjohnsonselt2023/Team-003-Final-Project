@@ -1,14 +1,14 @@
-<h1>Inbox</h1>
-
-<% if @messages.any? %>
-  <ul class="messages-list">
-    <% @messages.each do |message| %>
-      <li>
-        <strong>From:</strong> <%= message.sender.name %> <!-- Replace with actual attribute for user's name -->
-        <p><%= message.body.truncate(100) %></p> <!-- Truncate the message to show a preview -->
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>You have no messages.</p>
-<% end %>
+<h1>Messages</h1>
+<div class="messages-list">
+  <% @messages.each do |message| %>
+    <div class="message-summary">
+      <% if message.sender == current_user %>
+        <p>To: <%= message.recipient.username %></p>
+      <% else %>
+        <p>From: <%= message.sender.username %></p>
+      <% end %>
+      <p><%= message.body.truncate(100) %></p>
+      <%= link_to 'View Conversation', conversation_message_path(message), class: 'view-conversation-link' %>
+    </div>
+  <% end %>
+</div>

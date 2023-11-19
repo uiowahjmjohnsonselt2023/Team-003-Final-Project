@@ -1,0 +1,74 @@
+/* messages.css */
+.messages-list {
+    max-width: 300px;
+    background-color: #f7f7f7;
+    border-right: 1px solid #ddd;
+    height: calc(100vh - 80px); /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+.message-summary {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.message-summary:hover {
+    background-color: #e9e9e9;
+}
+
+.view-conversation-link {
+    display: block;
+    margin-top: 5px;
+    color: #2a9d8f;
+    text-decoration: none;
+}
+
+/* For the new message view */
+.new-message-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* For the show conversation view */
+.message-thread {
+    padding: 20px;
+    background-color: #fff;
+    min-height: 400px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.message {
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.sent {
+    background-color: #cfe9cb;
+    align-self: flex-end;
+}
+
+.message span {
+    font-size: 0.8em;
+    color: #777;
+    display: block;
+    margin-top: 5px;
+}
+
+/* For the reply form at the bottom of the conversation */
+.reply-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    position: sticky;
+    bottom: 0;
+}
+
+.reply-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}

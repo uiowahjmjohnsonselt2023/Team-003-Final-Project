@@ -5,6 +5,13 @@ class MessagesController < ApplicationController
     @messages = current_user.received_messages.includes(:sender)
   end
 
+  def show
+    @message = Message.find(params[:id])
+    other_user = @message.other_party(current_user)
+    @conversation = Message.where(sender_id: current_user, recipient_id: other_user)
+                           .or(Message.where(sender_id: other_user, recipient_id: current_user))
+  end
+
   def new
     @message = current_user.sent_messages.build
     @message.recipient_id = params[:seller_id] if params[:seller_id].present?

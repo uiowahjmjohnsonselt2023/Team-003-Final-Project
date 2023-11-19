@@ -42,7 +42,13 @@ Rails.application.routes.draw do
   end
 
   # route for messaging
-  resources :messages, only: [:index, :new, :create]
+  resources :messages, only: [:index, :new, :create, :show]
+
+  resources :messages do
+    member do
+      get :conversation, to: 'messages#show'
+    end
+  end
 
   # routes for categories
   resources :categories, only: [:index, :show]

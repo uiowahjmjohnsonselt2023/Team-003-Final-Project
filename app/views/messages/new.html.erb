@@ -1,12 +1,15 @@
-<%= form_with model: @message do |form| %>
-  <% if @message.recipient_id.present? %>
-    <%= hidden_field_tag :recipient_id, @message.recipient_id %>
-  <% else %>
-    <%= form.collection_select :recipient_id, User.all, :id, :name, prompt: "Select a user" %>
+<div class="new-message-form">
+  <h1>New Message</h1>
+  <%= form_with model: @message do |form| %>
+    <% if @message.recipient_id.present? %>
+      <%= hidden_field_tag :recipient_id, @message.recipient_id %>
+    <% else %>
+      <%= form.collection_select :recipient_id, User.all, :id, :name, prompt: "Select a user" %>
+    <% end %>
+
+    <%= form.text_area :body %>
+
+    <%= form.submit "Send" %>
   <% end %>
-
-  <%= form.text_area :body %>
-
-  <%= form.submit "Send" %>
-<% end %>
+</div>
 
