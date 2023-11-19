@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :order do
     association :user
+    created_at { Time.zone.now }
     street { "123 Example St" }
     city { "Anytown" }
     postal_code { "12345" }

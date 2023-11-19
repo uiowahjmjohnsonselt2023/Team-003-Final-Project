@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :tracking do
-    sequence(:tracking_number) { |n| "TRACK#{n}" }
+    tracking_number { SecureRandom.uuid }
+    status { :processing }
+    shipping_carrier { "UPS" }
+    order
   end
 end

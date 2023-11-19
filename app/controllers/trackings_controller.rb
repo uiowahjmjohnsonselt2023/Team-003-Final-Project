@@ -9,4 +9,3 @@ class TrackingsController < ApplicationController
     end
   end
 end
-
