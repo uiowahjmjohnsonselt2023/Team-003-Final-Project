@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'tracking/show'
+  get 'trackings/show'
   get 'feedback/new'
   get 'feedback/create'
   get 'search/index'

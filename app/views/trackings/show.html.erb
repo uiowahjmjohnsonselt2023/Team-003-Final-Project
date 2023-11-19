@@ -1,0 +1,7 @@
+<h1>Tracking Information</h1>
+<% if @tracking %>
+  <p>Tracking Number: <%= @tracking.tracking_number %></p>
+  <p>Status: <%= @tracking.status %></p>
+<% else %>
+  <p>Tracking information is not available.</p>
+<% end %>
