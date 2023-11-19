@@ -1,14 +1,14 @@
 <h1>Messages</h1>
 <div class="messages-list">
   <% @messages.each do |message| %>
-    <div class="message-summary">
+    <div class="message-summary <%= 'unread' if !message.read %>">
       <% if message.sender == current_user %>
         <p>To: <%= message.recipient.username %></p>
       <% else %>
         <p>From: <%= message.sender.username %></p>
       <% end %>
       <p><%= message.body.truncate(100) %></p>
-      <%= link_to 'View Conversation', conversation_message_path(message), class: 'view-conversation-link' %>
+      <%= link_to 'View Conversation', conversation_path(message.conversation), class: 'view-conversation-link' %>
     </div>
   <% end %>
 </div>

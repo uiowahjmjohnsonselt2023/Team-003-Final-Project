@@ -17,9 +17,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.sent_messages.build(message_params)
+    @conversation = Conversation.between(current_user.id, message_params[:recipient_id]).first_or_create
+    @message = @conversation.messages.build(message_params.merge(sender_id: current_user.id))
+
     if @message.save
-      redirect_to messages_path, notice: 'Message sent successfully.'
+      redirect_to conversation_path(@conversation), notice: 'Message sent successfully.'
     else
       render 'new'
     end

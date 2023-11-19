@@ -72,3 +72,8 @@
     width: 100%;
     margin-bottom: 10px;
 }
+
+.message-summary.unread {
+    background-color: #edf2fa; /* indicates unread message */
+    font-weight: bold;
+}
