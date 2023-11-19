@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     resource :tracking, only: [:show]
   end
 
+  # route for messaging
+  resources :messages, only: [:index, :new, :create]
+
   # routes for categories
   resources :categories, only: [:index, :show]
 
