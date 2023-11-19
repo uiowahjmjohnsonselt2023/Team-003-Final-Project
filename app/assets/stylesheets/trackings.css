@@ -1,1 +1,14 @@
+.tracking-details {
+    background-color: #f9f9f9;
+    border-left: 4px solid #2c3e50;
+    padding: 20px;
+    margin-top: 10px;
+}
 
+.tracking-details strong {
+    color: #2c3e50;
+}
+
+.tracking-details ul {
+    padding-left: 20px;
+}
