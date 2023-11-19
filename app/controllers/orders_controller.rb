@@ -37,6 +37,12 @@ class OrdersController < ApplicationController
 
       @tracking = @order.create_tracking(tracking_number: SecureRandom.uuid, status: :processing)
 
+      @tracking = @order.create_tracking(
+        tracking_number: SecureRandom.uuid,
+        status: :processing,
+        shipping_carrier: 'UPS'
+      )
+
       @cart.destroy
       session[:cart_id] = nil
       redirect_to order_path(@order), notice: "Your order has been placed."
