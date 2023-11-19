@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
         @order.order_items.create(product: product, quantity: cart_item.quantity)
       end
 
-      @tracking = @order.create_tracking(tracking_number: SecureRandom.uuid, status: 'processing')
+      @tracking = @order.create_tracking(tracking_number: SecureRandom.uuid, status: :processing)
 
       @cart.destroy
       session[:cart_id] = nil
