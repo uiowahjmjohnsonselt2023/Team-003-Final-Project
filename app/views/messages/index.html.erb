@@ -1,0 +1,14 @@
+<h1>Inbox</h1>
+
+<% if @messages.any? %>
+  <ul class="messages-list">
+    <% @messages.each do |message| %>
+      <li>
+        <strong>From:</strong> <%= message.sender.name %> <!-- Replace with actual attribute for user's name -->
+        <p><%= message.body.truncate(100) %></p> <!-- Truncate the message to show a preview -->
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no messages.</p>
+<% end %>

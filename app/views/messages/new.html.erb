@@ -1,0 +1,17 @@
+<h1>New Message</h1>
+
+<%= form_with model: @message, url: messages_path do |form| %>
+  <div class="field">
+    <%= form.label :recipient_id, "To" %>
+    <%= form.collection_select :recipient_id, User.all, :id, :name, prompt: "Select a user" %> <!-- Replace with your user collection -->
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Send" %>
+  </div>
+<% end %>
