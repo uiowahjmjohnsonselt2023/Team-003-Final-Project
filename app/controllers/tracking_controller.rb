@@ -1,5 +1,6 @@
 class TrackingController < ApplicationController
   def show
-    @tracking = Tracking.find(params[:id])
+    @order = Order.find(params[:order_id])
+    @tracking = @order.tracking
   end
 end

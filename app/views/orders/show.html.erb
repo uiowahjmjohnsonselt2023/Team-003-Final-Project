@@ -13,6 +13,6 @@
 
   <div class="button-container">
     <%= link_to 'Leave Feedback', new_order_feedback_path(order_id: @order.id), class: 'button' %>
-    <%= link_to 'Track Shipping', tracking_show_path(order_id: @order.id), class: 'button' %>
+    <%= link_to 'Track Shipping', order_tracking_path(@order), class: 'button' %>
   </div>
 </div>
