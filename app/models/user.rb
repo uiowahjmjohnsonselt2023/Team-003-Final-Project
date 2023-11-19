@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :given_reviews, foreign_key: 'reviewer_id', class_name: 'Review', dependent: :destroy
   has_many :received_reviews, foreign_key: 'reviewee_id', class_name: 'Review', dependent: :destroy
 
+  # associations for messaging
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
+
   # validation for user attributes
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
