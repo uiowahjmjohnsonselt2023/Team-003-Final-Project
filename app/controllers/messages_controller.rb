@@ -6,10 +6,9 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
-    other_user = @message.other_party(current_user)
-    @conversation = Message.where(sender_id: current_user, recipient_id: other_user)
-                           .or(Message.where(sender_id: other_user, recipient_id: current_user))
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages.order(created_at: :asc)
+    @new_message = @conversation.messages.build
   end
 
   def new
