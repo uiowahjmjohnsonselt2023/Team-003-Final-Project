@@ -21,33 +21,44 @@
   <nav>
     <ul class="horizontal-nav">
       <li><a href="<%= root_path %>">Home</a></li>
+
       <li>
         <%= form_with(url: search_products_path, method: :get, local: true, id: "nav-search-form") do |form| %>
           <%= form.search_field :query, placeholder: "Search for products...", aria_label: "Search", class: "nav-search-field" %>
           <button class="nav-search-button">Search</button>
         <% end %>
       </li>
+
       <li><a href="<%= categories_path %>">Categories</a></li>
       <li><a href="<%= listings_path %>">Create Listing</a></li>
+
       <li>
         <%= link_to cart_path do %>
           <%= image_tag("cart_icon.png", alt: "Cart", class: "cart-nav-icon") %>
           <span class="nav-label">Cart</span>
         <% end %>
       </li>
+
       <li>
         <%= link_to favorites_path do %>
           <%= image_tag("favorites_icon.png", alt: "Favorites", class: "favorite-nav-icon") %>
           <span class="nav-label">Favorites</span>
         <% end %>
       </li>
+
+      <li>
+        <%= link_to messages_path do %>
+          <%= image_tag("messaging_icon.png", alt: "Messages", class: "message-nav-icon") %>
+          <span class="nav-label">Messages</span>
+        <% end %>
+      </li>
+
       <li>
         <%= link_to profile_path do %>
           <%= image_tag("profile_icon.png", alt: "Profile", class: "profile-nav-icon") %>
           <span class="nav-label">Profile</span>
         <% end %>
       </li>
-
 
       <% if current_user %>
         <li>

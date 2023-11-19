@@ -94,9 +94,16 @@ nav ul.horizontal-nav li a {
     width: 40px;
 }
 
+/* messaging_icon.png */
+.message-nav-icon {
+    height: 35px;
+    width: 36px;
+}
+
 .cart-nav-icon,
 .favorite-nav-icon,
-.profile-nav-icon {
+.profile-nav-icon,
+.message-nav-icon {
     display: block;
     margin: 0 auto;
     position: relative;
@@ -114,7 +121,8 @@ nav ul.horizontal-nav li a {
 
 .cart-nav-icon:hover + .nav-label,
 .favorite-nav-icon:hover + .nav-label,
-.profile-nav-icon:hover + .nav-label {
+.profile-nav-icon:hover + .nav-label,
+.message-nav-icon:hover + .nav-label {
     opacity: 1;
     visibility: visible;
 }
