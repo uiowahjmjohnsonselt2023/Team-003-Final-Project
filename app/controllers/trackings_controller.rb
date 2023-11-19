@@ -5,7 +5,8 @@ class TrackingsController < ApplicationController
 
     unless @tracking
       flash[:alert] = "Tracking information not found."
-      redirect_to root_path
+      redirect_to root_path and return
     end
   end
 end
+
