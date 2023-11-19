@@ -8,7 +8,7 @@
         <p>From: <%= message.sender.username %></p>
       <% end %>
       <p><%= message.body.truncate(100) %></p>
-      <%= link_to 'View Conversation', conversation_path(message.conversation), class: 'view-conversation-link' %>
+      <%= link_to 'View Conversation', conversation_path(message.conversation_id), class: 'view-conversation-link' %>
     </div>
   <% end %>
 </div>

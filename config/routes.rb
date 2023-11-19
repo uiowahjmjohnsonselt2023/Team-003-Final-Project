@@ -41,15 +41,14 @@ Rails.application.routes.draw do
     resource :tracking, only: [:show]
   end
 
-  # route for messaging
-  resources :messages, only: [:index, :new, :create, :show]
-
-  resources :messages do
-    member do
-      get :conversation, to: 'messages#show'
-    end
+  # routes for messages
+  resources :conversations, only: [:index, :show] do
+    resources :messages, only: [:new, :create]
   end
 
+  # list all messages separately, you can also include:
+  resources :messages, only: [:index]
+  
   # routes for categories
   resources :categories, only: [:index, :show]
 

@@ -1,4 +1,4 @@
-class AddReadToMessages < ActiveRecord::Migration[6.0]
+class AddReadToMessages < ActiveRecord::Migration[7.1]
   def change
     add_column :messages, :read, :boolean, default: false
   end
