@@ -1,10 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @messages = Message.where(recipient: current_user)
+    @messages = current_user.received_messages.includes(:sender)
   end
 
   def new
-    @message = Message.new
+    @message = current_user.sent_messages.build
     @message.recipient_id = params[:seller_id] if params[:seller_id].present?
   end
 
