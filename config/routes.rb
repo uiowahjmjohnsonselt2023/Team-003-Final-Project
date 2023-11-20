@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'conversations/show'
   get 'trackings/show'
   get 'feedback/new'
   get 'feedback/create'
@@ -41,14 +42,6 @@ Rails.application.routes.draw do
     resource :tracking, only: [:show]
   end
 
-  # routes for messages
-  resources :conversations, only: [:index, :show] do
-    resources :messages, only: [:new, :create]
-  end
-
-  # list all messages separately, you can also include:
-  resources :messages, only: [:index]
-  
   # routes for categories
   resources :categories, only: [:index, :show]
 
@@ -67,6 +60,10 @@ Rails.application.routes.draw do
       get :message_seller
       post 'write_review'
       post 'add_to_favorites'
+    end
+
+    resources :conversations, only: [:show] do
+      resources :messages, only: [:create]
     end
 
     # routes for reviews

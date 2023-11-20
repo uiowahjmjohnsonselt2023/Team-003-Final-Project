@@ -227,9 +227,14 @@
           0,
           0,
           0,
+          0,
           null,
           0,
           null,
+          null,
+          0,
+          null,
+          0,
           null,
           0,
           0,
@@ -276,6 +281,19 @@
       },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/conversation.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
           0,
           0,
           0,
@@ -439,20 +457,8 @@
           0,
           0,
           0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0,
@@ -463,6 +469,21 @@
           null,
           0,
           null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/conversation_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
           0,
           0,
           0,
@@ -697,6 +718,16 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/conversations_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/products_controller.rb": {
         "lines": [
           0,
@@ -746,24 +777,6 @@
           0,
           0,
           0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           null,
@@ -774,6 +787,26 @@
           0,
           0,
           null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           0,
           0,
@@ -785,6 +818,10 @@
           0,
           0,
           null,
+          null,
+          0,
+          0,
+          0,
           null,
           0,
           0,
@@ -1320,8 +1357,16 @@
         ],
         "branches": {
         }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/conversations_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1700434101
+    "timestamp": 1700445438
   }
 }

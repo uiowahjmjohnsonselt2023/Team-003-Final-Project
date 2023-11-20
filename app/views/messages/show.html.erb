@@ -1,4 +1,5 @@
 <h1>Conversation with <%= @conversation.other_party(current_user).username %></h1>
+
 <div class="message-thread">
   <% @messages.each do |msg| %>
     <div class="message <%= 'sent' if msg.sender == current_user %> <%= 'received' if msg.sender != current_user %>">
@@ -11,4 +12,8 @@
       <span><%= msg.created_at.strftime("%B %d, %Y at %I:%M%p") %></span>
     </div>
   <% end %>
+</div>
+
+<div id="message-form">
+  <%= render 'messages/form', conversation: @conversation, message: @message %>
 </div>

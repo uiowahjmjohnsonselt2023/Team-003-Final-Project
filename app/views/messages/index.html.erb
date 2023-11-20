@@ -1,4 +1,3 @@
-<h1>Messages</h1>
 <div class="messages-list">
   <% @messages.each do |message| %>
     <div class="message-summary <%= 'unread' if !message.read %>">
@@ -8,7 +7,11 @@
         <p>From: <%= message.sender.username %></p>
       <% end %>
       <p><%= message.body.truncate(100) %></p>
-      <%= link_to 'View Conversation', conversation_path(message.conversation_id), class: 'view-conversation-link' %>
+      <% if message.conversation.present? %>
+        <%= link_to 'View Conversation', conversation_path(message.conversation), class: 'view-conversation-link' %>
+      <% else %>
+        <span>Conversation not available</span>
+      <% end %>
     </div>
   <% end %>
 </div>

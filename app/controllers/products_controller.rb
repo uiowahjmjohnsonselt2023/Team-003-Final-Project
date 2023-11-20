@@ -43,7 +43,9 @@ class ProductsController < ApplicationController
 
   def message_seller
     @product = Product.find(params[:id])
-    redirect_to new_message_path(seller_id: @product.user_id)
+    @seller = @product.user
+    @conversation = Conversation.between(current_user.id, @seller.id).first_or_create
+    redirect_to conversations_show_path(@conversation)
   end
 
   # search for products based on the provided query and filters
@@ -87,6 +89,10 @@ class ProductsController < ApplicationController
   # define strong parameters for the review
   def review_params
     params.require(:review).permit(:content, :rating)
+  end
+
+  def message_params
+    params.require(:message).permit(:body, :conversation_id)
   end
 
   # determine the sorting logic based on the sort_by parameter
