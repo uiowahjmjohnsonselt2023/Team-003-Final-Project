@@ -62,8 +62,6 @@ Rails.application.routes.draw do
       post 'add_to_favorites'
     end
 
-    resources :messages, only: [:index, :new, :create, :show]
-
     resources :conversations, only: [:index, :show] do
       resources :messages, only: [:create]
     end

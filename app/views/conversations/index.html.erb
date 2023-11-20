@@ -1,0 +1,16 @@
+<h1>Messages</h1>
+
+<% if @conversations.any? %>
+  <div class="conversations-list">
+    <% @conversations.each do |conversation| %>
+      <div class="conversation-summary">
+        <%= link_to conversation_path(conversation) do %>
+          <h2>Conversation with <%= conversation.other_party(current_user).username %></h2>
+          <p>Last message: <%= conversation.messages.last.body.truncate(50) %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You have no conversations yet.</p>
+<% end %>
