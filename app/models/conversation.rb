@@ -14,4 +14,13 @@ class Conversation < ApplicationRecord
       where(sender_id: recipient_id, recipient_id: sender_id)
     )
   end
+
+  def belongs_to?(user)
+    sender_id == user.id || recipient_id == user.id
+  end
+
+  def participates?(user)
+    belongs_to?(user)
+  end
+
 end

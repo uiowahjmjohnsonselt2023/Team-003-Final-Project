@@ -1,17 +1,10 @@
-<div class="messages-list">
+<div id="messages">
   <% @messages.each do |message| %>
-    <div class="message-summary <%= 'unread' if !message.read %>">
-      <% if message.sender == current_user %>
-        <p>To: <%= message.recipient.username %></p>
-      <% else %>
-        <p>From: <%= message.sender.username %></p>
-      <% end %>
-      <p><%= message.body.truncate(100) %></p>
-      <% if message.conversation.present? %>
-        <%= link_to 'View Conversation', conversation_path(message.conversation), class: 'view-conversation-link' %>
-      <% else %>
-        <span>Conversation not available</span>
-      <% end %>
-    </div>
+    <p><%= message.body %></p>
   <% end %>
 </div>
+
+<%= form_for [@conversation, @message], remote: true do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit "Send" %>
+<% end %>

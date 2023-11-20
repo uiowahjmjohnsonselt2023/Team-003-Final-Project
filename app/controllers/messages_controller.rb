@@ -7,16 +7,20 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation
 
-  def create
-    @conversation = Conversation.find(params[:conversation_id])
-    @message = @conversation.messages.build(message_params)
-    @message.sender = current_user
+  def index
+    @messages = @conversation.messages
+    @message = @conversation.messages.new
+  end
 
-    if @message.save
-      redirect_to conversation_path(@conversation)
+  def create
+    message = @conversation.messages.new(message_params)
+    message.user = current_user
+    if message.save
+      # Broadcast to the recipient using ActionCable
+      MessagesChannel.broadcast_to(@conversation, message.as_json)
+      head :ok
     else
-      @messages = @conversation.messages
-      render 'conversations/show'
+      redirect_to conversation_messages_path(@conversation), alert: 'Error sending message.'
     end
   end
 
@@ -24,6 +28,7 @@ class MessagesController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.find(params[:conversation_id])
+    redirect_to(root_path, alert: "You don't have permission to view this conversation.") unless @conversation.participates?(current_user)
   end
 
   def message_params

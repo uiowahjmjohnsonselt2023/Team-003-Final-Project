@@ -3,21 +3,21 @@
 # which messages are exchanged (ongoing dialogue between users)                            #
 # ---------------------------------------------------------------------------------------- #
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show]
+  before_action :authenticate_user!
 
   def index
-    @conversations = Conversation.all
+    @conversations = current_user.conversations
   end
 
-  def show
-    @conversation = Conversation.find(params[:id])
-    @message = Message.new
+  def create
+    recipient = User.find(params[:recipient_id])
+    conversation = current_user.conversations.create!(recipient_id: recipient.id)
+    redirect_to conversation_messages_path(conversation)
   end
 
-  private
-
-  def set_conversation
-    @conversation = Conversation.find(params[:id])
+  def destroy
+    conversation = Conversation.find(params[:id])
+    conversation.destroy if conversation.belongs_to?(current_user)
+    redirect_to conversations_path, notice: 'Conversation deleted.'
   end
 end
-

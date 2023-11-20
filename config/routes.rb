@@ -53,8 +53,8 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :create, :destroy]
 
-  resources :conversations, only: [:index, :show] do
-    resources :messages, only: [:create]
+  resources :conversations, only: [:index, :create, :destroy] do
+    resources :messages, only: [:index, :create]
   end
   
   resources :products do

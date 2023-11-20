@@ -1,5 +1,3 @@
-<div class="chat-message <%= 'chat-message-sent' if message.sender == current_user %>">
-  <div class="chat-message-bubble">
-    <%= message.body %>
-  </div>
+<div class="chat-message <%= 'chat-message-right' if message.sender == current_user %>">
+  <%= message.body %>
 </div>

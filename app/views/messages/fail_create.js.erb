@@ -1,0 +1,5 @@
+function displayErrorMessage(message) {
+    alert("Sorry, there was an error sending your message. Please try again.");
+    console.error("Message failed to send:", message);
+    $('#message-errors').html(message);
+}

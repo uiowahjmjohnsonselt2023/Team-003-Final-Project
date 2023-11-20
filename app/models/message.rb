@@ -13,4 +13,6 @@ class Message < ApplicationRecord
   def set_as_unread
     update(read: false)
   end
+
+  after_create_commit { MessageBroadcastJob.perform_later(self) }
 end
