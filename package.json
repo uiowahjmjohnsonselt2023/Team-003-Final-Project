@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@hotwired/turbo-rails": "^7.3.0",
-    "channels": "^0.0.4"
+    "channels": "^0.0.4",
+    "jquery": "^3.7.1"
   }
 }

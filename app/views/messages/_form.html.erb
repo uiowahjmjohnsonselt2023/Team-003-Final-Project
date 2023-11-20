@@ -1,0 +1,5 @@
+<%= form_with(model: [@conversation, @message], remote: true, id: 'new_message') do |form| %>
+  <%= form.hidden_field :conversation_id, value: @conversation.id %>
+  <%= form.text_area :body, class: 'form-control', id: 'message_body' %>
+  <%= form.submit 'Send', class: 'btn btn-primary', id: 'send_message' %>
+<% end %>

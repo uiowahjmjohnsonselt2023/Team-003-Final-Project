@@ -15,6 +15,8 @@
       </div>
     <% end %>
   </div>
-<% else %>
-  <p>You have no conversations yet.</p>
+  <% if @conversations.any? %>
+  <% else %>
+    <p class="no-conversations">You have no conversations yet.</p>
+  <% end %>
 <% end %>

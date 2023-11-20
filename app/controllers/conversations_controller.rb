@@ -3,15 +3,23 @@
 # which messages are exchanged (ongoing dialogue between users)                            #
 # ---------------------------------------------------------------------------------------- #
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).includes(:messages)
+    @conversations = Conversation.all
   end
+
   def show
-    @conversation = Conversation.includes(messages: :sender).find(params[:id])
+    @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.order(created_at: :asc)
-    @message = @conversation.messages.build
+    # Ensure that @messages only contains persisted Message records
+    @messages = @messages.select(&:persisted?)
+  end
+
+  private
+
+  def set_conversation
+    @conversation = Conversation.find(params[:id])
   end
 end
 

@@ -5,24 +5,28 @@
 # ---------------------------------------------------------------------------------------- #
 class MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_conversation
 
-  # creating a new message within a conversation
   def create
-    @conversation = Conversation.find(params[:message][:conversation_id])
+    @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.build(message_params)
     @message.sender = current_user
 
     if @message.save
-      flash[:success] = 'Message sent successfully'
       redirect_to conversation_path(@conversation)
     else
+      @messages = @conversation.messages
       render 'conversations/show'
     end
   end
 
   private
 
+  def set_conversation
+    @conversation = Conversation.find(params[:conversation_id])
+  end
+
   def message_params
-    params.require(:message).permit(:body, :conversation_id)
+    params.require(:message).permit(:body)
   end
 end

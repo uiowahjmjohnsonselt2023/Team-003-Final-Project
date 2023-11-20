@@ -1,28 +1,37 @@
 <div class="container">
   <div class="row">
     <!-- Sidebar for conversations -->
-    <div class="col-4">
+    <div class="col-md-4 conversations-sidebar">
       <div class="list-group">
-        <% current_user.conversations.each do |conversation| %>
-          <%= link_to conversation_path(conversation), class: 'list-group-item list-group-item-action' do %>
-            Conversation with <%= conversation.other_party(current_user).username %>
+        <% current_user.conversations.each do |conv| %>
+          <%= link_to conversation_path(conv), class: 'list-group-item list-group-item-action' do %>
+            Conversation with <%= conv.other_party(current_user).username %>
           <% end %>
         <% end %>
       </div>
     </div>
+
     <!-- Main chat area -->
-    <div class="col-8">
-      <div class="chat-messages">
-        <% @messages.each do |message| %>
-          <div class="chat-message <%= 'right' if message.sender == current_user %>">
-            <%= message.body %>
+    <div class="chat-messages">
+      <% @conversation.messages.each do |msg| %>
+        <% if msg.created_at %>
+          <div class="chat-message <%= 'chat-message-right' if msg.sender == current_user %>">
+            <div class="chat-message-content">
+              <%= msg.body %>
+            </div>
+            <div class="chat-message-timestamp">
+              <%= msg.created_at.strftime("%b %d, %I:%M %p") %>
+            </div>
           </div>
         <% end %>
-      </div>
-      <%= form_with(model: @message, url: conversation_messages_path(@conversation)) do |form| %>
-        <%= form.text_area :body, class: 'form-control' %>
-        <%= form.submit 'Send', class: 'btn btn-primary' %>
       <% end %>
+    </div>
+        <!-- A dummy element to scroll into view for latest messages -->
+        <div id="chat-messages-end"></div>
+      </div>
+
+      <!-- Message form -->
+      <%= render 'messages/form', conversation: @conversation, message: Message.new %>
     </div>
   </div>
 </div>
