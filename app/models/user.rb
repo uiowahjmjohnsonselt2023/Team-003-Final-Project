@@ -21,7 +21,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_secure_password
+  #has_secure_password
   has_many :given_reviews, foreign_key: 'reviewer_id', class_name: 'Review'
   has_many :received_reviews, foreign_key: 'reviewee_id', class_name: 'Review'
   validates :username, presence: true, uniqueness: { case_sensitive: false }
