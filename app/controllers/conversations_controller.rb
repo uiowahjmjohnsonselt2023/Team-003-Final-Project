@@ -11,9 +11,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.order(created_at: :asc)
-    # Ensure that @messages only contains persisted Message records
-    @messages = @messages.select(&:persisted?)
+    @message = Message.new
   end
 
   private

@@ -1,5 +1,6 @@
-<%= form_with(model: [@conversation, @message], remote: true, id: 'new_message') do |form| %>
-  <%= form.hidden_field :conversation_id, value: @conversation.id %>
-  <%= form.text_area :body, class: 'form-control', id: 'message_body' %>
-  <%= form.submit 'Send', class: 'btn btn-primary', id: 'send_message' %>
+<%= form_with(model: [@conversation, Message.new], remote: true, id: 'new_message', html: {class: 'chat-message-form'}) do |form| %>
+  <div class="chat-form-group">
+    <%= form.text_area :body, placeholder: 'Type your message...', class: 'chat-form-control', id: 'message_body' %>
+    <%= form.submit 'Send', class: 'chat-form-submit' %>
+  </div>
 <% end %>

@@ -1,9 +1,8 @@
 <% if @message.persisted? %>
-// Appends the new message partial to the chat-messages div
-$(".chat-messages").append("<%= j render 'message', message: @message %>");
-// Clears the message input field
-$("#message_body").val('');
+console.log('Message is being appended'); // For debugging
+$(".chat-messages").append("<%= j render 'messages/message', message: @message %>");
+$("#message_body").val(''); // Clear the message input field
 <% else %>
-// Handle the error case
+console.log('Failed to append message'); // For debugging
 alert("Message could not be sent.");
 <% end %>

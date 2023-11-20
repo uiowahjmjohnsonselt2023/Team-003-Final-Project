@@ -1,37 +1,41 @@
-<div class="container">
-  <div class="row">
-    <!-- Sidebar for conversations -->
-    <div class="col-md-4 conversations-sidebar">
-      <div class="list-group">
-        <% current_user.conversations.each do |conv| %>
-          <%= link_to conversation_path(conv), class: 'list-group-item list-group-item-action' do %>
-            Conversation with <%= conv.other_party(current_user).username %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    <!-- Main chat area -->
-    <div class="chat-messages">
-      <% @conversation.messages.each do |msg| %>
-        <% if msg.created_at %>
-          <div class="chat-message <%= 'chat-message-right' if msg.sender == current_user %>">
-            <div class="chat-message-content">
-              <%= msg.body %>
-            </div>
-            <div class="chat-message-timestamp">
-              <%= msg.created_at.strftime("%b %d, %I:%M %p") %>
-            </div>
+<div class="chat-container">
+  <div class="chat-sidebar">
+    <% current_user.conversations.each do |conv| %>
+      <%= link_to conversation_path(conv), class: 'chat-sidebar-item' do %>
+        <div class="chat-sidebar-item-content">
+          <div class="chat-sidebar-item-avatar">
+            <img src="<%= asset_path('chat-avatar.png') %>" alt="Avatar">
           </div>
-        <% end %>
+          <div class="chat-sidebar-item-info">
+            <h5><%= conv.other_party(current_user).username %></h5>
+            <p class="chat-sidebar-last-message">
+              <%= conv.messages.last&.body&.truncate(30) || "Start a conversation" %>
+            </p>
+          </div>
+        </div>
       <% end %>
-    </div>
-        <!-- A dummy element to scroll into view for latest messages -->
-        <div id="chat-messages-end"></div>
-      </div>
+    <% end %>
+  </div>
 
-      <!-- Message form -->
-      <%= render 'messages/form', conversation: @conversation, message: Message.new %>
+  <div class="chat-main">
+    <div class="chat-messages">
+      <% @conversation.messages.order(created_at: :asc).each do |msg| %>
+        <div class="chat-message <%= 'chat-message-sent' if msg.sender == current_user %>">
+          <div class="chat-message-bubble">
+            <%= msg.body %>
+          </div>
+          <div class="chat-message-timestamp">
+            <%= msg.created_at.strftime("%b %d, %I:%M %p") %>
+          </div>
+        </div>
+      <% end %>
+      <div id="chat-messages-end"></div>
     </div>
+
+    <%= render 'messages/form', conversation: @conversation, message: Message.new %>
   </div>
 </div>
+
+<script>
+    document.getElementById('chat-messages-end').scrollIntoView();
+</script>
