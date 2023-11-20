@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------------------------------- #
+# this controller manages conversations between users and handles the broader context in   #
+# which messages are exchanged (ongoing dialogue between users)                            #
+# ---------------------------------------------------------------------------------------- #
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
