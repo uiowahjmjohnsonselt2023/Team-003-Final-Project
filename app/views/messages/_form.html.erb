@@ -1,4 +1,5 @@
-<%= form_with(model: [@conversation, @message], remote: true, id: 'new_message', html: {class: 'chat-message-form'}) do |form| %>
+<% message_local = local_assigns[:message] || Message.new %>
+<%= form_with(model: [conversation, message_local], remote: true, id: 'new_message', html: {class: 'chat-message-form'}) do |form| %>
   <div class="chat-form-group">
     <%= form.text_area :body, placeholder: 'Type your message...', class: 'chat-form-control', id: 'message_body' %>
     <%= form.submit 'Send', class: 'chat-form-submit' %>

@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
     message = @conversation.messages.new(message_params)
     message.user = current_user
     if message.save
-      # Broadcast to the recipient using ActionCable
       MessagesChannel.broadcast_to(@conversation, message.as_json)
       head :ok
     else
@@ -32,6 +31,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :sender_id)
   end
 end

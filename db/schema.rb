@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_19_232717) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_203107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,7 +111,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_232717) do
     t.datetime "updated_at", null: false
     t.boolean "read", default: false
     t.bigint "conversation_id"
+    t.bigint "user_id", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -218,6 +220,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_232717) do
   add_foreign_key "favorites", "users"
   add_foreign_key "feedbacks", "orders"
   add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "products"
