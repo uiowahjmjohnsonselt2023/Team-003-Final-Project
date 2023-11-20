@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @seller = @product.user
     @conversation = Conversation.between(current_user.id, @seller.id).first_or_create
-    redirect_to conversations_show_path(@conversation)
+    redirect_to conversation_path(@conversation)
   end
 
   # search for products based on the provided query and filters

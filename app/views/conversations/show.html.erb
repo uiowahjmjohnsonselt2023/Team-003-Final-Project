@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
+    <!-- Sidebar for conversations -->
     <div class="col-4">
-      <!-- Sidebar for conversations -->
       <div class="list-group">
         <% current_user.conversations.each do |conversation| %>
           <%= link_to conversation_path(conversation), class: 'list-group-item list-group-item-action' do %>
@@ -10,9 +10,8 @@
         <% end %>
       </div>
     </div>
+    <!-- Main chat area -->
     <div class="col-8">
-
-      <!-- main chat area -->
       <div class="chat-messages">
         <% @messages.each do |message| %>
           <div class="chat-message <%= 'right' if message.sender == current_user %>">

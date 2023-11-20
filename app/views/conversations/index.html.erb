@@ -6,7 +6,11 @@
       <div class="conversation-summary">
         <%= link_to conversation_path(conversation) do %>
           <h2>Conversation with <%= conversation.other_party(current_user).username %></h2>
-          <p>Last message: <%= conversation.messages.last.body.truncate(50) %></p>
+          <% if conversation.messages.any? %>
+            <p>Last message: <%= conversation.messages.last.body.truncate(50) %></p>
+          <% else %>
+            <p>No messages yet.</p>
+          <% end %>
         <% end %>
       </div>
     <% end %>

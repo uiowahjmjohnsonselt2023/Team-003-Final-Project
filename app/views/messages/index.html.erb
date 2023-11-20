@@ -1,17 +1,14 @@
 <div class="messages-list">
-  <% @messages.each do |message| %>
-    <div class="message-summary <%= 'unread' if !message.read %>">
-      <% if message.sender == current_user %>
-        <p>To: <%= message.recipient.username %></p>
+  <% current_user.conversations.each do |conversation| %>
+    <div class="message-summary">
+      <p>Conversation with <%= conversation.other_party(current_user).username %></p>
+      <% last_message = conversation.messages.last %>
+      <% if last_message %>
+        <p><%= last_message.body.truncate(100) %></p>
       <% else %>
-        <p>From: <%= message.sender.username %></p>
+        <p>No messages yet.</p>
       <% end %>
-      <p><%= message.body.truncate(100) %></p>
-      <% if message.conversation.present? %>
-        <%= link_to 'View Conversation', conversation_path(message.conversation), class: 'view-conversation-link' %>
-      <% else %>
-        <span>Conversation not available</span>
-      <% end %>
+      <%= link_to 'View Conversation', conversation_path(conversation), class: 'view-conversation-link' %>
     </div>
   <% end %>
 </div>
