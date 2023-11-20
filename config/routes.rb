@@ -53,6 +53,10 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :create, :destroy]
 
+  resources :conversations, only: [:index, :show] do
+    resources :messages, only: [:create]
+  end
+  
   resources :products do
     # existing member routes
     member do
@@ -60,10 +64,6 @@ Rails.application.routes.draw do
       get :message_seller
       post 'write_review'
       post 'add_to_favorites'
-    end
-
-    resources :conversations, only: [:index, :show] do
-      resources :messages, only: [:create]
     end
 
     # routes for reviews
