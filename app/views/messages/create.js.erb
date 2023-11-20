@@ -1,2 +1,6 @@
+<% if @message.persisted? %>
 $("#messages").append("<%= j render @message %>");
-$("textarea").val('');
+$("#message_body").val('');
+<% else %>
+alert('Error sending message: <%= j @message.errors.full_messages.to_sentence %>');
+<% end %>

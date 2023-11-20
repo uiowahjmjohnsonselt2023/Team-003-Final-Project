@@ -7,11 +7,16 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = current_user.conversations
+    # get conversations and ensure no duplicates by the recipient_id or sender_id
+    @conversations = Conversation.where(sender_id: current_user.id)
+                                 .or(Conversation.where(recipient_id: current_user.id))
+                                 .distinct
   end
 
   def show
-    @message = Message.new
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @message = Message.new  # Make sure @message is initialized for the form
   end
 
   def create
@@ -21,20 +26,22 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = current_user.conversations.find_by(id: params[:id])
     if @conversation.present?
       @conversation.destroy
-      redirect_to conversations_path, notice: 'Conversation deleted.'
+      respond_to do |format|
+        format.html { redirect_to conversations_path, notice: 'Conversation was successfully deleted.' }
+        format.json { head :no_content }
+      end
     else
-      redirect_to conversations_path, alert: 'Conversation not found.'
+      redirect_to conversations_path, alert: 'Conversation could not be found.'
     end
   end
 
   private
 
   def set_conversation
-    @conversation = current_user.conversations.find_by(id: params[:id])
-    redirect_to conversations_path, alert: "Conversation not found." unless @conversation
+    @conversation = Conversation.find_by(id: params[:id], sender_id: current_user.id) ||
+      Conversation.find_by(id: params[:id], recipient_id: current_user.id)
   end
 end
 

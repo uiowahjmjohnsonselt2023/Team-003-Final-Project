@@ -1,22 +1,18 @@
 <h1>Messages</h1>
-
-<% if @conversations.any? %>
-  <div class="conversations-list">
-    <% @conversations.each do |conversation| %>
-      <div class="conversation-summary">
-        <%= link_to conversation_path(conversation) do %>
-          <h2>Conversation with <%= conversation.other_party(current_user).username %></h2>
-          <% if conversation.messages.any? %>
-            <p>Last message: <%= conversation.messages.last.body.truncate(50) %></p>
-          <% else %>
-            <p>No messages yet.</p>
-          <% end %>
+<% @conversations.each do |conversation| %>
+  <div class="conversation-list-item">
+    <%= link_to 'Delete', conversation_path(conversation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-conversation-button' %>
+    <%= link_to conversation_path(conversation) do %>
+      <div class="conversation-header">
+        Conversation with <%= conversation.other_party(current_user).username %>
+      </div>
+      <div class="latest-message">
+        <% if conversation.messages.any? %>
+          <%= conversation.messages.order(created_at: :desc).first.body.truncate(80) %>
+        <% else %>
+          <span class="no-messages">No messages yet.</span>
         <% end %>
       </div>
     <% end %>
   </div>
-  <% if @conversations.any? %>
-  <% else %>
-    <p class="no-conversations">You have no conversations yet.</p>
-  <% end %>
 <% end %>
