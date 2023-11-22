@@ -1,5 +1,15 @@
 class ProductsController < ApplicationController
 
+  def product_params
+    params.require(:product).permit(:title,
+                                    :description,
+                                    :price,
+                                    :condition,
+                                    :location,
+                                    :category_id,
+                                    )
+  end
+
   # display a list of all products
   def index
     @products = Product.all
