@@ -34,8 +34,8 @@ class MessagesController < ApplicationController
   end
 
   def self.notify_receiver(message)
-    receiver = User.find(message.conversation.receiver_id)
-    UserMailer.message_notification(receiver, message).deliver_later
+    recipient = User.find(message.conversation.recipient_id)
+    UserMailer.message_notification(recipient, message).deliver_later
   end
 end
 

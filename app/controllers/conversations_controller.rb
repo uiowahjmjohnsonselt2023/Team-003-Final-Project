@@ -12,6 +12,6 @@ class ConversationsController < ApplicationController
   private
 
   def authenticate_user
-    # Define authentication logic
+    redirect_to login_path unless current_user
   end
 end
