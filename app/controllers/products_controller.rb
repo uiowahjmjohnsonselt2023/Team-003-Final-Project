@@ -27,23 +27,8 @@ class ProductsController < ApplicationController
   end
 
   def message_seller
-    message_body = params[:message_body]
-
-    if message_body.blank?
-      redirect_to product_path(@product), alert: 'Message cannot be empty.'
-      return
-    end
-
-    conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @product.user_id)
-
-    @message = conversation.messages.build(body: message_body, user: current_user)
-
-    if @message.save
-      MessagesController.notify_receiver(@message) # This would be better as a method call on a service object or mailer
-      redirect_to conversation_path(conversation), notice: 'Message sent to seller successfully.'
-    else
-      redirect_to product_path(@product), alert: 'Unable to send message.'
-    end
+    conversation = Conversation.find_or_create_by(sender_id: current_user.id, recipient_id: @product.user_id)
+    redirect_to conversation_path(conversation)
   end
 
   # write a review for a product

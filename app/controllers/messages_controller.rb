@@ -7,17 +7,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      self.class.notify_receiver(@message) # This should be a class method or a service call
+      self.class.notify_receiver(@message)
       redirect_to conversation_path(@conversation), notice: 'Message sent successfully'
     else
       render 'conversations/show', alert: 'Unable to send message'
     end
   end
-
-  # If you still need an index action for some reason:
-  # def index
-  #   # Your index action code
-  # end
 
   private
 

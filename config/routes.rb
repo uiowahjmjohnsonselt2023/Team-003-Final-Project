@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   end
 
   # routes for conversations and nested messages
-  resources :conversations, only: [:index, :show] do
+  resources :conversations, only: [:index, :show, :destroy] do
     resources :messages, only: [:create]
   end
 
