@@ -24,7 +24,8 @@ class ProductsController < ApplicationController
     redirect_to product_path(@product)
   end
 
-  # (placeholder for 'message_seller' action if needed)
+  def message_seller
+  end
 
   # write a review for a product
   def write_review

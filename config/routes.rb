@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   post 'message', to: 'home#profile'
 
   resources :users do
+    resources :messages, only: [:create]
     collection do
       get :admin
     end
