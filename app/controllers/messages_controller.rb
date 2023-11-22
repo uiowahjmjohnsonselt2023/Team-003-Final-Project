@@ -1,6 +1,11 @@
 class MessagesController < ApplicationController
-  before_action :set_sender
+  before_action :set_user, only: [:index]
+  before_action :set_sender, except: [:index]
 
+  def index
+    @sent_messages = @user.sent_messages
+    @received_messages = @user.received_messages
+  end
   def create
     @message = Message.new(message_params.merge(sender_id: @sender.id))
 
@@ -13,6 +18,10 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(session[:user_id]) # Adjust to your session management
+  end
 
   def set_sender
     @sender = User.find(params[:user_id])
