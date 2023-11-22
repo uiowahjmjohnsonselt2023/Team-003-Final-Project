@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   # associations for reviews
   has_many :given_reviews, foreign_key: 'reviewer_id', class_name: 'Review', dependent: :destroy
   has_many :received_reviews, foreign_key: 'reviewee_id', class_name: 'Review', dependent: :destroy
@@ -8,6 +7,10 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6 }
+
+  # associations for sending and receiving messages
+  has_many :sent_messages, foreign_key: 'sender_id', class_name: 'Message', dependent: :destroy
+  has_many :received_messages, foreign_key: 'receiver_id', class_name: 'Message', dependent: :destroy
 
   # association for user profile picture
   has_one_attached :profile_picture

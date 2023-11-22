@@ -66,6 +66,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
     t.string "image"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
@@ -92,6 +101,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
     t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "read", default: false
+    t.bigint "conversation_id"
+    t.bigint "user_id", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -139,6 +161,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
     t.float "average_rating", default: 0.0
     t.string "category"
     t.bigint "category_id", null: false
+    t.decimal "buy_now_price", precision: 10, scale: 2
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -164,6 +187,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
   create_table "trackings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id", null: false
+    t.integer "status"
+    t.string "tracking_number"
+    t.string "shipping_carrier"
+    t.index ["order_id"], name: "index_trackings_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -186,9 +214,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "conversations", "users", column: "recipient_id"
+  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "feedbacks", "orders"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "products"
@@ -198,4 +230,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_031625) do
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
+  add_foreign_key "trackings", "orders"
 end
