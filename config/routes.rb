@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # route for the registration form
   get 'signup', to: 'registrations#new', as: :new_registration
 
-  resources :reviews, only: [:new,:create]
+  resources :reviews, only: [:new, :create]
 
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
@@ -52,17 +52,14 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :create, :destroy]
 
+  # routes for products
   resources :products do
-    # existing member routes
     member do
       post 'add_to_cart'
       post 'message_seller'
       post 'write_review'
       post 'add_to_favorites'
     end
-
-    # routes for messages
-    resources :messages, only: [:create, :index]
 
     # routes for reviews
     resources :reviews, only: [:new, :create, :destroy]
@@ -72,6 +69,10 @@ Rails.application.routes.draw do
       get 'search' # route to a search action in ProductsController
     end
   end
+
+  # route to view all messages
+  get '/messages', to: 'messages#index'
+
   # route for if the cart has a show action to display an individual user's cart
   resource :cart, only: [:show]
 
@@ -80,8 +81,8 @@ Rails.application.routes.draw do
 
   # routes for navigation
   get 'profile', to: 'home#profile', as: :profile
-  post 'message', to: 'home#profile'
 
+  # routes for users
   resources :users do
     resources :messages, only: [:create]
     collection do
@@ -95,6 +96,5 @@ Rails.application.routes.draw do
 
   # health check route
   get "up" => "rails/health#show", as: :rails_health_check
-
 end
 

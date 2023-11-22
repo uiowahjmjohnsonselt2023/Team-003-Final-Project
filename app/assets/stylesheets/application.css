@@ -94,9 +94,16 @@ nav ul.horizontal-nav li a {
     width: 40px;
 }
 
+/* message_icon.png */
+.message-nav-icon {
+    height: 36px;
+    width: 40px;
+}
+
 .cart-nav-icon,
 .favorite-nav-icon,
-.profile-nav-icon {
+.profile-nav-icon,
+.message-nav-icon {
     display: block;
     margin: 0 auto;
     position: relative;

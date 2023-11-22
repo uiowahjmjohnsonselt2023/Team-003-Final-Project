@@ -41,6 +41,12 @@
         <% end %>
       </li>
       <li>
+        <%= link_to messages_path do %>
+          <%= image_tag("message_icon.png", alt: "Messages", class: "message-nav-icon") %>
+          <span class="nav-label">Messages</span>
+        <% end %>
+      </li>
+      <li>
         <%= link_to profile_path do %>
           <%= image_tag("profile_icon.png", alt: "Profile", class: "profile-nav-icon") %>
           <span class="nav-label">Profile</span>
