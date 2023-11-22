@@ -1,9 +1,9 @@
-<!-- Signup Container -->
+<!-- New Listing Container -->
 <div class="new-listing-container">
   <h2>Create Listing</h2>
 
-  <!-- Registration Form -->
-  <%= form_with(model: @product, local: true, url: products_path, class: 'form-signup') do |f| %>
+  <!-- Create Listing Form -->
+  <%= form_with(model: @product, local: true, url: products_path, method: :post, class: 'form-signup') do |f| %>
 
     <!-- Display Flash Notices -->
     <% if flash[:notice] %>
