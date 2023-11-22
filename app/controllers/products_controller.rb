@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:message_seller]
 
   # display a list of all products
   def index
@@ -25,6 +26,15 @@ class ProductsController < ApplicationController
   end
 
   def message_seller
+    # Assuming @current_user is the buyer
+    @message = @current_user.sent_messages.build(receiver_id: @product.user_id, body: "Your custom message here")
+
+    if @message.save
+      MessagesController.new.notify_receiver(@message)
+      redirect_to product_path(@product), notice: 'Message sent to seller successfully.'
+    else
+      redirect_to product_path(@product), alert: 'Unable to send message.'
+    end
   end
 
   # write a review for a product
@@ -83,6 +93,10 @@ class ProductsController < ApplicationController
   # define strong parameters for the review
   def review_params
     params.require(:review).permit(:content, :rating)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
   # determine the sorting logic based on the sort_by parameter
