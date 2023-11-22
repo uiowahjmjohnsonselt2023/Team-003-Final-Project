@@ -1,21 +1,14 @@
-<h2>Chat with <%= @conversation.other_party(@current_user).username %></h2>
+<h2>Chat about <%= link_to @conversation.product.title, product_path(@conversation.product) %></h2>
 
 <div class="messages">
   <% @messages.each do |message| %>
-    <p>
-      <% if message.user %>
-        <%= message.user.username %>: <%= message.body %>
-      <% else %>
-        [Deleted User]: <%= message.body %>
-      <% end %>
-    </p>
+    <p><%= message.user.username %>: <%= message.body %></p>
   <% end %>
 </div>
 
-<%= form_with(model: [ @conversation, Message.new ], local: true) do |form| %>
+<%= form_with(model: [ @conversation, @conversation.messages.build ], local: true) do |form| %>
   <div class="field">
     <%= form.text_area :body %>
   </div>
   <%= form.submit "Send" %>
 <% end %>
-

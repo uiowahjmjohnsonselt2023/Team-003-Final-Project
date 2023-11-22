@@ -27,8 +27,12 @@ class ProductsController < ApplicationController
   end
 
   def message_seller
-    conversation = Conversation.find_or_create_by(sender_id: current_user.id, recipient_id: @product.user_id)
-    redirect_to conversation_path(conversation)
+    if current_user.id == @product.user_id
+      redirect_to product_path(@product), alert: "You cannot send a message to yourself."
+    else
+      conversation = Conversation.find_or_create_by(sender_id: current_user.id, recipient_id: @product.user_id, product_id: @product.id)
+      redirect_to conversation_path(conversation)
+    end
   end
 
   # write a review for a product
