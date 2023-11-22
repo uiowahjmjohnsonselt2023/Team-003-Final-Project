@@ -1,0 +1,49 @@
+/* heading */
+h1 {
+    font-size: 33px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* conversation container */
+.conversation {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* link within the conversation */
+.conversation a {
+    text-decoration: none;
+    color: #2a2941;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* link color on hover */
+.conversation a:hover {
+    color: #0056b3;
+}
+
+/* delete button */
+.delete-button {
+    background-color: #ff4646;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* button color on hover */
+.delete-button:hover {
+    background-color: #d63434;
+}
+
