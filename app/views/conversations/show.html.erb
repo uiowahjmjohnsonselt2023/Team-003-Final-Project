@@ -16,8 +16,9 @@
         <div id="chat-messages-end"></div>
       </div>
 
-      <%= render 'messages/form', conversation: @conversation, message: @message %>
+      <%= render 'messages/form', message: @message %>
     <% else %>
+      <div id="message_errors"></div>
       <p>Conversation not found or you do not have permission to view it.</p>
     <% end %>
   </div>

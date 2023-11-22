@@ -1,108 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/cart_items_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/carts_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/categories_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/conversations_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/favorites_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/feedback_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/messages_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/order_items_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/orders_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/products_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/reviews_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/search_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/trackings_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/users_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/welcome_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/mailers/user_mailer.rb": {
         "lines": [
           0,
@@ -234,7 +132,6 @@
           0,
           0,
           0,
-          null,
           0,
           null,
           null,
@@ -478,7 +375,10 @@
           0,
           null,
           0,
-          null,
+          0,
+          0,
+          0,
+          0,
           0,
           0
         ],
@@ -494,7 +394,6 @@
           null,
           0,
           0,
-          0,
           null,
           0,
           0,
@@ -505,7 +404,6 @@
           0,
           0,
           0,
-          null,
           0,
           0,
           0,
@@ -515,7 +413,6 @@
           null,
           0,
           null,
-          0,
           0,
           0,
           0,
@@ -762,23 +659,47 @@
           null,
           0,
           0,
-          null,
-          0,
-          0,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
           0,
           null,
           0,
           0,
           0,
           0,
+          null,
           0,
-          0
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
         ],
         "branches": {
         }
@@ -1413,6 +1334,142 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/conversations_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/reviews_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/feedback_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/messages_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/welcome_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/orders_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/search_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/users_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/password_resets_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/carts_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/favorites_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/order_items_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/cart_items_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/products_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/categories_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/application_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/trackings_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/channels/messages_channel.rb": {
         "lines": [
           0,
@@ -1430,6 +1487,6 @@
         }
       }
     },
-    "timestamp": 1700509057
+    "timestamp": 1700623000
   }
 }

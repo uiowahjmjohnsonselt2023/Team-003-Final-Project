@@ -8,14 +8,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
-    @message.user = current_user
+    @message.sender = current_user
+    @message.recipient = @conversation.other_party(current_user)
+
     respond_to do |format|
       if @message.save
         format.js
-        format.html { redirect_to conversation_path(@conversation) } # Handles the standard HTTP request
+        format.html { redirect_to conversation_path(@conversation) }
       else
-        format.js { render 'error' } # You might need to create an error.js.erb if you want custom handling
-        format.html { redirect_to conversation_path(@conversation), alert: 'Error sending message.' } # Handles the standard HTTP request
+        format.js { render 'error', status: :unprocessable_entity }
+        format.html { redirect_to conversation_path(@conversation), alert: 'Error sending message.' }
       end
     end
   end
@@ -27,6 +29,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :sender_id)
   end
 end
