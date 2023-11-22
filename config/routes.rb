@@ -61,6 +61,9 @@ Rails.application.routes.draw do
       post 'add_to_favorites'
     end
 
+    # routes for messages
+    resources :messages, only: [:create, :index]
+
     # routes for reviews
     resources :reviews, only: [:new, :create, :destroy]
 
