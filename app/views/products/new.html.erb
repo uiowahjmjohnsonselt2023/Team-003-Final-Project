@@ -27,13 +27,13 @@
     <!-- Category Field -->
     <div class="field">
       <%= f.label "Category", class: 'label' %>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, required: true )%>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, required: true, class: 'select-field' )%>
     </div>
 
     <!-- Condition Field -->
     <div class="field">
       <%= f.label "Condition", class: 'label' %>
-      <%= f.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"]), required: true %>
+      <%= f.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"]), required: true, class: 'select-field' %>
     </div>
 
     <!-- Description Field -->
