@@ -8,6 +8,12 @@ class MessagesController < ApplicationController
 
     if @message.save
       self.class.notify_receiver(@message)
+      Notification.create(
+        recipient: @message.receiver,
+        actor: current_user,
+        action: 'sent you a message',
+        notifiable: @message
+      )
       redirect_to conversation_path(@conversation), notice: 'Message sent successfully'
     else
       render 'conversations/show', alert: 'Unable to send message'
