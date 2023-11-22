@@ -16,11 +16,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = current_user.products.new
   end
 
   def create
-    @product = Product.create!(product_params)
+    @product = current_user.products.create!(product_params)
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to products_path
