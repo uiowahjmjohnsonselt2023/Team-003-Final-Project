@@ -1,14 +1,43 @@
-<h2>Chat about <%= link_to @conversation.product.title, product_path(@conversation.product) %></h2>
+<%# retrieve the other user and product information from the conversation %>
+<% other_user = @conversation.other_party(current_user) %>
+<% product = @conversation.product %>
 
-<div class="messages">
-  <% @messages.each do |message| %>
-    <p><%= message.user.username %>: <%= message.body %></p>
+<%# main chat container %>
+<div class="chat-container">
+
+  <%# chat header with product details %>
+  <div class="chat-header">
+    <h1>Chat with <%= other_user.username %></h1>
+    <h2>About "<%= product.title %>"</h2>
+    <%= link_to 'View Product', product_path(product), class: "product-link" %>
+    <p>Price: <%= number_to_currency(product.price) %></p>
+    <p>Description: <%= product.description.truncate(100) %></p>
+
+    <%# display product image %>
+    <% if product.image.attached? %>
+      <%= image_tag product.image, class: "product-thumbnail", alt: product.title %>
+    <% end %>
+  </div>
+
+  <%# messages area %>
+  <div class="messages">
+    <% @messages.each do |message| %>
+      <div class="message <%= 'message-from-me' if message.user == current_user %>">
+        <strong><%= message.user.username %>:</strong>
+        <p><%= message.body %></p>
+
+        <%# message timestamp %>
+        <small>Sent <%= time_ago_in_words(message.created_at) %> ago</small>
+      </div>
+    <% end %>
+  </div>
+
+  <%# form for sending new messages %>
+  <%= form_with(model: [ @conversation, Message.new ], local: true) do |form| %>
+    <div class="field">
+      <%= form.text_area :body, placeholder: "Type your message here...", required: true, class: "text_area" %>
+    </div>
+    <%= form.submit "Send", class: "send-button" %>
   <% end %>
 </div>
 
-<%= form_with(model: [ @conversation, @conversation.messages.build ], local: true) do |form| %>
-  <div class="field">
-    <%= form.text_area :body %>
-  </div>
-  <%= form.submit "Send" %>
-<% end %>

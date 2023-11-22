@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.includes(:product).find(params[:id])
+    @conversation = Conversation.includes(product: { image_attachment: :blob }).find(params[:id])
     @product = @conversation.product
     @messages = @conversation.messages.order(created_at: :asc)
   end
