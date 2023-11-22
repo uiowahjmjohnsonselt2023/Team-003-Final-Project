@@ -97,153 +97,6 @@
           null
         ]
       },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/message.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/user.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/conversation.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/mailers/user_mailer.rb": {
         "lines": [
           0,
@@ -366,6 +219,19 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/message.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/review.rb": {
         "lines": [
           0,
@@ -392,8 +258,35 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/notification.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/feedback.rb": {
         "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/conversation.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
           0,
           0,
           0
@@ -442,6 +335,15 @@
         "branches": {
         }
       },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart.rb": {
         "lines": [
           0,
@@ -454,6 +356,85 @@
           0,
           0,
           0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/user.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
         ],
         "branches": {
         }
@@ -491,6 +472,46 @@
           0,
           null,
           0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           0,
           0,
           0,
@@ -1346,6 +1367,6 @@
         }
       }
     },
-    "timestamp": 1700692791
+    "timestamp": 1700693178
   }
 }
