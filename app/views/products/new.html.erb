@@ -27,7 +27,7 @@
     <!-- Category Field -->
     <div class="field">
       <%= f.label "Category", class: 'label' %>
-      <%= f.select :category_id, class: 'input', required: true %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, required: true )%>
     </div>
 
     <!-- Condition Field -->
