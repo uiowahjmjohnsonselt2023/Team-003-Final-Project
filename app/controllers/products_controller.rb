@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :require_login, only: [:new, :create]
   def product_params
     params.require(:product).permit(:title,
                                     :description,
