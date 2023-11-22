@@ -5,6 +5,21 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.create!(product_params)
+    if @product.save
+      flash[:notice] = 'Product added!'
+      redirect_to products_path
+    else
+      flash[:error] = 'Failed to add product'
+      render :new
+    end
+  end
+
   # show details of a single product and its reviews
   def show
     @product = Product.find(params[:id])
