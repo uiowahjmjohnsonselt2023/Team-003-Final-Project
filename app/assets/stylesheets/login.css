@@ -1,7 +1,5 @@
-/* Customize the Login Page */
-
 /* login container form */
-.login-container {
+.page-login .login-container {
     max-width: 400px;
     margin: 100px auto;
     padding: 80px;
@@ -12,7 +10,7 @@
 }
 
 /* login header title */
-.login-container h2 {
+.page-login .login-container h2 {
     text-align: center;
     margin-bottom: 40px;
     color: #000000;
@@ -20,7 +18,7 @@
 }
 
 /* login form input fields */
-.input-field {
+.page-login .input-field {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
@@ -31,7 +29,7 @@
 }
 
 /* customize login button */
-.button-login {
+.page-login .button-login {
     padding: 12px 25px;
     background-color: #000000;
     color: white;
@@ -42,13 +40,13 @@
     transition: background-color 0.3s ease;
 }
 
-.actions {
+.page-login .actions {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
 }
 
-.button-login:hover {
+.page-login .button-login:hover {
     background-color: #333;
 }

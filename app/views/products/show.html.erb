@@ -1,94 +1,70 @@
-<div class="product-detail-container">
-  <div class="product-detail-header">
-    <h1><%= @product.title %></h1>
-    <p class="seller-info">
-      Listed by
-      <% if @product.user %>
-    <span class="seller-name">
-      <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
-    </span>
-
-        <!-- display seller verification status -->
-        <span class="seller-verification-status">
-      <% if @product.user.verified %>
-        <span class="verified">Verified Seller</span>
-      <% end %>
-    </span>
-      <% end %>
-      | Condition: <%= @product.condition %>
-    </p>
-    <p>Ships from: <%= @product.location %></p>
-
-    <!-- display the product rating -->
-    <% if @seller_rating %>
+<div class="page-product-detail">
+  <div class="product-detail-container">
+    <div class="product-detail-header">
+      <h1><%= @product.title %></h1>
       <div class="seller-info">
+        Listed by <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
+        <% if @product.user.verified %>
+          <span class="verified">Verified Seller</span>
+        <% end %>
+        | Condition: <%= @product.condition %>
+      </div>
+      <p class="product-location">Ships from: <%= @product.location %></p>
+      <% if @seller_rating %>
         <p class="product-rating">Average Rating: <%= @seller_rating %> / 5</p>
-      </div>
-    <% else %>
-      <div class="seller-info">
-        <p class="product-rating">Product Rating: No ratings yet.</p>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="product-detail-image">
-    <%= image_tag(@product.image) if @product.image.attached? %>
-  </div>
-
-  <div class="product-detail-info">
-    <div class="product-detail-price">
-      <p><%= number_to_currency(@product.price) %></p>
-    </div>
-    <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
-  </div>
-
-  <!-- review form for submitting new reviews -->
-  <div class="review-form">
-    <h3>Write a Review</h3>
-    <%= form_with model: [@product, @review || Review.new], local: true do |f| %>
-      <%= f.label :rating %>
-      <%= f.number_field :rating, in: 1..5 %>
-
-      <%= f.label :comment %>
-      <%= f.text_area :comment %>
-
-      <% if current_user %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.hidden_field :reviewer_id, value: current_user.id %>
-
-        <%= f.submit "Submit Review" %>
       <% else %>
-        <p>You must be logged in to submit a review.</p>
+        <p class="product-rating">Product Rating: No ratings yet.</p>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <div class="product-detail-interaction">
-    <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "button favorite-button" %>
-    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "button message-seller-button" %>
-  </div>
+    <div class="product-detail-image">
+      <%= image_tag(@product.image) if @product.image.attached? %>
+    </div>
 
-  <div class="product-detail-description">
-    <p><%= @product.description %></p>
-  </div>
+    <div class="product-detail-info">
+      <p class="product-detail-price"><%= number_to_currency(@product.price) %></p>
+      <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
+      <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
+      <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
+    </div>
 
-  <!-- existing reviews (located at the bottom of the page) -->
-  <div class="product-detail-reviews">
-    <h3>Reviews</h3>
-    <% if @reviews.present? %>
+    <div class="product-detail-description">
+      <p><%= @product.description %></p>
+    </div>
+
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <%= form_with model: [@product, @review || Review.new], local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :rating, 'Rating (1 to 5)' %>
+          <%= f.number_field :rating, in: 1..5, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :comment, 'Comment' %>
+          <%= f.text_area :comment, class: 'form-control' %>
+        </div>
+        <% if current_user %>
+          <%= f.submit "Submit Review", class: 'submit-review-button' %>
+        <% else %>
+          <p>You must be logged in to submit a review.</p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="product-detail-reviews">
+      <h2>Reviews</h2>
       <% @reviews.each do |review| %>
         <div class="review">
-          <strong>Rating:</strong> <%= review.rating %><br>
-          <strong>Review:</strong> <%= review.comment %><br>
-          <strong>Written by:</strong> <%= review.reviewer.name %><br>
-
-          <% if logged_in? && current_user == review.reviewer && review.persisted? %>
+          <p><strong>Rating:</strong> <%= review.rating %></p>
+          <p><strong>Review:</strong> <%= review.comment %></p>
+          <p><strong>Written by:</strong> <%= review.reviewer.name %></p>
+          <% if current_user == review.reviewer && review.persisted? %>
             <%= button_to 'Delete Review', product_review_path(@product, review), method: :delete, class: 'delete-review-button', data: { confirm: 'Are you sure you want to delete this review?' } %>
           <% end %>
         </div>
       <% end %>
-    <% else %>
-      <p>There are no reviews yet.</p>
-    <% end %>
+    </div>
   </div>
 </div>
+
+
