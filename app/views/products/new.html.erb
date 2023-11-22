@@ -1,1 +1,56 @@
-hello world
+<!-- Signup Container -->
+<div class="new-listing-container">
+  <h2>Create Listing</h2>
+
+  <!-- Registration Form -->
+  <%= form_with(model: @product, local: true, url: products_path, class: 'form-signup') do |f| %>
+
+    <!-- Display Flash Notices -->
+    <% if flash[:notice] %>
+      <div class="flash-notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <!-- Name Field  -->
+    <div class="field">
+      <%= f.label "Title", class: 'label' %>
+      <%= f.text_field :title, class: 'input', required: true %>
+    </div>
+
+    <!-- Price Field -->
+    <div class="field">
+      <%= f.label "Price", class: 'label' %>
+      <%= f.text_field :price, class: 'input', required: true %>
+    </div>
+
+    <!-- Category Field -->
+    <div class="field">
+      <%= f.label "Category", class: 'label' %>
+      <%= f.select :category_id, class: 'input', required: true %>
+    </div>
+
+    <!-- Condition Field -->
+    <div class="field">
+      <%= f.label "Condition", class: 'label' %>
+      <%= f.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"]), required: true %>
+    </div>
+
+    <!-- Description Field -->
+    <div class="field">
+      <%= f.label "Description", class: 'label' %>
+      <%= f.text_area :description, class: 'input', required: true %>
+    </div>
+
+    <!-- Location Field -->
+    <div class="field">
+      <%= f.label "Location", class: 'label' %>
+      <%= f.text_field :location, class: 'input', required: true %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="actions">
+      <%= f.submit "Create Listing", class: 'button-signup' %>
+    </div>
+  <% end %>
+</div>
