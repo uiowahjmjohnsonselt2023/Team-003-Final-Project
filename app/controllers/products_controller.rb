@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:message_seller]
+  before_action :authenticate_user, only: [:message_seller]
 
   # display a list of all products
   def index
@@ -26,11 +27,17 @@ class ProductsController < ApplicationController
   end
 
   def message_seller
-    # Assuming @current_user is the buyer
-    @message = @current_user.sent_messages.build(receiver_id: @product.user_id, body: "Your custom message here")
+    message_body = params[:message_body]
+
+    if message_body.blank?
+      redirect_to product_path(@product), alert: 'Message cannot be empty.'
+      return
+    end
+
+    @message = @current_user.sent_messages.build(receiver_id: @product.user_id, body: message_body)
 
     if @message.save
-      MessagesController.new.notify_receiver(@message)
+      MessagesController.notify_receiver(@message)
       redirect_to product_path(@product), notice: 'Message sent to seller successfully.'
     else
       redirect_to product_path(@product), alert: 'Unable to send message.'
@@ -97,6 +104,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def authenticate_user
+    redirect_to login_path, alert: 'Please log in.' unless current_user
   end
 
   # determine the sorting logic based on the sort_by parameter

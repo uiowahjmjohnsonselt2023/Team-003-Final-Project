@@ -1,8 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'noreply@example.com'
+  default from: 'notifications@example.com'
 
-  def password_reset(user)
+  def message_notification(user, message)
     @user = user
-    mail to: @user.email, subject: 'Password reset'
+    @message = message
+    @url  = 'http://example.com/login' # Replace with actual URL to view the message
+    mail(to: @user.email, subject: 'You have a new message')
   end
 end

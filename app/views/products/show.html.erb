@@ -65,7 +65,14 @@
 
   <div class="product-detail-interaction">
     <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "button favorite-button" %>
-    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "button message-seller-button" %>
+
+    <%= form_with url: message_seller_product_path(@product), method: :post, class: "message-seller-form" do |form| %>
+      <div class="field">
+        <%= form.label :message_body, "Message to Seller", class: "message-label" %>
+        <%= form.text_area :message_body, rows: 3, class: "text-area" %>
+      </div>
+      <%= form.submit "Send Message", class: "button message-seller-button" %>
+    <% end %>
   </div>
 
   <div class="product-detail-description">

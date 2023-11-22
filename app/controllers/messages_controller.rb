@@ -22,7 +22,9 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:receiver_id, :body)
   end
 
-  def notify_receiver(message)
+  def self.notify_receiver(message)
+    receiver = User.find(message.receiver_id)
+    UserMailer.message_notification(receiver, message).deliver_later
   end
 end
 
