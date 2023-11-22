@@ -20,7 +20,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.create!(product_params)
+    @product = current_user.products.new(product_params)
+    @product[:category] = Category.find(params[:product][:category_id]).name
+    @product.save!
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to products_path
