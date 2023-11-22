@@ -97,20 +97,35 @@
           null
         ]
       },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/message.rb": {
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/messages_controller.rb": {
         "lines": [
-          1,
           1,
           1,
           null,
           1,
-          null
-        ]
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
-        "lines": [
+          2,
+          null,
+          2,
+          0,
+          0,
+          null,
           1,
+          null,
+          null,
+          null,
           1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -139,10 +154,10 @@
           0,
           null,
           1,
-          0,
+          2,
           null,
-          0,
-          0,
+          2,
+          2,
           null,
           null,
           1,
@@ -225,6 +240,37 @@
           0,
           null,
           null,
+          null,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/message.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
           null,
           null
         ]
@@ -419,58 +465,6 @@
           0,
           0,
           0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/models/cart.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/messages_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null
         ],
         "branches": {
         }
@@ -1269,6 +1263,6 @@
         }
       }
     },
-    "timestamp": 1700629474
+    "timestamp": 1700630164
   }
 }

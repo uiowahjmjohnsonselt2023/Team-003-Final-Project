@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
-  before_action :set_user
+  before_action :set_sender
 
   def create
-    @message = @user.sent_messages.build(message_params)
+    @message = Message.new(message_params.merge(sender_id: @sender.id))
 
     if @message.save
       notify_receiver(@message)
@@ -14,8 +14,8 @@ class MessagesController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
+  def set_sender
+    @sender = User.find(params[:user_id])
   end
 
   def message_params
@@ -23,8 +23,6 @@ class MessagesController < ApplicationController
   end
 
   def notify_receiver(message)
-    # Implement notification logic here
-    # For example, send an email or a push notification to the receiver
   end
 end
 
