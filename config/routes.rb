@@ -70,6 +70,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # routes for conversations and nested messages
+  resources :conversations, only: [:index, :show] do
+    resources :messages, only: [:create]
+  end
+
   # route to view all messages
   get '/messages', to: 'messages#index'
 

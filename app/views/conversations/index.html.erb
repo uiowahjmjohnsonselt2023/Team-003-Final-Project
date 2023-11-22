@@ -1,0 +1,7 @@
+<h1>My Messages</h1>
+<% @conversations.each do |conversation| %>
+  <% other_user = conversation.other_party(current_user) %>
+  <div class="conversation">
+    <%= link_to "Conversation with #{other_user.username}", conversation_path(conversation) %>
+  </div>
+<% end %>

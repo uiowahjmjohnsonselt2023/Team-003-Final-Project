@@ -34,11 +34,13 @@ class ProductsController < ApplicationController
       return
     end
 
-    @message = @current_user.sent_messages.build(receiver_id: @product.user_id, body: message_body)
+    conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @product.user_id)
+
+    @message = conversation.messages.build(body: message_body, user: current_user)
 
     if @message.save
-      MessagesController.notify_receiver(@message)
-      redirect_to product_path(@product), notice: 'Message sent to seller successfully.'
+      MessagesController.notify_receiver(@message) # This would be better as a method call on a service object or mailer
+      redirect_to conversation_path(conversation), notice: 'Message sent to seller successfully.'
     else
       redirect_to product_path(@product), alert: 'Unable to send message.'
     end

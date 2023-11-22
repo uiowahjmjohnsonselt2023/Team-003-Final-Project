@@ -1,38 +1,40 @@
 class MessagesController < ApplicationController
-  before_action :set_user, only: [:index]
-  before_action :set_sender, except: [:index]
+  before_action :set_conversation, only: [:create]
+  before_action :authenticate_user
 
-  def index
-    @sent_messages = @user.sent_messages
-    @received_messages = @user.received_messages
-  end
   def create
-    @message = Message.new(message_params.merge(sender_id: @sender.id))
+    @message = @conversation.messages.build(message_params)
+    @message.user = current_user
 
     if @message.save
-      notify_receiver(@message)
-      render json: { status: 'Message sent successfully' }, status: :created
+      self.class.notify_receiver(@message) # This should be a class method or a service call
+      redirect_to conversation_path(@conversation), notice: 'Message sent successfully'
     else
-      render json: @message.errors, status: :unprocessable_entity
+      render 'conversations/show', alert: 'Unable to send message'
     end
   end
 
+  # If you still need an index action for some reason:
+  # def index
+  #   # Your index action code
+  # end
+
   private
 
-  def set_user
-    @user = User.find(session[:user_id]) # Adjust to your session management
+  def set_conversation
+    @conversation = Conversation.find(params[:conversation_id])
   end
 
-  def set_sender
-    @sender = User.find(params[:user_id])
+  def authenticate_user
+    redirect_to login_path unless current_user
   end
 
   def message_params
-    params.require(:message).permit(:receiver_id, :body)
+    params.require(:message).permit(:body)
   end
 
   def self.notify_receiver(message)
-    receiver = User.find(message.receiver_id)
+    receiver = User.find(message.conversation.receiver_id)
     UserMailer.message_notification(receiver, message).deliver_later
   end
 end
