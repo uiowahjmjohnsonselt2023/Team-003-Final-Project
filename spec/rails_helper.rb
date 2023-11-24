@@ -1,4 +1,5 @@
 require 'factory_bot_rails'
+require 'faker'
 
 require 'simplecov'
 SimpleCov.start 'rails' do
@@ -12,33 +13,10 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
-# Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rspec'
 
-# Add additional requires below this line. Rails is not loaded until this point!
-
-# Configure DatabaseCleaner
-RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-end
-
-# Checks for pending migrations and applies them before tests are run.
-# If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -46,25 +24,48 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+# configure DatabaseCleaner
 RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.use_transactional_fixtures = false
+  config.include ActionView::Helpers::NumberHelper
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do |example|
+    strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.strategy = strategy
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:each) do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(create(:user))
+  end
 
   config.infer_spec_type_from_file_location!
 
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  # configure Capybara for integration testing
+  Capybara.default_driver = :selenium_chrome_headless # Use headless by default for speed
+  Capybara.javascript_driver = :selenium_chrome_headless
+  Capybara.default_max_wait_time = 5
+end
 
-  # Configure Capybara for integration testing
-  Capybara.default_driver = :selenium_chrome       # if you need a JavaScript driver
-  Capybara.javascript_driver = :selenium_chrome
-  Capybara.default_max_wait_time = 5               # seconds to wait
+# configure Selenium to use Chrome in headless mode
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1920,1080')
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end

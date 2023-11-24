@@ -1,61 +1,71 @@
-<div class="product-detail-container">
-  <div class="product-detail-header">
-    <h1><%= @product.title %></h1>
-    <p>Listed by <%= @product.user.username %> | Condition: <%= @product.condition %></p>
-    <p>Ships from: <%= @product.location %></p>
-  </div>
-
-  <div class="product-detail-image">
-    <%= image_tag(@product.image) if @product.image.attached? %>
-  </div>
-
-  <div class="product-detail-info">
-    <div class="product-detail-price">
-      <p><%= number_to_currency(@product.price) %></p>
-    </div>
-    <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
-  </div>
-
-  <div class="product-detail-description">
-    <p><%= @product.description %></p>
-  </div>
-
-  <div class="product-detail-interaction">
-    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
-  </div>
-
-  <!-- review form for submitting new reviews -->
-  <div class="review-form">
-    <h3>Write a Review</h3>
-    <%= form_for @review do |f| %>
-    <%= f.label :rating %>
-    <%= f.number_field :rating, in: 1..5 %>
-  
-    <%= f.label :comment %>
-    <%= f.text_area :comment %>
-  
-    <%= f.hidden_field :reviewer_id, value: current_user.id %>
-    <%= f.hidden_field :reviewee_id, value: @user.id %>
-
-    <%= f.submit %>
-  <% end %>
-  </div>
-
-  <!-- existing reviews -->
-  <div class="product-detail-reviews">
-    <h3>Reviews</h3>
-    <% @product.reviews.each do |review| %>
-      <div class="review">
-        <strong>Rating:</strong> <%= review.rating %><br>
-        <strong>Review:</strong> <%= review.content %><br>
-        <strong>Written by:</strong> <%= review.user&.username || "Unknown" %>
-
-        <!-- Add a delete button for the review if the current user is the author -->
-        <% if current_user == review.user %>
-          <%= button_to 'Delete Review', product_review_path(@product, review), method: :delete, class: 'delete-review-button', data: { confirm: 'Are you sure you want to delete this review?' } %>
+<div class="page-product-detail">
+  <div class="product-detail-container">
+    <div class="product-detail-header">
+      <h1><%= @product.title %></h1>
+      <div class="seller-info">
+        Listed by <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
+        <% if @product.user.verified %>
+          <span class="verified">Verified Seller</span>
         <% end %>
+        | Condition: <%= @product.condition %>
       </div>
-    <% end %>
+      <p class="product-location">Ships from: <%= @product.location %></p>
+      <% if @seller_rating %>
+        <p class="product-rating">Average Rating: <%= @seller_rating %> / 5</p>
+      <% else %>
+        <p class="product-rating">Product Rating: No ratings yet.</p>
+      <% end %>
+    </div>
+
+    <div class="product-detail-image">
+      <%= image_tag(@product.image) if @product.image.attached? %>
+    </div>
+
+    <div class="product-detail-info">
+      <p class="product-detail-price"><%= number_to_currency(@product.price) %></p>
+      <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
+      <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
+      <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
+    </div>
+
+    <div class="product-detail-description">
+      <p><%= @product.description %></p>
+    </div>
+
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <%= form_with model: [@product, @review || Review.new], local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :rating, 'Rating (1 to 5)' %>
+          <%= f.number_field :rating, in: 1..5, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :comment, 'Comment' %>
+          <%= f.text_area :comment, class: 'form-control' %>
+        </div>
+        <% if current_user %>
+          <%= f.submit "Submit Review", class: 'submit-review-button' %>
+        <% else %>
+          <p>You must be logged in to submit a review.</p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="product-detail-reviews">
+      <h2>Reviews</h2>
+      <% @reviews.each do |review| %>
+        <div class="review">
+          <p><strong>Rating:</strong> <%= review.rating %></p>
+          <p><strong>Review:</strong> <%= review.comment %></p>
+          <p><strong>Written by:</strong> <%= review.reviewer.name %></p>
+          <% if current_user == review.reviewer && review.persisted? %>
+            <%= button_to 'Delete Review', product_review_path(@product, review), method: :delete, class: 'delete-review-button', data: { confirm: 'Are you sure you want to delete this review?' } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
 

@@ -1,0 +1,65 @@
+
+/* customize sign-up button */
+.link-signup {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.link-signup:hover {
+    text-decoration: underline;
+}
+
+/* customize sign-up container */
+.signup-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 80px;
+    background: #dadae0;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* align input fields on sign-up page */
+.signup-container .field {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* sign-up container label */
+.signup-container .label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* sign-up container input fields */
+.signup-container .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+/* sign-up button in the sign-up page */
+.signup-container .button-signup {
+    padding: 12px 25px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* align sign-up button */
+.signup-container .actions {
+    text-align: center;
+}

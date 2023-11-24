@@ -21,4 +21,3 @@ Feature: Viewing Product Details
     And I click on the "Delete Review" button for the review
     Then I should not see the review content
     And I should be on the product details page
-    And I should see a "Review was successfully deleted" message

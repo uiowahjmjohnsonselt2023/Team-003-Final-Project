@@ -1,0 +1,35 @@
+<div class="page-conversation">
+  <% other_user = @conversation.other_party(current_user) %>
+  <% product = @conversation.product %>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>Chat with <%= other_user.username %></h1>
+      <h2>About "<%= product.title %>"</h2>
+      <%= link_to 'View Product', product_path(product), class: "product-link" %>
+      <p>Price: <%= number_to_currency(product.price) %></p>
+      <% if product.image.attached? %>
+        <%= image_tag product.image.variant(resize: '100x100^', crop: '100x100+0+0', gravity: 'center'), class: "product-thumbnail", alt: product.title %>
+      <% end %>
+    </div>
+
+    <div class="messages">
+      <% @messages.each do |message| %>
+        <div class="message <%= 'message-from-me' if message.user == current_user %>">
+          <strong><%= message.user.username %>:</strong>
+          <p><%= message.body %></p>
+          <small>Sent <%= time_ago_in_words(message.created_at) %> ago</small>
+        </div>
+      <% end %>
+    </div>
+
+    <%= form_with(model: [ @conversation, Message.new ], local: true) do |form| %>
+      <div class="field">
+        <%= form.text_area :body, placeholder: "Type your message here...", required: true, class: "text_area" %>
+        <%= form.submit "Send", class: "send-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

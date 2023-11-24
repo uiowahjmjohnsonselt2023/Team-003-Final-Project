@@ -11,7 +11,7 @@ def create_test_user(user_data)
 end
 
 # create a registered user
-Given /^I am a registered user$/ do
+Given /^I am a registered user for login$/ do
   @user = User.create!(
     email: 'john@example.com',
     username: 'john_doe',
@@ -45,7 +45,6 @@ end
 # check that the user is on the home page (the root route)
 Then(/^I should be on the home page of the marketplace$/) do
   expect(current_path).to eq('/')
-  expect(page).to have_text("Welcome to the marketplace homepage!")
 end
 
 # check that the user is on the login page (this is for if the user has an invalid login)

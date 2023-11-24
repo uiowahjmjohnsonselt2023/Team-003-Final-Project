@@ -2,132 +2,130 @@
  *
  *= require_tree .
  *= require_self
- *= require products
- *= require cart
  */
 
-/* Customize the Login Page */
 body {
-    background-color: #ffdfa3;
+    background-color: #858ea1;
 }
 
-/* login container form */
-.login-container {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 80px;
-    background: #ffecd3;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* forgot your password link */
+.field a {
+    float: right;
+    margin-top: -50px;
+    font-size: 15px;
 }
 
-/* login header title */
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #000000;
-    font-size: 25px;
+.horizontal-nav li {
+    margin: 0 10px;
 }
 
-/* login form input fields */
-.input-field {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-}
-
-/* customize login button */
-.button-login {
-    padding: 12px 25px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.actions {
+#nav-search-form {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100px;
+    gap: 10px;
 }
 
-.button-login:hover {
-    background-color: #333;
-}
-
-/* customize sign-up button */
-.link-signup {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    margin-top: 30px;
-}
-
-.link-signup:hover {
-    text-decoration: underline;
-}
-
-/* customize sign-up container */
-.signup-container {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 80px;
-    background: #ffecd3;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* align input fields on sign-up page */
-.signup-container .field {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-/* sign-up container label */
-.signup-container .label {
-    display: block;
+.nav-search-field {
+    padding: 5px 10px;
     font-size: 16px;
-    margin-bottom: 5px;
-}
-
-/* sign-up container input fields */
-.signup-container .input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d3d3d3;
+    border: 1px solid #ced4da;
     border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+}
+
+.nav-search-button {
+    padding: 5px 15px;
+    background-color: #3b4777;
     font-size: 14px;
-}
-
-/* sign-up button in the sign-up page */
-.signup-container .button-signup {
-    padding: 12px 25px;
-    background-color: #000000;
     color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 4px;
     cursor: pointer;
+    text-transform: uppercase;
     transition: background-color 0.3s ease;
+    flex-shrink: 0;
 }
 
-/* align sign-up button */
-.signup-container .actions {
-    text-align: center;
+/* navigation header */
+header {
+    background-color: #f8f8f8;
+    color: #fff;
+    padding: 5px 0;
 }
+
+
+nav ul.horizontal-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul.horizontal-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.horizontal-nav li a {
+    text-decoration: none;
+    color: #293441;
+}
+
+.nav-search-button:hover {
+    background-color: #384b64;
+}
+
+/* cart_icon.png */
+.cart-nav-icon {
+    height: 30px;
+    width: 37px;
+}
+
+/* profile_icon.png */
+.profile-nav-icon {
+    height: 30px;
+    width: 32px;
+}
+
+/* favorites_icon.png */
+.favorite-nav-icon {
+    height: 36px;
+    width: 40px;
+}
+
+/* message_icon.png */
+.message-nav-icon {
+    height: 36px;
+    width: 40px;
+}
+
+.cart-nav-icon,
+.favorite-nav-icon,
+.profile-nav-icon,
+.message-nav-icon {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* navigation icon labels */
+.nav-label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cart-nav-icon:hover + .nav-label,
+.favorite-nav-icon:hover + .nav-label,
+.profile-nav-icon:hover + .nav-label {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 /* flash message container */
 .flash {
@@ -145,14 +143,31 @@ body {
 
 /* alert (error) flash message */
 .flash.alert {
-    background-color: #d9534f;
+    background-color: #cc4b47;
     color: #ffffff;
 }
 
-/* forgot your password link */
-.field a {
-    float: right;
-    margin-top: -19px;
-    font-size: 16px;
+/* notification icon */
+.notification-icon {
+    width: 24px;
+    height: auto;
+    vertical-align: middle;
 }
+
+.notification-badge {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 0.25em 0.5em;
+    font-size: 0.75em;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    display: inline-block;
+}
+
+.notification-popup {
+    position: relative;
+}
+
 

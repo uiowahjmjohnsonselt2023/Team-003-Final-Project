@@ -1,59 +1,60 @@
 class PasswordResetsController < ApplicationController
-  def new
-  end
 
+  # create action initiates the password reset process for a user
   def create
-    username = params.dig(:password_reset, :username)
-    email = params.dig(:password_reset, :email)
-
-    if username.blank? || email.blank?
-      flash.now[:alert] = "Username and email are required fields."
-      render :new
-      return
+    # check if the email parameter is present, if not, set a flash message and render the 'new' password reset view
+    if params[:password_reset].blank? || params[:password_reset][:email].blank?
+      flash.now[:alert] = "Email can't be blank"
+      render 'new' and return
     end
 
-    @user = User.find_by(username: username, email: email)
+    # find the user by the provided email address, case-insensitively
+    @user = User.find_by(email: params[:password_reset][:email].downcase)
 
+    # if the user exists, create a reset digest, send a password reset email, set a flash message and redirect to the home page
     if @user
-      # Generate a password reset token and send it to the user via email
-      reset_token = SecureRandom.urlsafe_base64
-      @user.update(reset_token: reset_token)
-      # Send the reset token to the user via email (you need to implement this)
-      flash[:notice] = "Password reset instructions have been sent to your email."
-      redirect_to root_path
+      @user.create_reset_digest
+      @user.send_password_reset_email
+      flash[:info] = "Email sent with password reset instructions"
+      redirect_to root_url
     else
-      flash.now[:alert] = "Invalid username or email."
-      render :new
+      # if the user does not exist, set a flash message indicating the email was not found and render the 'new' view
+      flash.now[:alert] = "Email address not found"
+      render 'new'
     end
   end
 
+  # edit action is called when the user clicks the link in the password reset email
   def edit
-    @user = User.find_by(reset_token: params[:id])
-
-    if @user.nil?
-      flash[:alert] = "Password reset link has expired or is invalid. Please request a new one."
-      redirect_to new_password_reset_path
-    end
+    # finds the user by the email provided in the link parameters
+    @user = User.find_by(email: params[:email])
   end
 
-  def update
-    @user = User.find_by(reset_token: params[:id])
 
-    if @user.nil?
-      flash[:alert] = "Password reset link has expired or is invalid. Please request a new one."
-      redirect_to new_password_reset_path
+  # update action resets the user's password
+  def update
+    # finds the user by the email provided in the link parameters
+    @user = User.find_by(email: params[:email])
+
+    # check if the password reset link has expired (2 hours)
+    if @user.reset_sent_at < 2.hours.ago
+      flash[:danger] = "Password reset has expired."
+      redirect_to new_password_reset_url
+
     elsif @user.update(user_params)
-      # Clear the password reset token
-      @user.update(reset_token: nil)
-      flash[:notice] = "Password successfully reset."
-      redirect_to root_path
+      # if the user successfully updates their password, set a flash success message and redirect to the login page
+      flash[:success] = "Password has been reset."
+      redirect_to login_path
+
     else
-      render :edit
+      # if the update fails (e.g., password confirmation doesn't match), render the edit view again
+      render 'edit'
     end
   end
 
   private
 
+  # method that ensures that only the permitted attributes (password and password confirmation) are passed to the model for update
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
   end
