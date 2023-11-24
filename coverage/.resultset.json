@@ -4,6 +4,9 @@
       "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          1,
+          0,
+          null,
           null
         ]
       },
@@ -264,6 +267,17 @@
           0,
           0,
           0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
           0
         ],
         "branches": {
@@ -285,6 +299,11 @@
           0,
           0,
           0,
+          null,
+          0,
+          0,
+          0,
+          null,
           null,
           0,
           0,
@@ -379,6 +398,8 @@
           null,
           0,
           null,
+          0,
+          null,
           null,
           0,
           0,
@@ -448,6 +469,9 @@
           0,
           0,
           0,
+          0,
+          null,
+          0,
           null,
           0,
           0,
@@ -457,6 +481,30 @@
           0,
           0,
           null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
           0,
           null,
           0,
@@ -604,6 +652,14 @@
           0,
           0,
           0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/controllers/notifications_controller.rb": {
+        "lines": [
           0,
           0
         ],
@@ -1365,8 +1421,27 @@
         ],
         "branches": {
         }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/helpers/notifications_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/knguyen/SELT_REPOS/Team-003-Final-Project/app/channels/notification_channel.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1700693178
+    "timestamp": 1700856744
   }
 }

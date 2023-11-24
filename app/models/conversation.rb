@@ -7,4 +7,9 @@ class Conversation < ApplicationRecord
   def other_party(user)
     user == self.sender ? self.recipient : self.sender
   end
+
+  # Returns the recipient of the conversation based on the sender
+  def recipient_id(sender)
+    sender == self.sender ? self.recipient_id : self.sender_id
+  end
 end

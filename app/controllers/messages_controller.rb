@@ -3,22 +3,39 @@ class MessagesController < ApplicationController
   before_action :authenticate_user
 
   def create
+    @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.build(message_params)
     @message.user = current_user
 
+    recipient = @conversation.other_party(current_user)
+
     if @message.save
-      self.class.notify_receiver(@message)
-      Notification.create(
-        recipient: @message.receiver,
+      notification = Notification.new(
+        recipient: recipient,
         actor: current_user,
         action: 'sent you a message',
         notifiable: @message
       )
-      redirect_to conversation_path(@conversation), notice: 'Message sent successfully'
+
+      if notification.save
+        # broadcast the notification
+        NotificationChannel.broadcast_to(
+          recipient,
+          {
+            title: 'New Message',
+            content: "#{current_user.username} sent you a message"
+          }
+        )
+        redirect_to conversation_path(@conversation), notice: 'Message sent successfully'
+      else
+        render 'conversations/show', alert: 'Unable to send message'
+      end
     else
       render 'conversations/show', alert: 'Unable to send message'
     end
   end
+
+
 
   private
 
@@ -32,6 +49,10 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body)
+  end
+
+  def notification_action(notification)
+    "#{notification.actor.username} #{notification.action}"
   end
 
   def self.notify_receiver(message)

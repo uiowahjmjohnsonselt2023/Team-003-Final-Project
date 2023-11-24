@@ -48,6 +48,9 @@
           <span class="nav-label">Messages</span>
         <% end %>
       </li>
+      <% current_user.notifications.unread.each do |notification| %>
+        <li><%= link_to notification_action(notification), notification_path(notification) %></li>
+      <% end %>
       <li>
         <%= link_to profile_path do %>
           <%= image_tag("profile_icon.png", alt: "Profile", class: "profile-nav-icon") %>

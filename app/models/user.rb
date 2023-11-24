@@ -15,6 +15,8 @@ class User < ApplicationRecord
   # association for user profile picture
   has_one_attached :profile_picture
 
+  has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
+
   # associations for cart and products
   has_one :cart
   has_many :cart_items, through: :cart

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # root route for the marketplace home page
   root 'home#index'
 
+  resources :notifications, only: [:show]
+
   # routes for session management (login and logout)
   get 'login', to: 'sessions#new', as: :login
   post 'login', to: 'sessions#create'
