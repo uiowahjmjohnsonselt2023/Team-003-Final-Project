@@ -45,5 +45,20 @@ RSpec.describe ProductsController, type: :controller do
         expect(response).to render_template('products/new')
       end
     end
+
+    context 'with no category selected' do
+      it 'does not create a product and re-renders the new page with an alert' do
+        invalid_product_params = { name: 'Product', description: 'This is a product.', category_id: nil }
+
+        expect {
+          post :create, params: { product: invalid_product_params }
+        }.not_to change(Product, :count)
+
+        expect(response).to have_http_status(:ok)
+        expect(response).to render_template('products/new')
+      end
+    end
+
+
   end
 end
