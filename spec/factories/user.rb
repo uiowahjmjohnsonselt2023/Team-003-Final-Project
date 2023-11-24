@@ -7,5 +7,8 @@ FactoryBot.define do
     password_confirmation { 'password' }
     bio { Faker::Lorem.sentence }
     profile_picture { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/fixtures/profile_picture.jpg'), 'profile_picture.jpg') }
+
+    verification_token { SecureRandom.urlsafe_base64 }
+    verified { false }
   end
 end

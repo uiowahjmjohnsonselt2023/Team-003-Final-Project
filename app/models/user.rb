@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6 }
   has_one_attached :profile_picture
-  attribute :verification_status, :boolean, default: false
+  attribute :verified, :boolean, default: false
   attribute :verification_token, :string
 
   has_one :cart

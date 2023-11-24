@@ -427,46 +427,21 @@
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/verification_controller.rb": {
         "lines": [
-          null,
+          1,
+          1,
           1,
           null,
           1,
-          null,
-          null,
-          null,
           1,
-          8,
-          null,
-          null,
-          8,
-          4,
-          4,
-          null,
-          null,
-          null,
-          4,
-          8,
-          4,
-          null,
-          null,
-          null,
-          null,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
+          1,
+          1,
+          1,
           1,
           null,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
+          0,
+          0,
           null,
           null,
           null
@@ -486,74 +461,6 @@
           0,
           null,
           null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/reviews_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          2,
-          null,
-          2,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/review.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
           null
         ]
       },
@@ -583,6 +490,8 @@
           1,
           1,
           1,
+          1,
+          1,
           null,
           1,
           1,
@@ -592,10 +501,8 @@
           null
         ]
       },
-      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/product.rb": {
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/application_record.rb": {
         "lines": [
-          1,
-          1,
           1,
           1,
           null
@@ -848,6 +755,10 @@
           0,
           0,
           0,
+          null,
+          0,
+          null,
+          0,
           0,
           0,
           0,
@@ -865,6 +776,104 @@
         "branches": {
         }
       },
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/reviews_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/sessions_controller.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
       "/mnt/c/Users/wjmit/Team-003-Final-Project/app/controllers/welcome_controller.rb": {
         "lines": [
           0,
@@ -873,6 +882,22 @@
           null,
           0,
           0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/mailers/user_verification_mailer.rb": {
+        "lines": [
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
         ],
         "branches": {
         }
@@ -925,8 +950,33 @@
         ],
         "branches": {
         }
+      },
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/product.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/Users/wjmit/Team-003-Final-Project/app/models/review.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1699670546
+    "timestamp": 1700870035
   }
 }

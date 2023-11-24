@@ -6,6 +6,7 @@ RSpec.describe SessionsController, type: :controller do
     context 'with valid credentials' do
       let(:user) { create(:user, username: 'johndoe', password: 'password') }
 
+      
       before do
         post :create, params: { username: user.username, password: 'password' }
       end
@@ -22,7 +23,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(flash[:notice]).to eq('Logged in successfully.')
       end
     end
-
+    
     context 'with invalid credentials' do
       before do
         post :create, params: { username: 'wrong', password: 'user' }
@@ -41,7 +42,6 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end
-
   describe 'DELETE #destroy' do
     before do
       session[:user_id] = 1
