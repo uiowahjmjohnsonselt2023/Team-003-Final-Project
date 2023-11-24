@@ -8,7 +8,7 @@
   <%= form.select :category, options_for_select(['Electronics', 'Books', 'Clothing', 'Toys', 'Furniture'], selected: params[:category]), include_blank: true, class: 'filter-field' %>
 
   <%= form.label :condition, 'Condition', class: "filter-label" %>
-  <%= form.select :condition, options_for_select(['New', 'Used'], selected: params[:condition]), include_blank: true, class: 'filter-field' %>
+  <%= form.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"], selected: params[:condition]), include_blank: true, class: 'filter-field' %>
 
   <%= form.label :price_range, 'Price Range', class: "filter-label" %>
   <%= form.select :price_range, options_for_select(['$0 - $50', '$51 - $100', '$101+'], selected: params[:price_range]), include_blank: true, class: 'filter-field' %>

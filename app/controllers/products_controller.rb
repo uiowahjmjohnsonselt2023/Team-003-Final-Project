@@ -1,8 +1,40 @@
 class ProductsController < ApplicationController
+  before_action :require_login, only: [:new, :create]
+  def product_params
+    params.require(:product).permit(:title,
+                                    :description,
+                                    :price,
+                                    :condition,
+                                    :location,
+                                    :category_id,
+                                    )
+  end
 
   # display a list of all products
   def index
     @products = Product.all
+  end
+
+  def new
+    @product = current_user.products.new
+  end
+
+  def create
+    @product = current_user.products.new(product_params)
+    if params[:product][:category_id] == nil || params[:product][:category_id] == ""
+      flash[:error] = 'Failed to add product'
+      render :new
+      return
+    end
+    @product[:category] = Category.find(params[:product][:category_id]).name
+    @product.save!
+    if @product.save
+      flash[:notice] = 'Product added!'
+      redirect_to product_path(@product)
+    else
+      flash[:error] = 'Failed to add product'
+      render :new
+    end
   end
 
   # show details of a single product and its reviews
