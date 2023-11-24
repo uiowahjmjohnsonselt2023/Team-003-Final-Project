@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_one :tracking, dependent: :destroy
+  has_one :feedback
 
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items

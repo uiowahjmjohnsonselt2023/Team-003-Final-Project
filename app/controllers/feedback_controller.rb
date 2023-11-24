@@ -8,9 +8,16 @@ class FeedbackController < ApplicationController
 
   # POST /orders/:order_id/feedback
   def create
-    @feedback = Feedback.new(feedback_params)
-    @feedback.order = @order
+    if @order.feedback.present?
+      @feedback = @order.feedback
+      @feedback.assign_attributes(feedback_params)
+    else
+      @feedback = @order.build_feedback(feedback_params)
+    end
+
     if @feedback.save
+      flash[:notice] = "Feedback successfully submitted!"
+      redirect_to order_path(@order)
     else
       render :new
     end
@@ -21,9 +28,12 @@ class FeedbackController < ApplicationController
   def set_order
     @order = Order.find(params[:order_id])
   rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Order not found."
+    redirect_to root_path
   end
 
   def feedback_params
+    params.require(:feedback).permit(:rating, :comment)
   end
 end
 
