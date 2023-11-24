@@ -48,8 +48,10 @@
           <span class="nav-label">Messages</span>
         <% end %>
       </li>
-      <% current_user.notifications.unread.each do |notification| %>
-        <li><%= link_to notification_action(notification), notification_path(notification) %></li>
+      <% if current_user %>
+        <% current_user.notifications.unread.each do |notification| %>
+          <li><%= link_to notification_action(notification), notification_path(notification) %></li>
+        <% end %>
       <% end %>
       <li>
         <%= link_to profile_path do %>
