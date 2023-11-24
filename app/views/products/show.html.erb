@@ -16,7 +16,6 @@
         <p class="product-rating">Product Rating: No ratings yet.</p>
       <% end %>
     </div>
-
     <div class="product-detail-image">
       <%= image_tag(@product.image) if @product.image.attached? %>
     </div>
@@ -27,7 +26,13 @@
       <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
       <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
     </div>
-
+  <div class="product-detail-interaction">
+    <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "button favorite-button" %>
+    <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "button message-seller-button" %>
+  </div>
+  <div class="product-detail-description">
+    <p><%= @product.description %></p>
+  </div>
     <div class="product-detail-description">
       <p><%= @product.description %></p>
     </div>

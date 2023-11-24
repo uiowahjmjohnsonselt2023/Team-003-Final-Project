@@ -17,8 +17,6 @@ class OrdersController < ApplicationController
       return
     end
   end
-
-  # show details of an order
   def create
     @cart = current_user.cart
     @cart_items = @cart.cart_items if @cart.present?
@@ -37,9 +35,18 @@ class OrdersController < ApplicationController
         @order.order_items.create(product: product, quantity: cart_item.quantity)
       end
 
+      @tracking = @order.create_tracking(tracking_number: SecureRandom.uuid, status: :processing)
+
+      @tracking = @order.create_tracking(
+        tracking_number: SecureRandom.uuid,
+        status: :processing,
+        shipping_carrier: 'UPS'
+      )
+
       @cart.destroy
       session[:cart_id] = nil
       redirect_to order_path(@order), notice: "Your order has been placed."
+
     else
       flash.now[:alert] = @order.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity

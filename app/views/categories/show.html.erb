@@ -2,8 +2,7 @@
 <div class="category-products">
   <% @products.each do |product| %>
     <div class="product">
-      <!-- display product details and link to the product show page -->
-      <%= link_to product.title, product_path(product), class: "product-link" %>
+      <%= link_to product.title, search_products_path(category: @category.id), class: "product-link" %>
     </div>
   <% end %>
 </div>

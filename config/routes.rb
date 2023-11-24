@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'tracking/show'
+  get 'trackings/show'
   get 'feedback/new'
   get 'feedback/create'
   get 'search/index'
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:new, :create, :show] do
     resources :feedback, only: [:new, :create]
-    get '/trackings/:id', to: 'trackings#show', as: 'tracking'
+    resource :tracking, only: [:show]
   end
 
   # routes for categories

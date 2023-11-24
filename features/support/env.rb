@@ -10,6 +10,7 @@ require 'capybara/rails'
 require 'rack_session_access/capybara'
 
 World(FactoryBot::Syntax::Methods)
+World(ActionView::Helpers::NumberHelper)
 
 ActionController::Base.allow_rescue = false
 
