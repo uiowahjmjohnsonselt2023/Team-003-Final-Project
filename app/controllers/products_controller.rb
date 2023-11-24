@@ -21,11 +21,16 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
+    if params[:product][:category_id] == nil || params[:product][:category_id] == ""
+      flash[:error] = 'Failed to add product'
+      render :new
+      return
+    end
     @product[:category] = Category.find(params[:product][:category_id]).name
     @product.save!
     if @product.save
       flash[:notice] = 'Product added!'
-      redirect_to products_path
+      redirect_to product_path(@product)
     else
       flash[:error] = 'Failed to add product'
       render :new
