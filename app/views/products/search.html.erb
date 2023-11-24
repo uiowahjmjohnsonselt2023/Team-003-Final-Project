@@ -5,7 +5,7 @@
 
   <!-- filter fields -->
   <%= form.label :category, 'Category', class: "filter-label" %>
-  <%= form.select :category, options_for_select(['Electronics', 'Books', 'Clothing', 'Toys', 'Furniture'], selected: params[:category]), include_blank: true, class: 'filter-field' %>
+  <%= form.select :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: true, class: 'filter-field' %>
 
   <%= form.label :condition, 'Condition', class: "filter-label" %>
   <%= form.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"], selected: params[:condition]), include_blank: true, class: 'filter-field' %>

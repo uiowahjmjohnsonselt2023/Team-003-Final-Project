@@ -105,7 +105,7 @@ class ProductsController < ApplicationController
 
   # apply category, condition, and price range filters
   def apply_filters(category, condition, price_range)
-    @products = @products.where(category: category) if category.present?
+    @products = @products.where(category_id: category) if category.present?
     @products = @products.where(condition: condition) if condition.present?
     apply_price_range_filter(price_range) if price_range.present?
   end
