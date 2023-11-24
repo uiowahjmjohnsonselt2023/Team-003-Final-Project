@@ -29,7 +29,7 @@
         <% end %>
       </li>
       <li><a href="<%= categories_path %>">Categories</a></li>
-      <li><a href="<%= listings_path %>">Create Listing</a></li>
+      <li><a href="<%=new_product_path%>">Create Listing</a></li>
       <li>
         <%= link_to cart_path do %>
           <%= image_tag("cart_icon.png", alt: "Cart", class: "cart-nav-icon") %>
