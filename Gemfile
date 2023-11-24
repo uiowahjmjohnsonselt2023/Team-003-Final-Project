@@ -72,6 +72,16 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
+  gem 'simplecov', require: false
+  gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'rack_session_access'
+end
+group :test, :development do
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_bot_rails'

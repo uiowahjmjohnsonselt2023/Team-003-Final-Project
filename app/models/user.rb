@@ -24,5 +24,10 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
   attribute :verification_status, :boolean, default: false
   attribute :verification_token, :string
+
+  has_one :cart
+  has_many :products
+  has_many :reviews, dependent: :destroy
+
 end
 
