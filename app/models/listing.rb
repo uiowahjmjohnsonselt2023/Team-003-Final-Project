@@ -8,6 +8,7 @@ class Listing < ActiveRecord::Base
     with: %r{\.(gif|jpg|png)\Z}i,
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
+  has_one_attached :listing_picture
   def self.search(search)
     if search
       where('title LIKE ?', "%#{search}%")

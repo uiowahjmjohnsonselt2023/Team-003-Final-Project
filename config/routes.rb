@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # routes for listings
   resources :listings
+  get 'Add_Listing', to: 'listings#new'
 
   # routes for product details
   resources :products do
