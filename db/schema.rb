@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_25_022307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -108,17 +108,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.text "body"
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "read", default: false
     t.bigint "conversation_id"
     t.integer "receiver_id"
     t.bigint "user_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -180,21 +181,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
     t.boolean "featured", default: false
     t.float "average_rating", default: 0.0
     t.string "category"
-    t.bigint "category_id", null: false
-    t.decimal "buy_now_price", precision: 10, scale: 2
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "product_id", null: false
     t.integer "rating"
+    t.bigint "reviewer_id", null: false
+    t.bigint "reviewee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comment"
-    t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.integer "product_id"
     t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
@@ -207,11 +206,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
   create_table "trackings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id", null: false
     t.integer "status"
     t.string "tracking_number"
     t.string "shipping_carrier"
-    t.index ["order_id"], name: "index_trackings_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -222,10 +219,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "verified"
+    t.string "verification_token"
     t.string "reset_token"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-    t.boolean "verified"
     t.boolean "admin", default: false, null: false
   end
 
@@ -243,6 +241,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "recipient_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "notifications", "users", column: "actor_id"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "order_items", "orders"
@@ -254,5 +254,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_221612) do
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
-  add_foreign_key "trackings", "orders"
 end
