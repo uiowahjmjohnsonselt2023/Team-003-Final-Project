@@ -16,10 +16,11 @@
 
 <body class="profile-body">
 <div class="active-listings">
-  <h1><%= link_to "Active Listings", listings_path(user_id: @user.id) %></h1>
+  <h1><%= link_to "Active Listings", listings_path %></h1>
+
   <% @user.listings.each do |listing| %>
     <div class="listing">
-      <h3><%= link_to listing.title, listing_path(listing) %></h3>
+      <h3><%= link_to listing.title, product_path(listing.product) %></h3>
       <p><%= listing.description %></p>
       <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
       <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

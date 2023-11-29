@@ -1,26 +1,10 @@
-<h1>Listings</h1>
+<h1>All Active Listings</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Condition</th>
-    <th>Description</th>
-    <th colspan="4"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @listings.each do |listing| %>
-    <tr>
-      <td><%=link_to listing.title, listing %></td>
-      <td><%= number_to_currency(listing.price) %></td>
-      <td><%= listing.condition %></td>
-      <td><%= listing.description %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-
+<% @listings.each do |listing| %>
+  <div class="listing">
+    <h3><%= link_to listing.title, listing_path(listing) %></h3>
+    <p><%= listing.description %></p>
+    <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
+    <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+<% end %>
