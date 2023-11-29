@@ -1,10 +1,42 @@
-body {
-    font-family: arial, sans-serif;
-}
 
 .user-information-box {
-    border: 5px solid maroon;
     padding: 15px;
     width: 90%;
     margin: auto;
+}
+
+.user-details {
+    float: left;
+    width: fit-content;
+}
+
+.profile-picture {
+    float: right;
+}
+
+.profile-picture img {
+    height: 128px;
+    width: 128px;
+}
+
+/* Clear float */
+.user-information-box::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.profile-body {
+    margin-top: 10px;
+}
+
+.active-listings {
+    float: left;
+    width: 70%;
+    border-right: 5px solid maroon;
+}
+
+.user-reviews {
+    float: right;
+    width: 29%;
 }
