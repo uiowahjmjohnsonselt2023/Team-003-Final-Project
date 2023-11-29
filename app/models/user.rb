@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_many :products
   has_many :orders
 
+  # associations for listings
+  has_many :listings
+
   # associations for a user's favorites
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
