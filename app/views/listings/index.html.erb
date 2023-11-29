@@ -1,10 +1,14 @@
 <h1>All Active Listings</h1>
 
-<% @listings.each do |listing| %>
-  <div class="listing">
-    <h3><%= link_to listing.title, listing_path(listing) %></h3>
-    <p><%= listing.description %></p>
-    <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
-    <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-  </div>
+<% if @listings.any? %>
+  <% @listings.each do |listing| %>
+    <div class="listing">
+      <h3><%= link_to listing.title, listing_path(listing) %></h3>
+      <p><%= listing.description %></p>
+      <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
+      <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No listings found.</p>
 <% end %>

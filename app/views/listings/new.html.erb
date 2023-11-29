@@ -1,24 +1,24 @@
 <h1>Create New Listing</h1>
 
 <%= form_with model: @listing, url: listings_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id %>
   <div>
-  Title  <%= f.text_field :title, required: true %>
+    Title  <%= f.text_field :title, required: true %>
   </div>
   <div>
-  Description  <%= f.text_area :description, required: true %>
+    Description  <%= f.text_area :description, required: true %>
   </div>
   <div>
-  Price  <%= f.text_field :price, required: true %>
+    Price  <%= f.text_field :price, required: true %>
   </div>
   <div>
-  Condition <%= f.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"]), required: true%>
+    Condition <%= f.select :condition, options_for_select(["New", "Like New", "Good", "Fair", "Poor"]), required: true %>
   </div>
   <div>
-  Quantity  <%= f.text_field :quantity, required: true %>
+    Quantity  <%= f.text_field :quantity, required: true %>
   </div>
   <div>
-  Upload Images  <%= f.text_field :images%>
+    Upload Images  <%= f.text_field :images %>
   </div>
   <%= f.submit %>
-
 <% end %>

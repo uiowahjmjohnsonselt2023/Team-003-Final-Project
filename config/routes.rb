@@ -34,11 +34,13 @@ Rails.application.routes.draw do
       post :write_review
       post :add_to_favorites
     end
+    resources :listings
     resources :reviews, only: [:new, :create, :destroy]
     collection do
       get 'search'
     end
   end
+
   resources :listings
   resources :reviews, only: [:new, :create]
 
