@@ -1,5 +1,23 @@
-<% if @user.verified %>
-  <p>User is Verified</p>
-<% else %>
-  <p>User is Not Verified</p>
-<% end %>
+
+<div class="user-profile">
+  <div class="user-information">
+    <% if @user && @user.profile_picture.attached? %>
+      <div class="user-image">
+        <%= image_tag(@user.profile_picture, alt: "Profile Image", class: "profile-picture") %>
+      </div>
+    <% end %>
+    <div class="user-details">
+      <h1><%= @user.name %></h1>
+      <p><strong>Username:</strong> <%= @user.username %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+
+  <div class="user-actions">
+    <% unless @user == current_user %>
+      <%= button_to 'Message Seller', message_seller_user_path(seller_id: @user.id), method: :post, class: "message-seller-button" %>
+    <% end %>
+    <%= link_to 'Active Listings', user_listings_path(@user), class: "button listings-button" %>
+  </div>
+</div>

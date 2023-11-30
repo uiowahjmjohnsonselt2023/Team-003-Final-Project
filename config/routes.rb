@@ -12,22 +12,22 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  # routes for profile and user management
-  get 'profile', to: 'home#profile', as: :profile
-  resources :users do
+  # route for the user's profile --> creates profile_path
+  resource :profile, only: [:show], controller: 'users'
+
+  # user routes
+  resources :users, only: [:show] do
+    # nested routes for user-specific actions
     resources :messages, only: [:create]
-    member do
-      patch :verify
-      patch :unverify
-      get :listings, to: 'users#listings', as: 'user_listings'
-    end
-    collection do
-      get :admin
-    end
+    resources :listings, only: [:index]
   end
+
+  # route for messaging a seller from their profile
+  post 'message_seller/:user_id', to: 'conversations#create_for_user', as: :message_seller_user
 
   # routes for products, reviews, and listings
   resources :products do
+    # actions related to products
     member do
       post :add_to_cart
       post :message_seller
@@ -36,11 +36,10 @@ Rails.application.routes.draw do
     end
     resources :listings
     resources :reviews, only: [:new, :create, :destroy]
-    collection do
-      get 'search'
-    end
+    get 'search', on: :collection
   end
 
+  # listings and reviews routes
   resources :listings
   resources :reviews, only: [:new, :create]
 
@@ -77,4 +76,5 @@ Rails.application.routes.draw do
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 end
+
 

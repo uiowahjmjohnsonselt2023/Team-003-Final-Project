@@ -3,7 +3,14 @@ require 'rails_helper'
 RSpec.describe 'User accessing listings', type: :feature do
   let(:user) { create(:user) }
   let!(:product) { create(:product, user: user) }
-  let!(:listing) { create(:listing, user: user, product: product) }
+
+  let!(:listing) do
+    created_listing = create(:listing, user: user, product: product)
+    unless created_listing.persisted?
+      puts "Failed to create listing: #{created_listing.errors.full_messages.join(", ")}"
+    end
+    created_listing
+  end
 
   before do
     # Assuming you have a login method to handle user login

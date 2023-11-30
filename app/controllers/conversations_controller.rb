@@ -12,6 +12,10 @@ class ConversationsController < ApplicationController
     @other_user = @conversation.other_party(current_user)
   end
 
+  def create_for_user
+    seller = User.find(params[:user_id])
+  end
+
   def destroy
     @conversation = Conversation.find(params[:id])
     @conversation.destroy

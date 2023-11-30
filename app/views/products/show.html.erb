@@ -3,7 +3,7 @@
     <div class="product-detail-header">
       <h1><%= @product.title %></h1>
       <div class="seller-info">
-        Listed by <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
+        Listed by <%= link_to @product.user.name, user_path(@product.user), class: "seller-profile-link" %>
         <% if @product.user.verified %>
           <span class="verified">Verified Seller</span>
         <% end %>
