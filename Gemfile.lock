@@ -193,6 +193,8 @@ GEM
     msgpack (1.7.2-java)
     multi_test (1.1.0)
     mutex_m (0.2.0)
+    net-http (0.4.0)
+      uri
     net-imap (0.4.5)
       date
       net-protocol
@@ -335,6 +337,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
+    uri (0.13.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -377,6 +380,9 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  net-http
+  net-imap
+  net-smtp
   pg (~> 1.1)
   puma (>= 5.0)
   rack_session_access
@@ -390,6 +396,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  uri (= 0.13.0)
   web-console
   webdrivers
 

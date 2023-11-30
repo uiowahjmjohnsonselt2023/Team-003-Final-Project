@@ -14,6 +14,10 @@ gem "jbuilder"
 gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem 'actionmailer'
+gem "net-http"
+gem "net-smtp"
+gem "net-imap"
+gem "uri", "0.13.0"
 
 
 group :development, :test do
