@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
   # show details of a single product and its reviews
   def show
     @product = Product.find(params[:id])
+    @listings = @product.listings
     @reviews = @product.reviews
     # initialize an empty review object for the form
     @review = Review.new

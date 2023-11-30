@@ -63,16 +63,6 @@ class User < ApplicationRecord
   def average_rating
     received_reviews.average(:rating).to_f
   end
-
-  # verify a user
-  def verify!
-    update(verified: true)
-  end
-
-  # unverify a user
-  def unverify!
-    update(verified: false)
-  end
 end
 
 

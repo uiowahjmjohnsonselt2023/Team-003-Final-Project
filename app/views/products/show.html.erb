@@ -32,6 +32,18 @@
       <p><%= @product.description %></p>
     </div>
 
+    <!-- Associated Listings -->
+    <div class="product-listings">
+      <h2>Related Listings</h2>
+      <% @product.listings.each do |listing| %>
+        <div class="listing">
+          <h3><%= listing.title %></h3>
+          <p><%= listing.description %></p>
+          <!-- Add more details about the listing as needed -->
+        </div>
+      <% end %>
+    </div>
+
     <div class="review-form">
       <h2>Write a Review</h2>
       <%= form_with model: [@product, @review || Review.new], local: true do |f| %>

@@ -1,8 +1,4 @@
 class ListingsController < ApplicationController
-
-  def listing_params
-    params.require(:listing).permit(:title, :description, :price, :condition, :quantity, :images, :product_id)
-  end
   def show
     @listing = Listing.find(params[:id])
   end
@@ -21,11 +17,10 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.new(listing_params)
-    @listing.product_id = params[:product_id]
 
     if @listing.save
       flash[:notice] = 'Listing added!'
-      redirect_to listing_path(@listing)
+      redirect_to product_path(@listing.product)
     else
       flash[:error] = 'Failed to add listing'
       render :new
@@ -52,5 +47,11 @@ class ListingsController < ApplicationController
     @listing.destroy
     flash[:notice] = 'Listing removed'
     redirect_to listings_path
+  end
+
+  private
+
+  def listing_params
+    params.require(:listing).permit(:title, :description, :price, :condition, :quantity, :images, :product_id)
   end
 end
