@@ -5,11 +5,14 @@
   <div class="chat-container">
     <div class="chat-header">
       <h1>Chat with <%= other_user.username %></h1>
-      <h2>About "<%= product.title %>"</h2>
-      <%= link_to 'View Product', product_path(product), class: "product-link" %>
-      <p>Price: <%= number_to_currency(product.price) %></p>
-      <% if product.image.attached? %>
-        <%= image_tag product.image.variant(resize: '100x100^', crop: '100x100+0+0', gravity: 'center'), class: "product-thumbnail", alt: product.title %>
+
+      <% if @conversation.product.present? %>
+        <h2>About "<%= @conversation.product.title %>"</h2>
+        <%= link_to 'View Product', product_path(@conversation.product), class: "product-link" %>
+        <p>Price: <%= number_to_currency(@conversation.product.price) %></p>
+        <% if @conversation.product.image.attached? %>
+          <%= image_tag @conversation.product.image.variant(resize: '100x100^', crop: '100x100+0+0', gravity: 'center'), class: "product-thumbnail", alt: @conversation.product.title %>
+        <% end %>
       <% end %>
     </div>
 
@@ -31,5 +34,7 @@
     <% end %>
   </div>
 </div>
+
+
 
 

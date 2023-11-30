@@ -13,7 +13,20 @@ class ConversationsController < ApplicationController
   end
 
   def create_for_user
-    seller = User.find(params[:user_id])
+    recipient = User.find(params[:user_id])
+    product = Product.find_by(id: params[:product_id])
+
+    @conversation = if product
+                      Conversation.find_or_create_by(product: product, sender: current_user, recipient: recipient)
+                    else
+                      Conversation.find_or_create_by(sender: current_user, recipient: recipient) do |conversation|
+                        conversation.product = nil
+                      end
+                    end
+
+    if @conversation.persisted?
+      redirect_to conversation_path(@conversation)
+    end
   end
 
   def destroy
