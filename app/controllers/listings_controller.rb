@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @listings = @user.listings
+    puts @listings.inspect
   end
 
 
