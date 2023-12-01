@@ -1,13 +1,15 @@
-<h1>All Active Listings</h1>
-<% if @listings.any? %>
+<h1>Active Listings for <%= @user.username %></h1>
+
+<div class="listings">
+  <% if @listings.any? %>
   <% @listings.each do |listing| %>
     <div class="listing">
+      <!-- link to the product's detail page -->
       <%= link_to listing.title, product_path(listing.product) %>
       <p><%= listing.description %></p>
-      <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
-      <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </div>
   <% end %>
-<% else %>
-  <p>No listings found.</p>
-<% end %>
+  <% else %>
+    <p>No active listings found.</p>
+  <% end %>
+</div>

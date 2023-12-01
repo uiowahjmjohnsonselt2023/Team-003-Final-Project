@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_071830) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_181824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,6 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_071830) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
+    t.string "location"
     t.index ["product_id"], name: "index_listings_on_product_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -120,10 +121,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_071830) do
     t.boolean "read", default: false
     t.bigint "conversation_id"
     t.integer "receiver_id"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -247,7 +247,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_071830) do
   add_foreign_key "listings", "products"
   add_foreign_key "listings", "users"
   add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "notifications", "users", column: "actor_id"
   add_foreign_key "notifications", "users", column: "recipient_id"

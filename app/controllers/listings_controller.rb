@@ -4,12 +4,10 @@ class ListingsController < ApplicationController
   end
 
   def index
-    if current_user
-      @listings = current_user.listings
-    else
-      redirect_to login_path, alert: "You must be logged in to view your listings."
-    end
+    @user = User.find(params[:user_id])
+    @listings = @user.listings
   end
+
 
   def new
     @listing = Listing.new
