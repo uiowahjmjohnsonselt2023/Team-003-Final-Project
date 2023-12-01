@@ -1,3 +1,4 @@
+<div class="order-form-container">
 <%= form_with(model: @order, url: orders_path, local: true) do |form| %>
 
   <% if @order.errors.any? %>
@@ -99,3 +100,4 @@
     </div>
   </div>
 <% end %>
+</div>

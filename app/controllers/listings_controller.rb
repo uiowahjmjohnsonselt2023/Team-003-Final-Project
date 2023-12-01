@@ -1,4 +1,7 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:destroy]
+  before_action :authenticate_user!, only: [:destroy]
+
   def show
     @listing = Listing.find(params[:id])
   end
@@ -6,9 +9,7 @@ class ListingsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @listings = @user.listings
-    puts @listings.inspect
   end
-
 
   def new
     @listing = Listing.new
@@ -26,10 +27,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def edit
-    @listing = Listing.find(params[:id])
-  end
-
   def update
     @listing = Listing.find(params[:id])
     if @listing.update(listing_params)
@@ -44,11 +41,15 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-    flash[:notice] = 'Listing removed'
-    redirect_to listings_path
+    redirect_to user_listings_path(@listing.user_id), notice: 'Listing was successfully deleted.'
   end
 
   private
+
+  def set_listing
+    @listing = Listing.find(params[:id])
+    redirect_to(root_path, alert: 'You are not authorized to perform this action.') unless @listing.user == current_user
+  end
 
   def listing_params
     params.require(:listing).permit(:title, :description, :price, :condition, :quantity, :images, :product_id)

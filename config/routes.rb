@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     # nested routes for user-specific actions
     resources :messages, only: [:create]
-    resources :listings, only: [:index]
+    resources :listings, only: [:index, :destroy]
   end
 
   # route for messaging a seller from their profile

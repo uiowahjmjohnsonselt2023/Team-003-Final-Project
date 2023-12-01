@@ -8,7 +8,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.select-field {
+.new-listing-container .select-field {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;

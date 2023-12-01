@@ -1,0 +1,38 @@
+.listings-page-title {
+    font-size: 24px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.listings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.listing {
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.listing a {
+    font-size: 18px;
+    color: #293441;
+    text-decoration: none;
+}
+
+.listing p {
+    color: #3b4777;
+}
+
+.delete-listing-link {
+    color: red;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
