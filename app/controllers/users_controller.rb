@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @user = params[:id] ? User.find(params[:id]) : current_user
+    redirect_to root_path, alert: "User not found." unless @user
   end
 
   private

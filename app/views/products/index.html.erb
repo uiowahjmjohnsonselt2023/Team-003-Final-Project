@@ -1,14 +1,15 @@
 <div class="products-container">
-  <% if @products.any? %>
-    <% @products.each do |product| %>
-      <div class="product-item">
-        <%= image_tag product.image if product.image.attached? %>
-        <h3 class="product-title"><%= link_to product.title, product_path(product) %></h3>
-        <p><%= product.description %></p>
-        <span class="seller-name">Seller: <%= product.user.name %></span>
-      </div>
-    <% end %>
-  <% else %>
-    <p>No products found.</p>
+  <% @products.each do |product| %>
+    <div class="product-item">
+      <%= image_tag product.image if product.image.attached? %>
+      <h3 class="product-title"><%= link_to product.title, product_path(product) %></h3>
+      <p><%= product.description %></p>
+      <span class="seller-name">Seller: <%= product.user.name %></span>
+
+      <% if current_user == product.user %>
+        <%= link_to 'Edit', edit_product_path(product), class: 'edit-button' %>
+        <%= button_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+      <% end %>
+    </div>
   <% end %>
 </div>

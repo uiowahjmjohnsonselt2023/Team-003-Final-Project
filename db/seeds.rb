@@ -1,4 +1,4 @@
-# Categories with associated image filenames
+# categories with associated image filenames
 categories = {
   'Electronics' => 'electronics_icon.png',
   'Books' => 'books_icon.png',

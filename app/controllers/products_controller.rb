@@ -50,6 +50,35 @@ class ProductsController < ApplicationController
     @seller_rating = @product.user.average_rating.round(1)
   end
 
+  def edit
+    @product = current_user.products.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to products_path, alert: "Product not found or access denied."
+  end
+
+  def update
+    @product = current_user.products.find(params[:id])
+
+    if @product.update(product_params)
+      flash[:notice] = "Product successfully updated!"
+      redirect_to product_path(@product)
+    else
+      flash[:error] = "Failed to update product"
+      render :edit
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to products_path, alert: "Product not found or access denied."
+  end
+
+  def destroy
+    product = current_user.products.find(params[:id])
+    product.destroy
+    flash[:notice] = "Product successfully deleted."
+
+    # redirect to the user's own listings page
+    redirect_back(fallback_location: user_listings_path(current_user))
+  end
+
   # add a product to the user's favorites
   def add_to_favorites
     @product = Product.find(params[:id])
