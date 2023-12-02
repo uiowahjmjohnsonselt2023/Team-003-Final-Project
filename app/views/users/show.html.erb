@@ -18,6 +18,6 @@
     <% unless @user == current_user %>
       <%= button_to 'Message Seller', message_seller_user_path(user_id: @user.id), method: :post, class: "message-seller-button" %>
     <% end %>
-    <%= link_to 'Active Listings', user_listings_path(@user), class: "button listings-button" %>
+    <%= link_to 'Active Listings', user_listings_path(current_user), class: "button listings-button" %>
   </div>
 </div>

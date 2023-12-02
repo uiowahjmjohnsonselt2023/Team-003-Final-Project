@@ -9,18 +9,18 @@ class ListingsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @listings = @user.listings
+    logger.info "Listings: #{@listings.inspect}"
   end
 
   def new
     @listing = Listing.new
   end
-
   def create
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
       flash[:notice] = 'Listing added!'
-      redirect_to product_path(@listing.product)
+      redirect_to user_listings_path(current_user)
     else
       flash[:error] = 'Failed to add listing'
       render :new
