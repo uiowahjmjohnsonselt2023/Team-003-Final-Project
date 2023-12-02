@@ -9,7 +9,7 @@ categories = {
   'Kitchen Appliances' => 'kitchen_icon.png'
 }
 
-# Create categories with images
+# create categories with images
 categories.each do |name, filename|
   category = Category.find_or_create_by!(name: name)
 
@@ -19,32 +19,24 @@ categories.each do |name, filename|
   end
 end
 
-# Create multiple users and their products/listings
-5.times do |i|
-  user = User.find_or_create_by!(username: "user#{i}", email: "user#{i}@example.com") do |new_user|
-    new_user.name = "user#{i}"
-    new_user.password = "password"
-  end
+# create multiple users and their products
+10.times do
+  user = User.create!(
+    name: Faker::Name.unique.name,
+    username: Faker::Internet.unique.username,
+    email: Faker::Internet.unique.email,
+    password: "password"
+  )
 
-  # Create products and listings for each user
-  3.times do |j|
+  # create products for each user
+  5.times do
     product = user.products.create!(
-      title: "Product #{j} by #{user.username}",
-      condition: 'New',
-      location: "Location",
-      price: rand(10.0..100.0).round(2),
-      description: "Description for product #{j} by #{user.username}",
+      title: Faker::Commerce.product_name,
+      description: "test description",
+      price: Faker::Commerce.price(range: 10.0..100.0).round(2),
+      condition: ['New', 'Used', 'Like New', 'Fair', 'Good', 'Poor'].sample,
+      location: Faker::Address.city,
       category: Category.all.sample
-    )
-
-    user.listings.create!(
-      product: product,
-      title: "Listing for #{product.title}",
-      description: product.description,
-      price: product.price,
-      condition: product.condition,
-      location: product.location,
-      quantity: 10
     )
   end
 end

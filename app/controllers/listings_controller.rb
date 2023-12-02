@@ -9,7 +9,6 @@ class ListingsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @listings = @user.listings
-    logger.info "Listings: #{@listings.inspect}"
   end
 
   def new

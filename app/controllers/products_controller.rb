@@ -15,7 +15,11 @@ class ProductsController < ApplicationController
 
   # display a list of all products
   def index
-    @products = Product.all
+    if params[:user_id]
+      @products = Product.where(user_id: params[:user_id])
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -24,16 +28,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
-    if params[:product][:category_id] == nil || params[:product][:category_id] == ""
-      flash[:error] = 'Failed to add product'
-      render :new
-      return
-    end
-    @product[:category] = Category.find(params[:product][:category_id]).name
-    @product.save!
+
     if @product.save
       flash[:notice] = 'Product added!'
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       flash[:error] = 'Failed to add product'
       render :new
