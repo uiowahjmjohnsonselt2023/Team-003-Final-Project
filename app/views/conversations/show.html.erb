@@ -1,24 +1,24 @@
-<div class="page-conversation">
+<div class="convo-page-conversation">
   <% other_user = @conversation.other_party(current_user) %>
   <% product = @conversation.product %>
 
-  <div class="chat-container">
-    <div class="chat-header">
-      <h1>Chat with <%= other_user.username %></h1>
+  <div class="convo-chat-container">
+    <div class="convo-chat-header">
+      <h1>Chat with <%= link_to other_user.username, user_path(other_user) %></h1>
 
       <% if @conversation.product.present? %>
         <h2>About "<%= @conversation.product.title %>"</h2>
-        <%= link_to 'View Product', product_path(@conversation.product), class: "product-link" %>
+        <%= link_to 'View Product', product_path(@conversation.product), class: "convo-product-link" %>
         <p>Price: <%= number_to_currency(@conversation.product.price) %></p>
         <% if @conversation.product.image.attached? %>
-          <%= image_tag @conversation.product.image.variant(resize: '100x100^', crop: '100x100+0+0', gravity: 'center'), class: "product-thumbnail", alt: @conversation.product.title %>
+          <%= image_tag @conversation.product.image.variant(resize: '100x100^', crop: '100x100+0+0', gravity: 'center'), class: "convo-product-thumbnail", alt: @conversation.product.title %>
         <% end %>
       <% end %>
     </div>
 
-    <div class="messages">
+    <div class="convo-messages">
       <% @messages.each do |message| %>
-        <div class="message <%= 'message-from-me' if message.user == current_user %>">
+        <div class="convo-message <%= 'convo-message-from-me' if message.user == current_user %>">
           <strong><%= message.user.username %>:</strong>
           <p><%= message.body %></p>
           <small>Sent <%= time_ago_in_words(message.created_at) %> ago</small>
@@ -26,10 +26,10 @@
       <% end %>
     </div>
 
-    <%= form_with(model: [ @conversation, Message.new ], local: true) do |form| %>
-      <div class="field">
-        <%= form.text_area :body, placeholder: "Type your message here...", required: true, class: "text_area" %>
-        <%= form.submit "Send", class: "send-button" %>
+    <%= form_with(model: [ @conversation, Message.new ], local: true, class: "convo-form") do |form| %>
+      <div class="convo-field">
+        <%= form.text_area :body, placeholder: "Type your message here...", required: true, class: "convo-text_area" %>
+        <%= form.submit "Send", class: "convo-send-button" %>
       </div>
     <% end %>
   </div>
