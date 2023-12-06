@@ -16,6 +16,7 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem 'actionmailer'
 gem 'google_sign_in'
 gem 'omniauth-github', '~> 2.0.0'
+gem "omniauth-rails_csrf_protection"
 
 
 group :development, :test do
