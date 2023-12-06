@@ -1,7 +1,7 @@
 .promoted-products-container {
     margin: 20px auto;
     padding: 10px;
-    background-color: #b3e3ff;
+    background-color: #b3d4ff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -32,14 +32,15 @@
 .promoted-products-container .product-item::before {
     content: 'Promoted';
     position: absolute;
-    top: 12px;
-    left: 10px;
+    top: 5px;
+    left: 5px;
     background-color: #ffae00;
     color: white;
-    padding: 3px 6px;
+    padding: 2px 5px;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: bold;
+    z-index: 1;
 }
 
 .products-container {
