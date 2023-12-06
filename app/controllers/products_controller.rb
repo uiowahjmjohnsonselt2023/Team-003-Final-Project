@@ -113,12 +113,33 @@ class ProductsController < ApplicationController
 
   # search for products based on the provided query and filters
   def search
+    @promoted_products = Product.where(is_promoted: true)
     @products = Product.all
     apply_search_query(params[:query])
     apply_filters(params[:category], params[:condition], params[:price_range])
     apply_sorting(params[:sort_by])
 
     render 'search'
+  end
+
+  def promote
+    @product = current_user.products.find(params[:id])
+    if @product.update(is_promoted: true)
+      flash[:notice] = "Product successfully promoted!"
+    else
+      flash[:error] = "Failed to promote product"
+    end
+    redirect_to product_path(@product)
+  end
+
+  def unpromote
+    @product = current_user.products.find(params[:id])
+    if @product.update(is_promoted: false)
+      flash[:notice] = "Product promotion removed."
+    else
+      flash[:error] = "Failed to remove product promotion"
+    end
+    redirect_to product_path(@product)
   end
 
   private

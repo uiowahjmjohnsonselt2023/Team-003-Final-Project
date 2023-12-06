@@ -1,4 +1,4 @@
-class AddReceiverIdToMessages < ActiveRecord::Migration[6.0]
+class AddReceiverIdToMessages < ActiveRecord::Migration[7.1]
   def change
     add_column :messages, :receiver_id, :integer
     add_index :messages, :receiver_id

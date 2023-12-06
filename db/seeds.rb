@@ -36,7 +36,8 @@ end
       price: Faker::Commerce.price(range: 10.0..100.0).round(2),
       condition: ['New', 'Used', 'Like New', 'Fair', 'Good', 'Poor'].sample,
       location: Faker::Address.city,
-      category: Category.all.sample
+      category: Category.all.sample,
+      is_promoted: [true, false].sample
     )
   end
 end
