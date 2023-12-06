@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'feedback/create'
   get 'search/index'
   get 'categories/index'
+  get 'auth/github/callback', to: 'sessions#create_from_omniauth'
 
   # root route for the marketplace home page
   root 'home#index'
