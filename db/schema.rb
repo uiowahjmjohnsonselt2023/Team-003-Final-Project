@@ -67,14 +67,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "product_id"
     t.index ["product_id"], name: "index_conversations_on_product_id"
-    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
-    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -116,8 +112,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "read", default: false
     t.bigint "conversation_id"
     t.integer "receiver_id"
@@ -184,21 +180,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
     t.boolean "featured", default: false
     t.float "average_rating", default: 0.0
     t.string "category"
-    t.bigint "category_id", null: false
-    t.decimal "buy_now_price", precision: 10, scale: 2
+    t.bigint "category_id"
     t.boolean "is_promoted"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "product_id", null: false
     t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "comment"
     t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id"
+    t.bigint "reviewee_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
@@ -212,11 +207,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
   create_table "trackings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id", null: false
     t.integer "status"
     t.string "tracking_number"
     t.string "shipping_carrier"
-    t.index ["order_id"], name: "index_trackings_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -230,7 +223,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
     t.string "reset_token"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-    t.boolean "verified"
     t.boolean "admin", default: false, null: false
   end
 
@@ -240,15 +232,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "conversations", "products"
-  add_foreign_key "conversations", "users", column: "recipient_id"
-  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "feedbacks", "orders"
   add_foreign_key "listings", "products"
   add_foreign_key "listings", "users"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "notifications", "users", column: "actor_id"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "order_items", "orders"
@@ -260,5 +248,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
-  add_foreign_key "trackings", "orders"
 end
