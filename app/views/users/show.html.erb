@@ -1,4 +1,3 @@
-
 <div class="user-profile">
   <div class="user-information">
     <% if @user && @user.profile_picture.attached? %>
@@ -20,4 +19,35 @@
     <% end %>
     <%= link_to 'Active Listings', products_path(user_id: @user.id), class: "button listings-button" %>
   </div>
+
+  <% if @user == current_user %>
+    <div class="user-feedback">
+      <h2>Feedback</h2>
+      <% if @user.feedbacks.any? %>
+        <% @user.feedbacks.each do |feedback| %>
+          <div class="feedback-item">
+            <p><strong>Rating:</strong> <%= feedback.rating %></p>
+            <p><strong>Comment:</strong> <%= feedback.comment %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No feedback available.</p>
+      <% end %>
+    </div>
+    <div class="user-tracking">
+      <h2>Recent Orders</h2>
+      <% if @user.orders.any? %>
+        <% @user.orders.limit(5).each do |order| %>
+          <div class="order-item">
+            <p><strong>Order ID:</strong> <%= order.id %></p>
+            <p><strong>Total Price:</strong> <%= number_to_currency(order.total_price) %></p>
+            <%= link_to 'View Tracking', tracking_path(order.tracking), class: "button" if order.tracking %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No recent orders.</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+

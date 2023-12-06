@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = params[:id] ? User.find(params[:id]) : current_user
-    redirect_to root_path, alert: "User not found." unless @user
+    @feedbacks = @user.feedbacks
+    @orders = @user.orders.includes(:tracking)
   end
 
   private

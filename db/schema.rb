@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_06_180637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_082524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "product_id"
+    t.integer "sender_id"
+    t.integer "recipient_id"
     t.index ["product_id"], name: "index_conversations_on_product_id"
   end
 

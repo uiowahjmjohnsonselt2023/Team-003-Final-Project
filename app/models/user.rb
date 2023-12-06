@@ -26,6 +26,9 @@ class User < ApplicationRecord
   # associations for listings
   has_many :listings
 
+  # associations for feedbacks from buyers after purchasing an order
+  has_many :feedbacks, through: :orders
+
   # associations for a user's favorites
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
