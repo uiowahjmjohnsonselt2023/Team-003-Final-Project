@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @greeting = "Hello, Welcome to the Market"
+    @top_sellers = User.top_sellers
+    @featured_products = Product.featured
   end
 
   def profile

@@ -33,6 +33,15 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
 
+  # fetch top sellers
+  def self.top_sellers
+    User.joins(:orders)
+        .select('users.*, COUNT(orders.id) AS total_sales')
+        .group('users.id')
+        .order('total_sales DESC')
+        .limit(5)
+  end
+
   # allows for secure password management within the model by adding methods to set and authenticate against a BCrypt password
   has_secure_password
 

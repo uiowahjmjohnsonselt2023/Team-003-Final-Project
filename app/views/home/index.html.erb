@@ -9,8 +9,20 @@
 </section>
 
 <main>
+  <section class="top-sellers">
+    <h2>Top Sellers</h2>
+    <% @top_sellers.each do |seller| %>
+      <div class="seller">
+      </div>
+    <% end %>
+  </section>
+
   <section class="featured-products">
     <h2>Featured Products</h2>
+    <% @featured_products.each do |product| %>
+      <div class="product">
+      </div>
+    <% end %>
   </section>
 
   <section class="about-us">
