@@ -72,7 +72,8 @@ Rails.application.routes.draw do
 
   # additional routes
   get 'search', to: 'search#index', as: 'search'
-  get 'trackings/show'
+  # get 'trackings/show'
+  get 'trackings/:order_id', to: 'trackings#show', as: 'trackings_show'
   get 'categories/index'
 
   # Health check route

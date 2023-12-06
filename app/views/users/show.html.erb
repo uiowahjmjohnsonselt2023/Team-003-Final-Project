@@ -4,6 +4,8 @@
       <div class="user-image">
         <%= image_tag(@user.profile_picture, alt: "Profile Image", class: "profile-picture") %>
       </div>
+    <% else %>
+      <p>No profile picture available.</p> -->
     <% end %>
     <div class="user-details">
       <h1><%= @user.name %></h1>
@@ -41,7 +43,7 @@
           <div class="order-item">
             <p><strong>Order ID:</strong> <%= order.id %></p>
             <p><strong>Total Price:</strong> <%= number_to_currency(order.total_price) %></p>
-            <%= link_to 'View Tracking', trackings_show_path(order.tracking), class: "button" if order.tracking %>
+            <%= link_to 'View Tracking', trackings_show_path(order_id: order.id), class: "button view-tracking" if order.tracking %>
           </div>
         <% end %>
       <% else %>

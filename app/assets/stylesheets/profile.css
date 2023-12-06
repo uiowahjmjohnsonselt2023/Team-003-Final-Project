@@ -49,21 +49,28 @@
     background-color: #57667a;
 }
 
-.user-profile .user-feedback, .user-profile .user-tracking {
+.user-profile .user-feedback,
+.user-profile .user-tracking {
     margin-top: 20px;
 }
 
-.user-profile .feedback-item, .user-profile .order-item {
+.user-profile .feedback-item,
+.user-profile .order-item {
     background-color: #ffffff;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.user-profile .feedback-item p, .user-profile .order-item p {
+.user-profile .feedback-item p,
+.user-profile .order-item p {
     margin: 5px 0;
     line-height: 1.4;
+    flex: 1;
 }
 
 .user-profile .user-actions {
@@ -104,4 +111,14 @@
     background-color: #6b7a94;
 }
 
+/* Recent Orders Section */
+.user-profile .user-tracking {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.user-profile .order-item .button.view-tracking {
+    margin-left: 10px;
+}
 
