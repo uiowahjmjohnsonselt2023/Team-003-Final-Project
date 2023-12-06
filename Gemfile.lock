@@ -238,6 +238,19 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    omniauth (2.1.1)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-github (2.0.1)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.8)
+    omniauth-oauth2 (1.8.0)
+      oauth2 (>= 1.4, < 3)
+      omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     pg (1.5.4)
     pg (1.5.4-x64-mingw32)
     pg (1.5.4-x86-mingw32)
@@ -253,6 +266,8 @@ GEM
     racc (1.7.3)
     racc (1.7.3-java)
     rack (3.0.8)
+    rack-protection (3.0.6)
+      rack
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -403,6 +418,8 @@ DEPENDENCIES
   google_sign_in
   importmap-rails
   jbuilder
+  omniauth-github (~> 2.0.0)
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (>= 5.0)
   rack_session_access
