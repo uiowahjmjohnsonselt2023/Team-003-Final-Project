@@ -41,7 +41,7 @@
           <div class="order-item">
             <p><strong>Order ID:</strong> <%= order.id %></p>
             <p><strong>Total Price:</strong> <%= number_to_currency(order.total_price) %></p>
-            <%= link_to 'View Tracking', tracking_path(order.tracking), class: "button" if order.tracking %>
+            <%= link_to 'View Tracking', trackings_show_path(order.tracking), class: "button" if order.tracking %>
           </div>
         <% end %>
       <% else %>
