@@ -17,39 +17,69 @@
     background: #f9f9f9;
     padding: 15px;
     border-radius: 5px;
-    width: 300px;
+    width: 300px; /* Ensure the width is enough for all the buttons */
+    position: relative; /* Set position to relative for potential absolute children */
 }
 
 .listing a {
     font-size: 18px;
     color: #293441;
     text-decoration: none;
+    display: inline-block; /* Wrap the text if too long */
+    margin-bottom: 10px; /* Space between title and description */
 }
 
 .listing p {
     color: #3b4777;
+    margin-bottom: 10px; /* Space between description and buttons */
 }
 
-.product-delete-button,
 .product-edit-button,
+.product-delete-button,
 .promote-button,
 .unpromote-button {
-    background-color: #ce3b37;
-    color: #fff;
+    display: inline-block; /* Align buttons in a row */
+    text-align: center; /* Center text in buttons */
+    text-decoration: none; /* Remove underline from links */
     padding: 5px 10px;
+    margin: 2px; /* Space between buttons */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-    margin-right: 10px;
+}
+
+/* Define specific colors for each button */
+.product-edit-button {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.product-delete-button {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.promote-button {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.unpromote-button {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+/* Hover effects */
+.product-edit-button:hover {
+    background-color: #ec971f;
 }
 
 .product-delete-button:hover {
-    background-color: #cc4b47;
+    background-color: #c9302c;
 }
 
-.product-edit-button:hover,
 .promote-button:hover,
 .unpromote-button:hover {
-    background-color: #71a68b;
+    background-color: #31b0d5;
 }
