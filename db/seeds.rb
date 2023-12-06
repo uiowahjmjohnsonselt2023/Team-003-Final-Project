@@ -20,6 +20,8 @@ categories.each do |name, filename|
 end
 
 # create multiple users and their products
+Faker::UniqueGenerator.clear
+
 10.times do
   user = User.create!(
     name: Faker::Name.unique.name,
@@ -28,7 +30,6 @@ end
     password: "password"
   )
 
-  # create products for each user
   5.times do
     product = user.products.create!(
       title: Faker::Commerce.product_name,
@@ -39,5 +40,48 @@ end
       category: Category.all.sample,
       is_promoted: [true, false].sample
     )
+
+rescue ActiveRecord::RecordInvalid => e
+  puts "User creation failed: #{e.message}. Retrying..."
+  retry
+  end
+end
+
+
+
+User.limit(5).each do |user|
+  cart = user.cart || user.create_cart
+  cart.cart_items.destroy_all
+
+  3.times do
+    product = Product.all.sample
+    cart.cart_items.create(product: product, quantity: [1, 2, 3].sample)
+  end
+
+  order = user.orders.new(
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    postal_code: Faker::Address.zip,
+    email: user.email,
+    phone: Faker::PhoneNumber.phone_number,
+    credit_card_number: '1234567890123456', # mock credit card number
+    expiration_date: '11/21',               # mock expiration date
+    cvv: '123'                              # mock CVV
+  )
+
+  if order.save
+    cart.cart_items.each do |cart_item|
+      order.order_items.create(product: cart_item.product, quantity: cart_item.quantity)
+    end
+
+    order.create_tracking(
+      tracking_number: SecureRandom.uuid,
+      status: ['processing', 'shipped', 'delivered'].sample,
+      shipping_carrier: ['UPS', 'FedEx', 'USPS'].sample
+    )
+
+    cart.cart_items.destroy_all
+  else
+    puts "Failed to create order for user #{user.id}: #{order.errors.full_messages.join(", ")}"
   end
 end
