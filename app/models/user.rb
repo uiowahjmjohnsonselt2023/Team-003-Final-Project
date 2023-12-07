@@ -37,6 +37,12 @@ class User < ApplicationRecord
   end
   has_many :orders
 
+  # associations for listings
+  has_many :listings
+
+  # associations for feedbacks from buyers after purchasing an order
+  has_many :feedbacks, through: :orders
+
   # associations for a user's favorites
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
@@ -73,16 +79,6 @@ class User < ApplicationRecord
   # calculates the average rating of received reviews
   def average_rating
     received_reviews.average(:rating).to_f
-  end
-
-  # verify a user
-  def verify!
-    update(verified: true)
-  end
-
-  # unverify a user
-  def unverify!
-    update(verified: false)
   end
 end
 

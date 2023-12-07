@@ -1,4 +1,7 @@
-class Listing < ActiveRecord::Base
+class Listing < ApplicationRecord
+  belongs_to :user
+  belongs_to :product
+
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true

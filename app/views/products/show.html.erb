@@ -3,10 +3,7 @@
     <div class="product-detail-header">
       <h1><%= @product.title %></h1>
       <div class="seller-info">
-        Listed by <%= link_to @product.user.name, profile_path(@product.user), class: "seller-profile-link" %>
-        <% if @product.user.verified %>
-          <span class="verified">Verified Seller</span>
-        <% end %>
+        Listed by <%= link_to @product.user.name, user_path(@product.user), class: "seller-profile-link" %>
         | Condition: <%= @product.condition %>
       </div>
       <p class="product-location">Ships from: <%= @product.location %></p>
@@ -26,10 +23,28 @@
       <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
       <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
       <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
+      <% if current_user == @product.user %>
+        <% if @product.is_promoted %>
+          <%= button_to 'Unpromote this Product', unpromote_product_path(@product), method: :delete, class: 'unpromote-button' %>
+        <% else %>
+          <%= button_to 'Promote this Product', promote_product_path(@product), method: :post, class: 'promote-button' %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="product-detail-description">
       <p><%= @product.description %></p>
+    </div>
+
+    <!-- Associated Listings -->
+    <div class="product-listings">
+      <h2>Related Listings</h2>
+      <% @product.listings.each do |listing| %>
+        <div class="listing">
+          <h3><%= listing.title %></h3>
+          <p><%= listing.description %></p>
+        </div>
+      <% end %>
     </div>
 
     <div class="review-form">

@@ -1,7 +1,9 @@
-<h1>My Messages</h1>
-<% @conversations.each do |conversation| %>
-  <div class="conversation">
-    <%= link_to "Conversation with #{conversation.other_party(current_user).username}", conversation_path(conversation) %>
-    <%= button_to 'Delete', conversation_path(conversation), method: :delete, data: { confirm: 'Are you sure?' }, form: { "data-turbo" => "false" } %>
-  </div>
-<% end %>
+<div class="conversations-container">
+  <h1 class="my-messages-title">My Messages</h1>
+  <% @conversations.each do |conversation| %>
+    <div class="conversation">
+      <%= link_to "Conversation with #{conversation.other_party(current_user).username}", conversation_path(conversation), class: "conversation-link" %>
+      <%= button_to 'Delete', conversation_path(conversation), method: :delete, data: { confirm: 'Are you sure?' }, form: { "data-turbo" => "false" }, class: "delete-button-unique" %>
+    </div>
+  <% end %>
+</div>

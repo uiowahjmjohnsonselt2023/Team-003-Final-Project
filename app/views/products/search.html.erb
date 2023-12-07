@@ -25,6 +25,24 @@
   <%= form.submit "Filter Results", class: "filter-button" %>
 <% end %>
 
+<div class="promoted-products-container">
+  <h2>Promoted Products</h2>
+  <% if @promoted_products.any? %>
+    <div class="promoted-products-scroll-container">
+      <% @promoted_products.each do |product| %>
+        <div class="product-item">
+          <%= image_tag product.image if product.image.attached? %>
+          <h3 class="product-title"><%= link_to product.title, product_path(product) %></h3>
+          <p><%= product.description %></p>
+          <span class="seller-name">Seller: <%= product.user.name %></span>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No promoted products found.</p>
+  <% end %>
+</div>
+
 <div class="products-container">
   <% if @products.any? %>
     <% @products.each do |product| %>
