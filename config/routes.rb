@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   # route for messaging a seller from their profile
   post 'message_seller/:user_id', to: 'conversations#create_for_user', as: :message_seller_user
-
+  get '/verify/:token', to: 'verification#verify', as: 'verify_account'
   # routes for products, reviews, and listings
   resources :products do
     # actions related to products
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :feedback, only: [:new, :create]
     resource :tracking, only: [:show]
   end
+
   resource :cart, only: [:show]
   resources :cart_items, only: [:create, :update, :destroy] do
     member do

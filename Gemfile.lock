@@ -150,9 +150,11 @@ GEM
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
+
     ffi (1.16.3-java)
     ffi (1.16.3-x64-mingw32)
     ffi (1.16.3-x86-mingw32)
+
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)

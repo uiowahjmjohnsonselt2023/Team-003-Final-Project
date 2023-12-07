@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   # association for user profile picture
   has_one_attached :profile_picture
+  attribute :verified, :boolean, default: false
+  attribute :verification_token, :string
 
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
 
@@ -21,6 +23,17 @@ class User < ApplicationRecord
   has_one :cart
   has_many :cart_items, through: :cart
   has_many :products
+
+  has_many :reviews, dependent: :destroy
+  def verify_account(token)
+    return false if verified?
+
+    if token == verification_token
+      update(verified: true, verification_token: nil)
+      true
+    else
+      false
+    end
   has_many :orders
 
   # associations for listings
