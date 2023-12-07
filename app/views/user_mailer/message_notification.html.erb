@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>You have a new message from <%= @message.sender.username %></h1>
+<p><%= @message.body %></p>
+<p>You can reply to this message <a href="<%= @url %>">here</a>.</p>
+</body>
+</html>

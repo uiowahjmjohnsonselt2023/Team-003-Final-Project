@@ -16,7 +16,7 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it 'redirects to the user profile path' do
-        expect(response).to redirect_to(profile_path)
+        expect(response).to redirect_to(root_path)
       end
 
       it 'sets a notice flash message' do

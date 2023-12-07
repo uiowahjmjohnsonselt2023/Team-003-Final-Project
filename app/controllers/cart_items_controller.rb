@@ -40,7 +40,8 @@ class CartItemsController < ApplicationController
 
   private
   def set_cart_item
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.find_by_id(params[:id])
+
     if @cart_item.nil?
       redirect_to cart_path, alert: 'Item not found in cart.'
     end

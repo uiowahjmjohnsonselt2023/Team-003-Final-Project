@@ -2,7 +2,8 @@
 <% if @cart && @cart.cart_items.any? %>
   <% @cart.cart_items.each do |cart_item| %>
     <div class="cart-item">
-      <p><%= cart_item.product.title %> (x<%= cart_item.quantity %>)</p>
+      <%= link_to cart_item.product.title, product_path(cart_item.product), class: 'cart-item-title' %>
+      <span>(x<%= cart_item.quantity %>)</span>
       <p>Price: <%= number_to_currency(cart_item.product.price * cart_item.quantity) %></p>
 
       <!-- add one item -->
@@ -12,9 +13,13 @@
       <%= button_to 'Remove one', cart_item_path(cart_item, change: 'decrease'), method: :put %>
 
       <!-- remove item  -->
-      <%= button_to 'Remove item', cart_item_path(cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= button_to 'REMOVE ITEM', cart_item_path(cart_item), method: :delete, style: 'background-color: #cc4b47; color: white; border: none; border-radius: 4px; padding: 5px 15px; cursor: pointer; font-size: 14px; transition: background-color 0.3s ease;', data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
+
+  <!-- button to proceed to the orders page -->
+  <%= link_to 'Proceed to Checkout', new_order_path, class: 'btn btn-primary' %>
+
 <% else %>
   <p>Your cart is empty.</p>
 <% end %>

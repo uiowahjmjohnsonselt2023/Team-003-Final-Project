@@ -1,0 +1,19 @@
+<h1>Tracking Information</h1>
+<% if @tracking %>
+  <div class="tracking-details">
+    <p><strong>Order Placed:</strong> <%= @order.created_at.strftime("%B %d, %Y") %></p>
+    <p><strong>Tracking Number:</strong> <%= @tracking.tracking_number %></p>
+    <p><strong>Status:</strong> <%= @tracking.status.capitalize %></p>
+    <p><strong>Estimated Delivery:</strong> <%= @tracking.estimated_delivery_date %></p>
+    <p><strong>Shipping Carrier:</strong> <%= @tracking.shipping_carrier %></p>
+    <p><strong>Order Summary:</strong></p>
+    <ul>
+      <% @order.order_items.each do |item| %>
+        <li><%= item.quantity %> x <%= item.product.title %> - <%= number_to_currency(item.product.price) %></li>
+      <% end %>
+    </ul>
+    <p class="total-price"><strong>Total Price:</strong> <%= number_to_currency(@order.total_price) %></p>
+  </div>
+<% else %>
+  <p class="alert">Tracking information is not available.</p>
+<% end %>

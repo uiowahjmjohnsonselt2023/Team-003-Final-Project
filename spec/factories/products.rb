@@ -3,6 +3,7 @@ FactoryBot.define do
     title { "Example Product" }
     description { "This is an example product description." }
     price { 19.99 }
-    association :user
+    user
+    category { Category.first || FactoryBot.create(:category) }
   end
 end

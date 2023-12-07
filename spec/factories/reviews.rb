@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :review do
-    association :user
-    association :product
-    rating { rand(1..5) }
-    content { "This is review content." }
+    comment { "Great buyer!" }
+    rating { 5 }
+    association :reviewer, factory: :user
+    association :reviewee, factory: :user
+    product
   end
 end

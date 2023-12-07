@@ -1,8 +1,8 @@
 {
     "GROUP": "G003",
     "ALL_SPRINTS" : {
-        "SPRINT1_URL" : https://guarded-atoll-68969-a1cbfce2aa1b.herokuapp.com/,
-        "SPRINT2_URL" : "N/A",
+        "SPRINT1_URL" : "https://guarded-atoll-68969-a1cbfce2aa1b.herokuapp.com/",
+        "SPRINT2_URL" : "https://team-003-sprint2-923e6e0c02f4.herokuapp.com/",
         "SPRINT3_URL" : "N/A",
         "FINAL_URL" : "N/A"
     }

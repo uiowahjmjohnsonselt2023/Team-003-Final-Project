@@ -16,7 +16,7 @@ RSpec.describe SessionsController, type: :controller do
 
         post :create, params: { username: user.username, password: user.password }
         expect(session[:user_id]).to eq(user.id)
-        expect(response).to redirect_to(profile_path)
+        expect(response).to redirect_to(root_path)
         expect(flash[:notice]).to eq('Logged in successfully.')
       end
       it 'creates a new user with verification token' do
