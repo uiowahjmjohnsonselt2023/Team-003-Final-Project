@@ -34,6 +34,7 @@ class User < ApplicationRecord
     else
       false
     end
+  end
   has_many :orders
 
   # associations for a user's favorites
