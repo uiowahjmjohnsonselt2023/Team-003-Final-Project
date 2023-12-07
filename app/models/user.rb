@@ -34,6 +34,7 @@ class User < ApplicationRecord
     else
       false
     end
+  end
   has_many :orders
 
   # associations for listings
