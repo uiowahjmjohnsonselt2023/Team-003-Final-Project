@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
     uid = auth_hash.uid
     username = auth_hash.info['nickname']
     password = SecureRandom.hex
-    email = uid.to_s + "@example.com"
+    email = username + "@github.com"
     if auth_hash.info['email'] != nil
       email = auth_hash.info['email']
     end
