@@ -1,36 +1,26 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:verify, :unverify]
-  before_action :check_admin, only: [:verify, :unverify]
+  before_action :authenticate_user, only: [:show]
+  before_action :set_user, only: [:show]
 
-  def admin
-    @users = User.all
-  end
-
-  def verify
-    user = User.find(params[:id])
-    if user.verify!
-      redirect_to root_path, notice: 'User was successfully verified.'
-    else
-      redirect_to root_path, alert: 'User could not be verified.'
-    end
-  end
-
-  def unverify
-    user = User.find(params[:id])
-    if user.unverify!
-      redirect_to root_path, notice: 'User was successfully unverified.'
-    else
-      redirect_to root_path, alert: 'User could not be unverified.'
-    end
+  def show
+    @user = params[:id] ? User.find(params[:id]) : current_user
+    @feedbacks = @user.feedbacks
+    @orders = @user.orders.includes(:tracking)
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+  def authenticate_user
+    unless session[:user_id]
+      flash[:alert] = "You must be logged in to access this page."
+      redirect_to login_path
+    else
+      @current_user = User.find(session[:user_id])
+    end
 
-  def check_admin
-    redirect_to(root_url) unless current_user.admin?
+    def set_user
+      @user = User.find_by(id: params[:id]) || current_user
+    end
   end
 end
+

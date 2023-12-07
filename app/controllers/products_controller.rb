@@ -15,7 +15,11 @@ class ProductsController < ApplicationController
 
   # display a list of all products
   def index
-    @products = Product.all
+    if params[:user_id]
+      @products = Product.where(user_id: params[:user_id])
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -24,13 +28,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
-    if params[:product][:category_id] == nil || params[:product][:category_id] == ""
-      flash[:error] = 'Failed to add product'
-      render :new
-      return
-    end
-    @product[:category] = Category.find(params[:product][:category_id]).name
-    @product.save!
+
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to product_path(@product)
@@ -43,12 +41,42 @@ class ProductsController < ApplicationController
   # show details of a single product and its reviews
   def show
     @product = Product.find(params[:id])
+    @listings = @product.listings
     @reviews = @product.reviews
     # initialize an empty review object for the form
     @review = Review.new
 
     # show seller's rating
     @seller_rating = @product.user.average_rating.round(1)
+  end
+
+  def edit
+    @product = current_user.products.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to products_path, alert: "Product not found or access denied."
+  end
+
+  def update
+    @product = current_user.products.find(params[:id])
+
+    if @product.update(product_params)
+      flash[:notice] = "Product successfully updated!"
+      redirect_to product_path(@product)
+    else
+      flash[:error] = "Failed to update product"
+      render :edit
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to products_path, alert: "Product not found or access denied."
+  end
+
+  def destroy
+    product = current_user.products.find(params[:id])
+    product.destroy
+    flash[:notice] = "Product successfully deleted."
+
+    # redirect to the user's own listings page
+    redirect_back(fallback_location: user_listings_path(current_user))
   end
 
   # add a product to the user's favorites
@@ -85,12 +113,33 @@ class ProductsController < ApplicationController
 
   # search for products based on the provided query and filters
   def search
+    @promoted_products = Product.where(is_promoted: true)
     @products = Product.all
     apply_search_query(params[:query])
     apply_filters(params[:category], params[:condition], params[:price_range])
     apply_sorting(params[:sort_by])
 
     render 'search'
+  end
+
+  def promote
+    @product = current_user.products.find(params[:id])
+    if @product.update(is_promoted: true)
+      flash[:notice] = "Product successfully promoted!"
+    else
+      flash[:error] = "Failed to promote product"
+    end
+    redirect_to product_path(@product)
+  end
+
+  def unpromote
+    @product = current_user.products.find(params[:id])
+    if @product.update(is_promoted: false)
+      flash[:notice] = "Product promotion removed."
+    else
+      flash[:error] = "Failed to remove product promotion"
+    end
+    redirect_to product_path(@product)
   end
 
   private
