@@ -224,16 +224,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_190312) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.boolean "verified"
     t.string "verification_token"
-
     t.string "reset_token"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-
     t.boolean "admin", default: false, null: false
-
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
