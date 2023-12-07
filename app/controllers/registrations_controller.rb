@@ -22,6 +22,12 @@ class RegistrationsController < ApplicationController
 
       session[:user_id] = @user.id
       flash[:notice] = 'Signup successful!'
+
+      # Generate a verification token and save it to the user
+      @user.update(verification_token: SecureRandom.urlsafe_base64)
+      # Send email with verification link
+      UserVerificationMailer.verification_email(@user).deliver_now
+
       redirect_to root_path
     else
       render 'new'

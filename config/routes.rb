@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # routes for user registration (new and create)
   resources :registrations, only: [:new, :create]
 
+  
+  get '/verify/:token', to: 'verification#verify', as: 'verify_account'
+
+
   # routes for orders and cart (purchasing)
   resources :orders, only: [:new, :create, :show]
   resources :cart_items, only: [:create, :update, :destroy] do
@@ -48,6 +52,7 @@ Rails.application.routes.draw do
 
   # routes for search action
   get 'search', to: 'search#index', as: 'search'
+
 
   # routes for listings
   resources :listings
