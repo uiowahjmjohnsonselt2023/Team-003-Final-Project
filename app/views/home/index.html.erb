@@ -2,44 +2,44 @@
   <%= stylesheet_link_tag 'homepage', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<section class="hero">
-  <div class="logo-container">
-    <%= image_tag 'marketplace_logo.png', alt: 'Marketplace Logo', class: 'homepage-logo' %>
-  </div>
-</section>
-
-<main>
-  <section class="top-sellers">
-    <h2>Top Sellers</h2>
-    <% @top_sellers.each do |seller| %>
-      <div class="seller">
-        <%= link_to seller.username, user_path(seller), class: "seller-link" %>
-      </div>
-    <% end %>
+<div class="homepage-content">
+  <section class="hero">
+    <div class="logo-container">
+      <%= image_tag 'marketplace_logo.png', alt: 'Marketplace Logo', class: 'homepage-logo' %>
+    </div>
   </section>
 
-  <section class="featured-products">
-    <h2>Featured Products</h2>
-    <% if @featured_products.any? %>
-    <% @featured_products.each do |product| %>
-      <div class="product">
-        <h3><%= product.title %></h3>
-        <p><%= product.description %></p>
-        <%= image_tag(product.image) if product.image.attached? %>
-        <p><%= number_to_currency(product.price) %></p>
-      </div>
+  <main>
+    <section class="top-sellers">
+      <h2>Top Sellers</h2>
+      <% @top_sellers.each do |seller| %>
+        <div class="seller">
+          <%= link_to seller.username, user_path(seller), class: "seller-link" %>
+        </div>
       <% end %>
-    <% else %>
-      <p>No featured products available.</p>
-    <% end %>
-  </section>
+    </section>
 
-  <section class="about-us">
-    <h2>About Us</h2>
-    <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
-  </section>
-</main>
+    <section class="featured-products">
+      <h2>Featured Products</h2>
+      <% @featured_products.each do |product| %>
+        <div class="product">
+          <%= link_to product_path(product) do %>
+            <h3><%= product.title %></h3>
+            <%= image_tag(product.image) if product.image.attached? %>
+            <p><%= number_to_currency(product.price) %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
 
-<footer>
-  <p>&copy; 2023 Knockoff eBay. All rights reserved.</p>
-</footer>
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p> 2023 Knockoff eBay. All rights reserved.</p>
+  </footer>
+</div>
+

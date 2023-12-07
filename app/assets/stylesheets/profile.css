@@ -1,4 +1,5 @@
-.user-profile .user-information {
+/* User Profile */
+.user-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +30,7 @@
     text-align: center;
 }
 
+/* User Actions */
 .user-profile .user-actions {
     display: flex;
     justify-content: center;
@@ -36,19 +38,42 @@
     margin-bottom: 20px;
 }
 
-.user-profile .button {
-    background-color: #57667a;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
+.profile-page .user-profile .user-actions .unique-button,
+.profile-page .user-profile .user-actions .message-seller-button,
+.profile-page .user-profile .user-actions .listings-button {
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #384b64;
+    color: white;
+    text-decoration: none;
 }
 
-.user-profile .button:hover {
-    background-color: #57667a;
+.profile-page .user-profile .user-actions .unique-button:hover,
+.profile-page .user-profile .user-actions .message-seller-button:hover,
+.profile-page .user-profile .user-actions .listings-button:hover {
+    background-color: #6b7a94;
 }
 
+.user-profile .message-seller-button,
+.user-profile .listings-button {
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    background-color: #384b64;
+}
+
+.user-profile .message-seller-button:hover,
+.user-profile .listings-button:hover {
+    background-color: #6b7a94;
+}
+
+/* Feedback and Tracking */
 .user-profile .user-feedback,
 .user-profile .user-tracking {
     margin-top: 20px;
@@ -73,52 +98,7 @@
     flex: 1;
 }
 
-.user-profile .user-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.user-profile .user-actions .button {
-    padding: 10px 20px;
-    text-align: center;
-    border: none;
-    color: white;
-    background-color: #293441;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.user-profile .user-actions .button:hover {
-    background-color: #3b4777;
-}
-
-.user-profile .message-seller-button {
-    background-color: #384b64;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-    transition: background-color 0.3s;
-}
-
-.user-profile .message-seller-button:hover {
-    background-color: #6b7a94;
-}
-
-/* Recent Orders Section */
-.user-profile .user-tracking {
-    margin-top: 20px;
-    overflow-y: auto;
-    max-height: 300px;
-}
-
-.user-profile .order-item .button.view-tracking {
+.user-profile .user-actions .button.view-tracking {
     margin-left: 10px;
 }
 

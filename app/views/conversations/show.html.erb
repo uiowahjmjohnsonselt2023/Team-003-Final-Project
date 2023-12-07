@@ -4,7 +4,7 @@
 
   <div class="convo-chat-container">
     <div class="convo-chat-header">
-      <h1>Chat with <%= link_to other_user.username, user_path(other_user) %></h1>
+      <h1>Chat with <%= link_to other_user.name, user_path(other_user) %></h1>
 
       <% if @conversation.product.present? %>
         <h2>About "<%= @conversation.product.title %>"</h2>
