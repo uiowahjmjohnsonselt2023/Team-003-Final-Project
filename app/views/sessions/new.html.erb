@@ -35,7 +35,9 @@
           <%= f.submit "Login", class: 'button-login' %>
         </div>
       <% end %>
-
+      <div class="actions">
+        <%= button_to 'Sign in with GitHub', '/auth/github', data: { turbo: false }, class: 'button-login'%>
+      </div>
       <!-- Link to Sign Up Page -->
       <%= link_to "Sign up", new_registration_path, class: 'link-signup' %>
     </div>
