@@ -1,59 +1,54 @@
 <div class="profile-page">
-<div class="user-profile">
-  <div class="user-information">
-    <% if @user && @user.profile_picture.attached? %>
-      <div class="user-image">
-        <%= image_tag(@user.profile_picture, alt: "Profile Image", class: "profile-picture") %>
+  <div class="user-profile">
+    <div class="user-information">
+      <% if @user && @user.profile_picture.attached? %>
+        <div class="user-image">
+          <%= image_tag(@user.profile_picture, alt: "Profile Image", class: "profile-picture") %>
+        </div>
+      <% else %>
+        <p>No profile picture added.</p>
+      <% end %>
+      <div class="user-details">
+        <h1><%= @user.name %></h1>
+        <p><strong>Username:</strong> <%= @user.username %></p>
+        <p><strong>Email:</strong> <%= @user.email %></p>
+        <p><%= @user.bio %></p>
       </div>
-    <% else %>
-      <p>No profile picture added.</p>
-    <% end %>
-    <div class="user-details">
-      <h1><%= @user.name %></h1>
-      <p><strong>Username:</strong> <%= @user.username %></p>
-      <p><strong>Email:</strong> <%= @user.email %></p>
-      <p><%= @user.bio %></p>
     </div>
+    <div class="user-actions">
+      <% unless @user == current_user %>
+        <%= button_to 'Message Seller', message_seller_user_path(user_id: @user.id), method: :post, class: "user-actions button" %>
+      <% end %>
+      <%= link_to 'Active Listings', products_path(user_id: @user.id), class: "user-actions button" %>
   </div>
+  </div>
+  <% if @user == current_user %>
+    <div class="user-feedback">
+      <h2>Feedback</h2>
+      <% if @user.feedbacks.any? %>
+        <% @user.feedbacks.each do |feedback| %>
+          <div class="feedback-item">
+            <p><strong>Rating:</strong> <%= feedback.rating %></p>
+            <p><strong>Comment:</strong> <%= feedback.comment %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No feedback available.</p>
+      <% end %>
+    </div>
+    <div class="user-tracking">
+      <h2>Recent Orders</h2>
+      <% if @user.orders.any? %>
+        <% @user.orders.limit(5).each do |order| %>
+          <div class="order-item">
+            <p><strong>Order ID:</strong> <%= order.id %></p>
+            <p><strong>Total Price:</strong> <%= number_to_currency(order.total_price) %></p>
+            <%= link_to 'View Tracking', trackings_show_path(order_id: order.id), class: "button view-tracking unique-button" if order.tracking %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No recent orders.</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-  <div class="user-actions">
-    <% unless @user == current_user %>
-      <%= button_to 'Message Seller', message_seller_user_path(user_id: @user.id), method: :post, class: "unique-button message-seller-button" %>
-    <% end %>
-    <%= link_to 'Active Listings', products_path(user_id: @user.id), class: "unique-button listings-button" %>
-  </div>
-
-<% if @user == current_user %>
-  <div class="user-feedback">
-    <h2>Feedback</h2>
-    <% if @user.feedbacks.any? %>
-      <% @user.feedbacks.each do |feedback| %>
-        <div class="feedback-item">
-          <p><strong>Rating:</strong> <%= feedback.rating %></p>
-          <p><strong>Comment:</strong> <%= feedback.comment %></p>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No feedback available.</p>
-    <% end %>
-  </div>
-  <div class="user-tracking">
-    <h2>Recent Orders</h2>
-    <% if @user.orders.any? %>
-      <% @user.orders.limit(5).each do |order| %>
-        <div class="order-item">
-          <p><strong>Order ID:</strong> <%= order.id %></p>
-          <p><strong>Total Price:</strong> <%= number_to_currency(order.total_price) %></p>
-          <%= link_to 'View Tracking', trackings_show_path(order_id: order.id), class: "button view-tracking unique-button" if order.tracking %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No recent orders.</p>
-    <% end %>
-  </div>
-    </div>
-<% end %>
-
-
-
