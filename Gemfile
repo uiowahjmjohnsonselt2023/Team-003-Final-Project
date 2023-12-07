@@ -18,6 +18,10 @@ gem 'google_sign_in'
 gem 'omniauth-github', '~> 2.0.0'
 gem "omniauth-rails_csrf_protection"
 gem 'figaro'
+gem "net-http"
+gem "net-smtp"
+gem "net-imap"
+gem "uri", "0.13.0"
 
 
 group :development, :test do

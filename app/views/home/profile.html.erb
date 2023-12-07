@@ -1,27 +1,35 @@
+<!DOCTYPE html>
 <html>
-<%= stylesheet_link_tag "profile" %>
-<%= button_to "Home", root_path, method: :get %>
+<head>
+  <%= stylesheet_link_tag "profile" %>
+</head>
+<body class="profile-body">
 <div class="user-information-box">
-  <div style="float:left; width:fit-content;">
+  <div class="user-details">
     <h1><%= @user.name %></h1>
     <p><%= @user.username %> | <%= @user.email %></p>
   </div>
-  <div style="float:right;">
-    <img src=~/profile_picture.jpg style="height: 128px; width: 128px;">
+  <div class="profile-picture">
+    <img src="/path/to/profile_picture.jpg" alt="Profile Picture">
   </div>
-  <div style="clear:both"></div>
   <p><%= @user.bio %></p>
-  <%= button_to "Message", messages_path %>
-  <p>Account Created: <%= @user.created_at %></p>
+  <%= button_to "Message", messages_path, method: :get %>
+  <p>Account Created: <%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S UTC") %></p>
 </div>
 
-<body style="margin-top:10px">
-  <div style="float:left; width:70%; border-right: 5px solid maroon; margin-left: auto">
-    <h1 style="text-align: center; text-decoration: underline;"><%= link_to "Active Listings", root_path %></h1>
-  </div>
-  <div style="float:right; width: 29%">
-    <h1 style="text-align: center; text-decoration: underline;"><%= link_to "Reviews", root_path %></h1>
-  </div>
-  <div style="clear:both"></div>
+<div class="active-listings">
+  <h1>Active Listings</h1>
+  <% @user.listings.each do |listing| %>
+    <div class="listing">
+      <h3><%= link_to listing.title, product_path(listing.product_id) %></h3>
+      <p><%= listing.description %></p>
+      <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-primary' %>
+      <%= button_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>
+<div class="user-reviews">
+  <h1>Reviews</h1>
+</div>
 </body>
 </html>

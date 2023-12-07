@@ -58,7 +58,5 @@ RSpec.describe ProductsController, type: :controller do
         expect(response).to render_template('products/new')
       end
     end
-
-
   end
 end

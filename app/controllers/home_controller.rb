@@ -5,5 +5,6 @@ class HomeController < ApplicationController
 
   def profile
     @user = current_user
+    @listings = @user.listings
   end
 end
