@@ -13,6 +13,7 @@
     <h2>Top Sellers</h2>
     <% @top_sellers.each do |seller| %>
       <div class="seller">
+        <h3><%= seller.username %></h3>
       </div>
     <% end %>
   </section>
@@ -21,6 +22,10 @@
     <h2>Featured Products</h2>
     <% @featured_products.each do |product| %>
       <div class="product">
+        <h3><%= product.title %></h3>
+        <p><%= product.description %></p>
+        <%= image_tag(product.image) if product.image.attached? %>
+        <p><%= number_to_currency(product.price) %></p>
       </div>
     <% end %>
   </section>

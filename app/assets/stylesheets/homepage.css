@@ -1,61 +1,95 @@
+body {
+    background-color: #63759d;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    text-align: center;
+}
 
-/* style for logo label */
+header {
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+}
+
+.horizontal-nav {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.horizontal-nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.horizontal-nav li a {
+    text-decoration: none;
+    color: #505050;
+    font-size: 14px;
+}
+
+.hero {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #627bb7 40%, #9299b4 100%);
+    color: #e3e8f1;
+    text-align: center;
+}
+
 .homepage-logo {
-    width: 500px;
+    max-width: 450px;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-body {
-    background-color: #a2acc0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
-/* navigation header bar */
-header {
-    background-color: #f8f8f8;
+.top-sellers, .featured-products {
+    background: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    flex-basis: 48%;
+    max-width: 40%;
+    min-width: 200px;
+    box-sizing: border-box;
+}
+
+.top-sellers h2, .featured-products h2 {
+    color: #363636;
+    margin-bottom: 20px;
+}
+
+.seller, .product {
+    background: #d4daea;
     padding: 5px;
-}
-
-.horizontal-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.horizontal-nav li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.horizontal-nav li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.hero {
+    margin-bottom: 10px;
+    border-radius: 5px;
     text-align: center;
-    padding: 20px 0;
-}
-
-.featured-products, .about-us {
-    text-align: center;
-    background: #cdd6e8;
-    margin: 20px 0;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgb(246, 246, 255);
 }
 
 footer {
-    background-color: #333;
+    background-color: #000000;
     color: #fff;
     text-align: center;
-    position: absolute;
-    bottom: 0;
+    padding: 10px 0;
     width: 100%;
 }
+
+@media (max-width: 1024px) {
+    .top-sellers, .featured-products {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 20px 0;
+    }
+}
+
+
