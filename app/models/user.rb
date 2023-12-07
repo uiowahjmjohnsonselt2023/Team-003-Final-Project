@@ -28,6 +28,15 @@ class User < ApplicationRecord
   has_one :cart
   has_many :products
   has_many :reviews, dependent: :destroy
+  def verify_account(token)
+    return false if verified?
 
+    if token == verification_token
+      update(verified: true, verification_token: nil)
+      true
+    else
+      false
+    end
+  end
 end
 
