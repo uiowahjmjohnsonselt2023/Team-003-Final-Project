@@ -70,5 +70,9 @@
     <div class="actions">
       <%= f.submit "Sign up", class: 'button-signup' %>
     </div>
+
   <% end %>
+
+  <%= button_to 'Sign in with GitHub', '/auth/github', data: { turbo: false }, class: 'button-signup' %>
 </div>
+
