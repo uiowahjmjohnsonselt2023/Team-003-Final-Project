@@ -6,7 +6,9 @@
           <%= image_tag(@user.profile_picture, alt: "Profile Image", class: "profile-picture") %>
         </div>
       <% else %>
-        <p>No profile picture added.</p>
+        <div class="user-image">
+          <%= image_tag('unknown-pfp.png', alt: "Default Profile Image", class: "profile-picture") %>
+        </div>
       <% end %>
       <div class="user-details">
         <h1><%= @user.name %></h1>
