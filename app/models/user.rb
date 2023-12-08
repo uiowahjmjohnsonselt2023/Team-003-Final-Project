@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
 
+  #associations for auctions
+  has_many :bids, dependent: :destroy
   # allows for secure password management within the model by adding methods to set and authenticate against a BCrypt password
   has_secure_password
 

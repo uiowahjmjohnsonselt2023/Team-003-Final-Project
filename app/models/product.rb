@@ -10,7 +10,11 @@ class Product < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
 
   has_many :conversations
+  has_many :bids, dependent: :destroy
 
+  def current_highest_bid
+    bids.maximum(:amount)
+  end
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
