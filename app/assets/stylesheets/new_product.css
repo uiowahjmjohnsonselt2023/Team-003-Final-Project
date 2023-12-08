@@ -1,0 +1,92 @@
+/* New Listing Container */
+
+.create-listing-container.unique-create-listing h2 {
+    color: white;
+}
+
+.create-listing-container.unique-create-listing {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #303b48;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.unique-form-signup {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flash-notice {
+    background-color: #48c78e;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Name Field */
+.new-listing-field {
+    margin-bottom: 15px;
+}
+
+.unique-label {
+    font-weight: bold;
+}
+
+.unique-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Select Field */
+.unique-select-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Description Field */
+.unique-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Location Field */
+.unique-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.new-listing-actions {
+    margin-top: 20px;
+}
+
+.unique-button-signup {
+    background-color: #3d5d9b;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.unique-button-signup:hover {
+    background-color: #425f9c;
+}
+
+

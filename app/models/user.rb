@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   # association for user profile picture
   has_one_attached :profile_picture
+  attribute :verified, :boolean, default: false
+  attribute :verification_token, :string
 
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
 
@@ -21,14 +23,44 @@ class User < ApplicationRecord
   has_one :cart
   has_many :cart_items, through: :cart
   has_many :products
+
+  has_many :reviews, dependent: :destroy
+  def verify_account(token)
+    return false if verified?
+
+    if token == verification_token
+      update(verified: true, verification_token: nil)
+      true
+    else
+      false
+    end
+  end
   has_many :orders
+
+  # associations for listings
+  has_many :listings
+
+  # associations for feedbacks from buyers after purchasing an order
+  has_many :feedbacks, through: :orders
 
   # associations for a user's favorites
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
 
+
   #associations for auctions
   has_many :bids, dependent: :destroy
+
+  # fetch top sellers
+  def self.top_sellers
+    User.joins(:orders)
+        .select('users.*, COUNT(orders.id) AS total_sales')
+        .group('users.id')
+        .order('total_sales DESC')
+        .limit(5)
+  end
+
+
   # allows for secure password management within the model by adding methods to set and authenticate against a BCrypt password
   has_secure_password
 
@@ -61,16 +93,6 @@ class User < ApplicationRecord
   # calculates the average rating of received reviews
   def average_rating
     received_reviews.average(:rating).to_f
-  end
-
-  # verify a user
-  def verify!
-    update(verified: true)
-  end
-
-  # unverify a user
-  def unverify!
-    update(verified: false)
   end
 end
 

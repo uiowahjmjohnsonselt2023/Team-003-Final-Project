@@ -12,12 +12,17 @@ RSpec.describe SessionsController, type: :controller do
   describe "POST #create" do
     context "with valid credentials" do
       it "logs in the user and redirects to root path" do
-        user = create(:user) # Assuming you have factories set up for users
+        user = create(:user)
 
         post :create, params: { username: user.username, password: user.password }
         expect(session[:user_id]).to eq(user.id)
         expect(response).to redirect_to(root_path)
         expect(flash[:notice]).to eq('Logged in successfully.')
+      end
+      it 'creates a new user with verification token' do
+        user = create(:user)
+        expect(user.verification_token).to be_present
+        expect(user.verified).to be false
       end
     end
 

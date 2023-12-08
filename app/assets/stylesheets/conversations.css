@@ -1,14 +1,11 @@
-/* conversations/index.html.erb */
-/* heading */
-h1 {
+.convo-h1 {
     font-size: 33px;
     color: #000000;
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* conversation container */
-.conversation {
+.convo-conversation {
     background-color: #f4f4f4;
     border-radius: 10px;
     padding: 15px;
@@ -19,21 +16,18 @@ h1 {
     align-items: center;
 }
 
-/* link within the conversation */
-.conversation a {
+.convo-conversation a {
     text-decoration: none;
     color: #2a2941;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
 
-/* link color on hover */
-.conversation a:hover {
+.convo-conversation a:hover {
     color: #0056b3;
 }
 
-/* delete button */
-.delete-button {
+.convo-delete-button {
     background-color: #ff4646;
     color: #fff;
     border: none;
@@ -43,13 +37,11 @@ h1 {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* button color on hover */
-.delete-button:hover {
+.convo-delete-button:hover {
     background-color: #d63434;
 }
 
-/* conversations/show.html.erb */
-.chat-container {
+.convo-chat-container {
     display: flex;
     flex-direction: column;
     max-width: 800px;
@@ -59,27 +51,26 @@ h1 {
     overflow: hidden;
 }
 
-/* Header styling */
-.chat-header {
+.convo-chat-header {
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
     padding: 10px 15px;
     text-align: center;
 }
 
-.chat-header h1 {
+.convo-chat-header h1 {
     margin: 0;
     color: #5a5a5a;
     font-size: 1.5em;
 }
 
-.chat-header h2 {
+.convo-chat-header h2 {
     margin: 5px 0;
     color: #888;
     font-size: 1.2em;
 }
 
-.product-link {
+.convo-product-link {
     display: inline-block;
     margin-top: 10px;
     padding: 5px 10px;
@@ -89,24 +80,23 @@ h1 {
     border-radius: 4px;
 }
 
-.product-link:hover {
+.convo-product-link:hover {
     background-color: #0056b3;
 }
 
-.product-thumbnail {
+.convo-product-thumbnail {
     max-width: 100px;
     margin: 10px 0;
 }
 
-/* Messages list styling */
-.messages {
+.convo-messages {
     padding: 15px;
     height: 300px;
     overflow-y: auto;
     background-color: #fafafa;
 }
 
-.message {
+.convo-message {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
@@ -114,38 +104,38 @@ h1 {
     border: 1px solid #ced4da;
 }
 
-.message-from-me {
+.convo-message-from-me {
     background-color: #d1ecf1;
     border-color: #bee5eb;
     align-self: flex-end;
 }
 
-.message strong {
+.convo-message strong {
     display: block;
     color: #212529;
 }
 
-.message p {
+.convo-message p {
     margin: 5px 0;
     color: #495057;
 }
 
-.message small {
+.convo-message small {
     display: block;
     margin-top: 8px;
     color: #6c757d;
 }
 
-form {
+.convo-form {
     background-color: #f8f9fa;
     padding: 10px 15px;
 }
 
-.field {
+.convo-field {
     margin-bottom: 10px;
 }
 
-.text_area {
+.convo-text_area {
     width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
@@ -153,18 +143,72 @@ form {
     resize: vertical;
 }
 
-.send-button {
+.convo-send-button {
     padding: 8px 16px;
-    background-color: #28a745;
+    background-color: #28a794;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.send-button:hover {
-    background-color: #218838;
+.convo-send-button:hover {
+    background-color: #50d7b8;
 }
 
+.my-messages-title {
+    font-size: 36px;
+    color: #000000;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 
+.conversations-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.my-messages-title {
+    font-size: 36px;
+    color: #303b48;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.conversation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+}
+
+.conversation-link {
+    padding-right: 20px;
+}
+
+.delete-button-unique {
+    background-color: #b94e4e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.delete-button-unique:hover {
+    background-color: #b94e4e;
+    transform: scale(1.05);
+}
