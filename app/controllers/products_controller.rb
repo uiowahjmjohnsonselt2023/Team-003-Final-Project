@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:message_seller]
-  before_action :authenticate_user, only: [:message_seller]
+  before_action :set_product, only: [:message_seller, :create_bid]
+  before_action :authenticate_user, only: [:message_seller, :create_bid]
   before_action :require_login, only: [:new, :create]
 
   def product_params
@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
                                     :condition,
                                     :location,
                                     :category_id,
+                                    :auction,
+                                    :auction_start_time,
+                                    :auction_end_time,
                                     )
   end
 
@@ -93,6 +96,24 @@ class ProductsController < ApplicationController
 
     render 'search'
   end
+  def create_bid
+    @product = Product.find(params[:id])
+    if auction_active?(@product)
+      @bid = @product.bids.new(bid_params)
+      @bid.user = current_user
+      if @bid.save
+        redirect_to @product, notice: "Bid was placed successfully"
+      else
+        render products_path(@product)
+      end
+    end
+  end
+  def auction_active?(product)
+    Time.current.between?(product.auction_start_time, product.auction_end_time)
+  end
+  def bid_params
+    params.require(:bid).permit(:amount)
+  end
 
   private
 
@@ -160,20 +181,7 @@ class ProductsController < ApplicationController
       'created_at DESC' # default sorting by newest
     end
   end
-  def create_bid
-    @product = Product.find(params[:id])
-    @bid = @product.bids.new(bid_params)
-    @bid.user = current_user
 
-    if @bid.save
-      redirect_to @product, notice: "Bid was placed successfully"
-    else
-      render products_path(@product)
-    end
-  end
-  def bid_params
-    params.require(:bid).permit(:amount)
-  end
 end
 
 

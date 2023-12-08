@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       post 'message_seller'
       post 'write_review'
       post 'add_to_favorites'
+      post 'create_bid'
     end
 
     # routes for reviews
