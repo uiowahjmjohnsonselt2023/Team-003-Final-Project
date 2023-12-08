@@ -36,15 +36,16 @@
       <p><%= @product.description %></p>
     </div>
 
-    <!-- Associated Listings -->
     <div class="product-listings">
-      <h2>Related Listings</h2>
-      <% @product.listings.each do |listing| %>
-        <div class="listing">
-          <h3><%= listing.title %></h3>
-          <p><%= listing.description %></p>
-        </div>
-      <% end %>
+      <h2>Related Products</h2>
+      <div class="related-products-container">
+        <% @related_products.each do |product| %>
+          <div class="listing">
+            <h3><%= link_to product.title, product_path(product) %></h3>
+            <p><%= product.description %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="review-form">
