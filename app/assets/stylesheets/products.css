@@ -52,7 +52,8 @@
 
 .purchase-button,
 .favorite-button,
-.message-seller-button {
+.message-seller-button,
+.report-user-button {
     margin-top: 10px;
     width: 100%;
     padding: 10px;

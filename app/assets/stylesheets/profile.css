@@ -95,7 +95,8 @@
     background-color: #3b4777;
 }
 
-.user-profile .message-seller-button {
+.user-profile .message-seller-button,
+.user-profile .report-user-button {
     background-color: #384b64;
     border: none;
     padding: 10px 20px;
@@ -109,6 +110,10 @@
 
 .user-profile .message-seller-button:hover {
     background-color: #6b7a94;
+}
+
+.user-profile .report-user-button:hover {
+    background-color: #c9302c;
 }
 
 /* Recent Orders Section */
