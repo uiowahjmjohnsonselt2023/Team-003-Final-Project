@@ -10,9 +10,9 @@ class ProductsController < ApplicationController
                                     :condition,
                                     :location,
                                     :category_id,
-                                    :auction,
+                                    :auction_enabled,
                                     :auction_start_time,
-                                    :auction_end_time,
+                                    :auction_end_time
                                     )
   end
 
@@ -109,7 +109,7 @@ class ProductsController < ApplicationController
     end
   end
   def auction_active?(product)
-    Time.current.between?(product.auction_start_time, product.auction_end_time)
+    product.auction_enabled
   end
   def bid_params
     params.require(:bid).permit(:amount)

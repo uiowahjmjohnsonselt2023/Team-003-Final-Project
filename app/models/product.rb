@@ -12,8 +12,8 @@ class Product < ApplicationRecord
   has_many :conversations
 
   has_many :bids, dependent: :destroy
-  validates :auction_start_time, presence: true
-  validates :auction_end_time, presence: true
+  validates :auction_start_time, presence: true, if: :auction_enabled?
+  validates :auction_end_time, presence: true, if: :auction_enabled?
 
   def current_highest_bid
     bids.maximum(:amount)
