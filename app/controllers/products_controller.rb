@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @reviews = @product.reviews
+    @bids = @product.bids.order(amount: :desc)
     # initialize an empty review object for the form
     @review = Review.new
 
@@ -158,6 +159,20 @@ class ProductsController < ApplicationController
     else
       'created_at DESC' # default sorting by newest
     end
+  end
+  def create_bid
+    @product = Product.find(params[:id])
+    @bid = @product.bids.new(bid_params)
+    @bid.user = current_user
+
+    if @bid.save
+      redirect_to @product, notice: "Bid was placed successfully"
+    else
+      render products_path(@product)
+    end
+  end
+  def bid_params
+    params.require(:bid).permit(:amount)
   end
 end
 
