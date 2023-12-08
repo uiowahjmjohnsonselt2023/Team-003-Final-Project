@@ -49,6 +49,7 @@ end
 
 
 
+
 User.limit(5).each do |user|
   cart = user.cart || user.create_cart
   cart.cart_items.destroy_all
@@ -66,7 +67,6 @@ User.limit(5).each do |user|
     phone: Faker::PhoneNumber.phone_number,
     credit_card_number: '1234567890123456', # mock credit card number
     expiration_date: '11/21',               # mock expiration date
-    cvv: '123'                              # mock CVV
   )
 
   if order.save
@@ -83,5 +83,20 @@ User.limit(5).each do |user|
     cart.cart_items.destroy_all
   else
     puts "Failed to create order for user #{user.id}: #{order.errors.full_messages.join(", ")}"
+  end
+
+  User.find_each do |user|
+    user.products.each do |product|
+      3.times do
+        reviewer = User.where.not(id: user.id).sample
+        Review.create!(
+          product: product,
+          reviewer: reviewer,
+          reviewee: user,
+          rating: rand(1..5),
+          comment: Faker::Lorem.sentence
+        )
+      end
+    end
   end
 end

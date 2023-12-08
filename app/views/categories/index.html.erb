@@ -3,7 +3,7 @@
   <div class="categories-grid">
     <% Category.all.each do |category| %>
       <div class="category-card">
-        <%= link_to search_products_path(category: category.id), class: "category-link" do %>
+        <%= link_to(search_products_path(category: category.id), class: "category-link") do %>
           <% if category.image.attached? %>
             <%= image_tag(category.image, alt: category.name, class: "category-image") %>
           <% end %>
@@ -13,3 +13,4 @@
     <% end %>
   </div>
 </div>
+

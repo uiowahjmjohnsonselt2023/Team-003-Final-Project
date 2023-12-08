@@ -48,6 +48,8 @@ class ProductsController < ApplicationController
 
     # show seller's rating
     @seller_rating = @product.user.average_rating.round(1)
+
+    @related_products = Product.where(category_id: @product.category_id).limit(3)
   end
 
   def edit
