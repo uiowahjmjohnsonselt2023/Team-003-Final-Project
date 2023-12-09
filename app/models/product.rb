@@ -12,15 +12,18 @@ class Product < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
 
   has_many :conversations
-
-  validates :bid, presence: true, numericality: {greater_than: 0}
+  has_many :bids
+  validates :starting_bid, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :highest_bid, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :auction_enabled, inclusion: [true, false]
   with_options if: :auction_enabled? do |auction_product|
-    auction_product.validates :auction_start_time, presence: true
-    auction_product.validates :auction_end_time, presence: true
+   auction_product.validates :auction_start_time, presence: true
+   auction_product.validates :auction_end_time, presence: true
   end
 
-
+  def highest_bidder
+    Bid.where(product_id: id).order(amount: :desc).first&.user
+  end
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
