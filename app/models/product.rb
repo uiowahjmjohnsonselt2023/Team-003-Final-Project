@@ -13,13 +13,14 @@ class Product < ApplicationRecord
 
   has_many :conversations
 
-  has_many :bids, dependent: :destroy
-  validates :auction_start_time, presence: true, if: :auction_enabled?
-  validates :auction_end_time, presence: true, if: :auction_enabled?
-
-  def current_highest_bid
-    bids.maximum(:amount)
+  validates :bid, presence: true, numericality: {greater_than: 0}
+  validates :auction_enabled, inclusion: [true, false]
+  with_options if: :auction_enabled? do |auction_product|
+    auction_product.validates :auction_start_time, presence: true
+    auction_product.validates :auction_end_time, presence: true
   end
+
+
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
