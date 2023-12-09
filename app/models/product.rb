@@ -21,8 +21,11 @@ class Product < ApplicationRecord
    auction_product.validates :auction_end_time, presence: true
   end
 
+  def highest_bid
+    bids.maximum(:amount) || starting_bid
+  end
   def highest_bidder
-    Bid.where(product_id: id).order(amount: :desc).first&.user
+    bids.order(amount: :desc).first&.user
   end
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
