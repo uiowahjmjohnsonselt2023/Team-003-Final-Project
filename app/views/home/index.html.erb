@@ -31,7 +31,14 @@
         </div>
       <% end %>
     </section>
-
+    <section class="top-sellers">
+      <h2>Top Rated Sellers</h2>
+      <% @top_rated.each do |seller|%>
+        <div class="seller">
+          <%= link_to seller.username, useer_path(seller),class:'seller-link'%>
+        </div>
+      <% end %>
+    </section>
     <section class="about-us">
       <h2>About Us</h2>
       <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
