@@ -55,7 +55,15 @@ class User < ApplicationRecord
         .order('total_sales DESC')
         .limit(5)
   end
-
+  # Fetch Top rated sellers
+  def self.top_rated
+    User.joins(:received_reviews, :orders)
+        .select('users.*, AVG(reviews.rating) AS average_rating')
+        .group('users.id')
+        .having('COUNT(reviews.id) > 0')
+        .order('average_rating DESC')
+        .limit(5)
+  end
   # allows for secure password management within the model by adding methods to set and authenticate against a BCrypt password
   has_secure_password
 
@@ -89,6 +97,7 @@ class User < ApplicationRecord
   def average_rating
     received_reviews.average(:rating).to_f
   end
+  
 end
 
 
