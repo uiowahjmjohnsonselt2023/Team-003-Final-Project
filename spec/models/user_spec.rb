@@ -27,7 +27,8 @@ RSpec.describe User, type: :model do
       expect(user_verified.verify_account('valid_token')).to be false
     end
 
-  it "has a valid factory" do
-    expect(build(:user)).to be_valid
+    it "has a valid factory" do
+      expect(build(:user)).to be_valid
+    end
   end
 end
