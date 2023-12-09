@@ -21,7 +21,13 @@ end
 
 # create multiple users and their products
 Faker::UniqueGenerator.clear
-
+user = User.create(
+  name:"John Admin",
+  username: "admin123",
+  email: "admin@admin.com",
+  password: "password",
+  admin: true
+)
 10.times do
   user = User.create!(
     name: Faker::Name.unique.name,

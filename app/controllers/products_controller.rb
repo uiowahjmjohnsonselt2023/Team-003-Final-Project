@@ -83,6 +83,11 @@ class ProductsController < ApplicationController
 
   # add a product to the user's favorites
   def add_to_favorites
+    if !logged_in?
+      flash[:alert] = ' You must be logged in to access this section'
+      redirect_to login_url
+      return
+    end
     @product = Product.find(params[:id])
     current_user.favorites.create(product: @product)
     flash[:notice] = "Product added to favorites."
