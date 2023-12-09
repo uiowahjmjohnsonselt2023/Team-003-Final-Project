@@ -129,19 +129,32 @@ class ProductsController < ApplicationController
   end
   def create_bid
     @product = Product.find(params[:id])
-    if auction_active?(@product)
-      @bid = @product.bids.new(bid_params)
-      @bid.user = current_user
-      if @bid.save
-        redirect_to @product, notice: "Bid was placed successfully"
-      else
-        render products_path(@product)
-      end
+    amount = params[:bid_amount].to_f
+
+    if @product.auction_enabled && @product.auction_end_time > Time.now && amount > @product.bid
+      @product.update(bid: amount)
+      flash[:notice] = 'Bid placed successfully!'
+    else
+      flash[:alert] = 'Invalid bid!'
     end
+
+    redirect_to product_path(@product)
   end
-  def auction_active?(product)
-    product.auction_enabled
+  def end_auction
+    @product = Product.find(params[:id])
+
+    if @product.auction_enabled && @product.auction_end_time <= Time.now
+      # Award the product to the highest bidder
+      winner = @product.highest_bidder
+      @product.update(sold_to: winner, auction_enabled: false)
+      flash[:notice] = 'Auction ended successfully!'
+    else
+      flash[:alert] = 'Auction cannot be ended at this time!'
+    end
+
+    redirect_to product_path(@product)
   end
+
   def bid_params
     params.require(:bid).permit(:amount)
   end
