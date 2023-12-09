@@ -145,7 +145,7 @@
 
 .convo-send-button {
     padding: 8px 16px;
-    background-color: #28a745;
+    background-color: #28a794;
     color: white;
     border: none;
     border-radius: 4px;
@@ -153,7 +153,7 @@
 }
 
 .convo-send-button:hover {
-    background-color: #218838;
+    background-color: #50d7b8;
 }
 
 .my-messages-title {
@@ -191,6 +191,7 @@
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
 }
 
 .conversation-link {
@@ -198,7 +199,7 @@
 }
 
 .delete-button-unique {
-    background-color: #FF4500;
+    background-color: #b94e4e;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -208,6 +209,6 @@
 }
 
 .delete-button-unique:hover {
-    background-color: #d00404;
+    background-color: #b94e4e;
     transform: scale(1.05);
 }

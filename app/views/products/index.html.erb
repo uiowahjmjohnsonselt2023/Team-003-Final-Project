@@ -9,13 +9,14 @@
       <% if current_user == product.user %>
         <%= link_to 'Edit', edit_product_path(product), class: 'product-edit-button' %>
         <%= button_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'product-delete-button' %>
-      <% end %>
+
       <% if product.is_promoted %>
         <%= button_to 'Unpromote', unpromote_product_path(product), method: :delete, class: 'unpromote-button' %>
       <% else %>
         <%= button_to 'Promote', promote_product_path(product), method: :post, class: 'promote-button' %>
+         <% end %>
+        <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-</div>
+      </div>
 
