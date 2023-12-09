@@ -202,9 +202,9 @@ class ProductsController < ApplicationController
     case sort_option
     when 'newest'
       'created_at DESC'
-    when 'price_asc'
+    when 'price_low_to_high'
       'price ASC'
-    when 'price_desc'
+    when 'price_high_to_low'
       'price DESC'
     else
       'created_at DESC' # default sorting by newest

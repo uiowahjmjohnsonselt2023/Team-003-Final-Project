@@ -29,6 +29,11 @@ class SessionsController < ApplicationController
     uid = auth_hash.uid
     username = auth_hash.info['nickname']
     password = SecureRandom.hex
+    if auth_hash.info['name'] != nil
+      name = auth_hash.info['name']
+    else
+      name = username
+    end
     email = username + "@github.com"
     if auth_hash.info['email'] != nil
       email = auth_hash.info['email']
@@ -37,6 +42,7 @@ class SessionsController < ApplicationController
       user.username = username
       user.email = email
       user.password = password
+      user.name = name
     end
     if @user.persisted?
       session[:user_id] = @user.id

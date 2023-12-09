@@ -38,6 +38,11 @@ class RegistrationsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     uid = auth_hash.uid
     username = auth_hash.info['nickname']
+    if auth_hash.info['name'] != nil
+      name = auth_hash.info['name']
+    else
+      name = username
+    end
     password = SecureRandom.hex
     email = username + "@github.com"
     if auth_hash.info['email'] != nil
@@ -47,6 +52,7 @@ class RegistrationsController < ApplicationController
       user.username = username
       user.email = email
       user.password = password
+      user.name = name
     end
     if @user.persisted?
       session[:user_id] = @user.id
