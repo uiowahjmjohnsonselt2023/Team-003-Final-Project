@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show]
   before_action :set_user, only: [:show]
+  before_action :set_admin, only: [:show]
 
   def show
     @user = params[:id] ? User.find(params[:id]) : current_user
@@ -20,6 +21,10 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find_by(id: params[:id]) || current_user
+    end
+
+    def set_admin
+      @admin = User.find_by(admin: true)
     end
   end
 end
