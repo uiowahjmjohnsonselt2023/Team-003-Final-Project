@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:message_seller, :create_bid]
   before_action :authenticate_user, only: [:message_seller, :create_bid]
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create, :create_bid]
 
   def product_params
     params.require(:product).permit(:title,
@@ -10,9 +10,12 @@ class ProductsController < ApplicationController
                                     :condition,
                                     :location,
                                     :category_id,
-                                    :auction_enabled,
                                     :auction_start_time,
-                                    :auction_end_time
+                                    :auction_end_time,
+                                    :auction_enabled,
+                                    :is_promoted,
+                                    :is_featured,
+                                    :bid
                                     )
   end
 
@@ -46,7 +49,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @listings = @product.listings
     @reviews = @product.reviews
-    @bids = @product.bids.order(amount: :desc)
+    @current_bid = @product.highest_bidder
     # initialize an empty review object for the form
     @review = Review.new
 
@@ -129,14 +132,24 @@ class ProductsController < ApplicationController
   end
   def create_bid
     @product = Product.find(params[:id])
-    amount = params[:bid_amount].to_f
-
-    if @product.auction_enabled && @product.auction_end_time > Time.now && amount > @product.bid
-      @product.update(bid: amount)
-      flash[:notice] = 'Bid placed successfully!'
+    amount = params[:amount].to_f
+    starting_bid = @product.starting_bid || 0
+    highest_bid = @product.highest_bid || starting_bid
+    bid = Bid.new(
+      user: current_user,
+      product: @product,
+      amount: amount
+    )
+    if @product.auction_enabled && @product.auction_end_time > Time.now && amount > highest_bid
+      if bid.valid? && bid.save
+        @product.update(highest_bid: amount)
+        flash[:notice] = 'Bid placed successfully!'
+      else
+        flash[:alert] = 'Invalid bid!'
+      end
     else
       flash[:alert] = 'Invalid bid!'
-    end
+      end
 
     redirect_to product_path(@product)
   end

@@ -23,6 +23,31 @@
       <%= f.label "Price", class: 'unique-label' %>
       <%= f.text_field :price, class: 'unique-input', required: true %>
     </div>
+    <div id="auction-fields" style="display: none;">
+      <!-- Starting Bid Field -->
+      <div class="new-listing-field">
+        <%= f.label "Starting Bid", class: 'unique-label' %>
+        <%= f.text_field :starting_bid, class: 'unique-input' %>
+      </div>
+
+      <!-- Auction Start Time Field -->
+      <div class="new-listing-field">
+        <%= f.label "Auction Start Time", class: 'unique-label' %>
+        <%= f.datetime_field :auction_start_time, class: 'unique-input' %>
+      </div>
+
+      <!-- Auction End Time Field -->
+      <div class="new-listing-field">
+        <%= f.label "Auction End Time", class: 'unique-label' %>
+        <%= f.datetime_field :auction_end_time, class: 'unique-input' %>
+      </div>
+    </div>
+
+    <!-- Auction Checkbox -->
+    <div class="new-listing-field">
+      <%= f.label "Auction?", class: 'unique-label' %>
+      <%= f.check_box :auction_enabled, onchange: "toggleAuctionFields()", class: 'unique-checkbox' %>
+    </div>
 
     <!-- Category Field -->
     <div class="new-listing-field">
@@ -53,5 +78,19 @@
       <%= f.submit "Create Listing", class: 'unique-button-signup' %>
     </div>
   <% end %>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const auctionCheckbox = document.getElementById('product_auction_enabled');
+          const auctionFields = document.getElementById('auction-fields');
+
+          auctionCheckbox.addEventListener('change', function () {
+              if (auctionCheckbox.checked) {
+                  auctionFields.style.display = 'block';
+              } else {
+                  auctionFields.style.display = 'none';
+              }
+          });
+      });
+  </script>
 </div>
 
