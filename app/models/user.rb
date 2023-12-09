@@ -60,7 +60,7 @@ class User < ApplicationRecord
     User.joins(:received_reviews, :orders)
         .select('users.*, AVG(reviews.rating) AS average_rating')
         .group('users.id')
-        .having('COUNT(orders.id) > 0')
+        .having('COUNT(reviews.id) > 0')
         .order('average_rating DESC')
         .limit(5)
   end
