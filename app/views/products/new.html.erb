@@ -21,7 +21,7 @@
     <!-- Price Field -->
     <div class="new-listing-field">
       <%= f.label "Price", class: 'unique-label' %>
-      <%= f.text_field :price, class: 'unique-input', required: true %>
+      <%= f.number_field :price, class: 'unique-input', step: '0.01' , required: true %>
     </div>
 
     <!-- Category Field -->
