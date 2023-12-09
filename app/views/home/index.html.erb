@@ -35,7 +35,8 @@
       <h2>Top Rated Sellers</h2>
       <% @top_rated.each do |seller|%>
         <div class="seller">
-          <%= link_to seller.username, useer_path(seller),class:'seller-link'%>
+          <%= link_to seller.username, user_path(seller),class:'seller-link'%>
+          <%= number_with_precision(seller.average_rating, precision:1) %>
         </div>
       <% end %>
     </section>
