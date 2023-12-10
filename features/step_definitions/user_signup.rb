@@ -11,8 +11,10 @@ When("I fill in the following:") do |table|
 end
 
 # fill in a specific signup field with a value
-When(/^I fill in the signup "([^"]*)" with "([^"]*)"$/) do |field, value|
-  fill_in field, with: value
+When("I fill in the following signup information:") do |table|
+  table.rows_hash.each do |field, value|
+    fill_in field.to_sym, with: value
+  end
 end
 
 # fill in a field with a given value

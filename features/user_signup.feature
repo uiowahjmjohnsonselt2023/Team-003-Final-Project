@@ -8,7 +8,7 @@ Feature: User Signup
     Given the signup page is available
 
   Scenario: Successful signup with valid information
-    And I fill in the following:
+    And I fill in the following signup information:
       | Name     | John Doe        |
       | Username | john_doe        |
       | Email    | john@example.com|
