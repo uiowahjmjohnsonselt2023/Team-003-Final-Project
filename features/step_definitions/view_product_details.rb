@@ -1,11 +1,19 @@
 Given(/^a product is listed in the marketplace with a review$/) do
   @category = Category.find_or_create_by!(name: "Electronics")
-  @user = User.create!(username: 'TestUser', email: 'test@example.com', password: 'password')
+  @user = User.create!(
+    username: 'TestUser',
+    email: 'test@example.com',
+    password: 'password'
+  )
   @product = Product.create!(
     title: 'Test Product',
     description: 'Test Description',
+    price: 10.0, # Add a valid price
     user: @user,
-    category: @category
+    category: @category,
+    auction_enabled: false, # Adjust as per your model requirements
+    starting_bid: 10,       # Adjust as per your model requirements
+    highest_bid: 10         # Adjust as per your model requirements
   )
   @review = Review.create!(
     comment: 'Great product',
@@ -21,10 +29,7 @@ Given('I am logged in as the reviewing user') do
 end
 
 When("I visit the product details page") do
-  @category = Category.create!(name: "Example Category")
-  @product = create(:product, category: @category)
-  @product_id = @product.id
-  visit product_path(@product_id)
+  visit product_path(@product)
 end
 
 Then('I should see the product details') do
@@ -48,8 +53,8 @@ When('I click on the "Delete Review" button for the review') do
   end
 end
 
-Then('I should see a {string} section') do |section|
-  expect(page).to have_css('h3', text: section)
+And("I should see a \"Write a Review\" section") do
+  expect(page).to have_css('div.review-form h2', text: 'Write a Review')
 end
 
 Then('I should not see the review content') do

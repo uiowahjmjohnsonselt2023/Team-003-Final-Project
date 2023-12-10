@@ -1,5 +1,3 @@
-# features/view_product_details.feature
-
 Feature: Viewing Product Details
 
   As a visitor

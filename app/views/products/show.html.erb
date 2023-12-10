@@ -50,7 +50,7 @@
       <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
       <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
       <% if current_user.admin? == true %>
-        <%= button_to 'Delete Product', destroy_product_product_path(@product), method: :delete, class:"delete-button"%>
+        <%= button_to 'Delete Product', destroy_product_product_path(@product), method: :delete, class: "delete-button"%>
       <% end %>
       <% if current_user == @product.user %>
         <% if @product.is_promoted %>
@@ -111,6 +111,3 @@
     </div>
   </div>
 </div>
-
-
-
