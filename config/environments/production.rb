@@ -76,8 +76,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.google.com',
-    port:                 587,
-    domain:               nil,
+    port:                 2525,
+    domain:               'gmail.com',
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['GMAIL_APP_PASSWORD'],
     authentication:       'plain',
