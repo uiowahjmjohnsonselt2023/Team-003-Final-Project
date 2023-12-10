@@ -9,18 +9,18 @@ Given('I am a logged-in user') do
 end
 
 Given('I have a product in my cart') do
-  # create a category
   category = Category.create!(name: 'Electronics')
 
-  # create a product associated with the category
   product = Product.create!(
     title: 'Example Product',
     price: 9.99,
     user: @user,
-    category: category
+    category: category,
+    auction_enabled: false,
+    starting_bid: 10,
+    highest_bid: 10
   )
 
-  # Create a cart and add the product to the cart
   @cart = @user.cart || @user.create_cart
   CartItem.create!(product: product, cart: @cart, quantity: 1)
 end
@@ -36,7 +36,6 @@ When('I provide my shipping and payment information') do
   fill_in 'Postal Code', with: '12345'
   fill_in 'Credit Card Number', with: '1234567890123456'
   fill_in 'Expiration Date', with: '12/34'
-  fill_in 'CVV', with: '123'
   fill_in 'Email', with: 'test@example.com'
   fill_in 'Phone Number', with: '123-456-7890'
 end
