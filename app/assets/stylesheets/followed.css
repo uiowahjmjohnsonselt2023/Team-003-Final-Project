@@ -1,0 +1,66 @@
+.followed-users-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* title of the followed-users page */
+.followed-users-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+
+}
+
+/* individual followed-user items */
+.followed-user-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* product title within each followed-user item */
+.followed-user-product-title {
+    font-size: 18px;
+    color: #333;
+}
+
+    /* 'View' and 'Remove from followed-users' links */
+    .followed-user-action-link {
+        text-decoration: none;
+        color: #064b96;
+        margin-right: 15px;
+    }
+
+    /* 'Remove from followed-users' button */
+    .remove-followed-user-button {
+        background-color: #b94e4e;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* add responsiveness for smaller screens */
+    @media (max-width: 768px) {
+        .followed-users-container {
+            width: 90%; /* make the container wider on small screens */
+        }
+
+        .followed-user-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .followed-user-action-link,
+        .remove-followed-user-button {
+            margin-top: 10px;
+        }
+    }

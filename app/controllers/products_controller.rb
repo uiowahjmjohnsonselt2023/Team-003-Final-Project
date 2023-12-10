@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    puts "Params: #{params.inspect}"
     @product = current_user.products.new(product_params)
     if @product.save
       flash[:notice] = 'Product added!'
