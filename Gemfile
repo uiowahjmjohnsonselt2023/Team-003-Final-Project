@@ -22,7 +22,7 @@ gem "net-http"
 gem "net-smtp"
 gem "net-imap"
 gem "uri", "0.13.0"
-
+gem 'faker'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
