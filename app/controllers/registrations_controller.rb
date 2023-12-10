@@ -26,7 +26,7 @@ class RegistrationsController < ApplicationController
       # Generate a verification token and save it to the user
       @user.update(verification_token: SecureRandom.urlsafe_base64)
       # Send email with verification link
-      UserVerificationMailer.verification_email(@user).deliver_now
+      UserVerificationMailer.verification_email(@user).deliver_later(wait: 20.seconds)
 
       redirect_to root_path
     else
