@@ -89,7 +89,8 @@ body {
     width: 100%;
 }
 
-.homepage-content @media (max-width: 1024px) {
+
+@media (max-width: 1024px) {
     .top-sellers, .featured-products {
         flex-basis: 100%;
         max-width: 100%;
