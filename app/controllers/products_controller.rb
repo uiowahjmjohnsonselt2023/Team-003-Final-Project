@@ -35,8 +35,11 @@ class ProductsController < ApplicationController
   end
 
   def create
-    puts "Params: #{params.inspect}"
     @product = current_user.products.new(product_params)
+    if (@product.auction_enabled = 0)
+      @product.starting_bid = 0
+      @product.highest_bid = 0
+    end
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to product_path(@product)
@@ -89,7 +92,17 @@ class ProductsController < ApplicationController
     # redirect to the user's own listings page
     redirect_back(fallback_location: user_listings_path(current_user))
   end
+  def destroy_product
+    @product = Product.find(params[:id])
 
+    if current_user.admin? && @product.destroy
+      flash[:notice] = "Product successfully deleted."
+    else
+      flash[:error] = "Failed to delete product."
+    end
+
+    redirect_to products_path
+  end
   # add a product to the user's favorites
   def add_to_favorites
     if !logged_in?
@@ -150,7 +163,9 @@ class ProductsController < ApplicationController
 
     if @product.auction_enabled && @product.auction_end_time > Time.now && amount > highest_bid
       if bid.valid? && bid.save
-        @product.update(highest_bid: amount)
+        @product.highest_bid= amount
+        @product.highest_bidder= session[:user_id]
+        @product.save
         flash[:notice] = 'Bid placed successfully!'
       else
         flash[:alert] = 'Invalid bid! In loop'
@@ -164,17 +179,25 @@ class ProductsController < ApplicationController
   def end_auction
     @product = Product.find(params[:id])
 
-    if @product.auction_enabled && @product.auction_end_time <= Time.now
+    if @product.auction_enabled? && @product.auction_end_time <= Time.now
       # Award the product to the highest bidder
-      winner = @product.highest_bidder
-      @product.update(highest_bidder: winner, auction_enabled: false)
-      cart = winner.cart || winner.create_cart
-      cart_item = cart.cart_items.create(product: @product, quantity: 1)
-      flash[:notice] = 'Auction ended successfully!'
+      highest_bidder = @product.highest_bidder
+
+      if highest_bidder.present?
+        cart = highest_bidder.cart || highest_bidder.create_cart
+        cart_item = cart.cart_items.find_or_initialize_by(product: @product)
+        cart_item.quantity ||= 0
+        cart_item.quantity += 1
+        cart_item.save
+
+
+        flash[:notice] = 'Auction ended successfully! Product added to the winner\'s cart.'
+      else
+        flash[:alert] = 'No winner found. Auction cannot be ended at this time!'
+      end
     else
       flash[:alert] = 'Auction cannot be ended at this time!'
     end
-
     redirect_to product_path(@product)
   end
 

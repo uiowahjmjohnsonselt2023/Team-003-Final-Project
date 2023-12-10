@@ -35,17 +35,42 @@
       <h2>Top Rated Sellers</h2>
       <% @top_rated.each do |seller|%>
         <div class="seller">
-          <%= link_to seller.username, user_path(seller),class:'seller-link'%>
+          <%= link_to seller.username, user_path(seller), class: "seller-link"%>
           <%= number_with_precision(seller.average_rating, precision:1) %>
         </div>
       <% end %>
     </section>
-    <section class="about-us">
-      <h2>About Us</h2>
-      <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
-    </section>
   </main>
-
+  <div>
+  <section class="about-us">
+    <h2>About Us</h2>
+    <p>Knockoff eBay is your go-to place for buying and selling a wide variety of products. We offer a secure and easy-to-use platform for both buyers and sellers.</p>
+    <br/>
+    <br/>
+  </section>
+  </div>
+  <div>
+    <section class="about-us">
+      <h2>FAQ</h2>
+      <br/>
+      <h3>How do I sign up?</h3>
+      <p>Click the sign up button in the top right of your screen. You can authenticate through our website or sign in through GitHub!</p>
+      <br/>
+      <h3>How do I find the kind of products I am looking for?</h3>
+      <p>Buyers can search by a variety of different categories, through text search, by price range and more.</p>
+      <br/>
+      <h3>Can I save a product listing and come back to it later?</h3>
+      <p>Yes! When viewing a product click "Add to Favorites" to save the product for viewing later. You can then access the listing later by hitting the heart icon in the navigation bar.</p>
+      <br/>
+      <h3>How can I report an issue?</h3>
+      <p>If you have an issue with another member you can report them from their profile page, allowing you to speak with an admin and get it resolved!</p>
+      <br/>
+      <h3>What if I have more questions about a product that aren't listed in the description?</h3>
+      <p>If you have questions about a product feel free to use our messaging feature! This will allow you to connect with the seller and ask any questions you might have.</p>
+    </section>
+  </div>
+  <br/>
+  <br/>
   <footer>
     <p> 2023 Knockoff eBay. All rights reserved.</p>
   </footer>

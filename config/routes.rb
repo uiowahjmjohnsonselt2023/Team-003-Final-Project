@@ -38,8 +38,10 @@ Rails.application.routes.draw do
       post :write_review
       post :add_to_favorites
       post :promote
+      delete :destroy_product
       post :create_bid
       post :end_auction
+
       delete :unpromote
     end
     resources :listings
@@ -77,7 +79,12 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   get '/messages', to: 'messages#index'
-
+  resources :relationships, only: [:create, :destroy]
+  resources :users do
+    get 'following', to: 'users#following', on: :member
+    post 'follow', to: 'users#follow', on: :member
+    delete 'unfollow', to: 'users#unfollow', on: :member
+  end
   # additional routes
   get 'search', to: 'search#index', as: 'search'
   get 'trackings/:order_id', to: 'trackings#show', as: 'trackings_show'

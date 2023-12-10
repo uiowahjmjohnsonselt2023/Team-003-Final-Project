@@ -44,7 +44,10 @@ user = User.create(
       condition: ['New', 'Used', 'Like New', 'Fair', 'Good', 'Poor'].sample,
       location: Faker::Address.city,
       category: Category.all.sample,
-      is_promoted: [true, false].sample
+      is_promoted: [true, false].sample,
+      auction_enabled: false,
+      starting_bid: 0,
+      highest_bid: 0,
     )
 
 rescue ActiveRecord::RecordInvalid => e

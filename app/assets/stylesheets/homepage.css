@@ -61,7 +61,7 @@ body {
     margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     flex-basis: 48%;
-    max-width: 40%;
+    max-width: 30%;
     min-width: 200px;
     box-sizing: border-box;
     height: 300px;

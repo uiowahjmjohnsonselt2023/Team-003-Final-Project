@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
+    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
-    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -214,12 +214,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
+    t.string "comment"
     t.bigint "reviewer_id", null: false
     t.bigint "reviewee_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comment"
-    t.integer "product_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
