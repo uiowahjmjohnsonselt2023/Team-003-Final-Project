@@ -33,3 +33,12 @@ end
 Then('I should see {string} for user profile') do |expected_text|
   expect(page).to have_text(expected_text)
 end
+
+Given('I am on the signup page') do
+  visit '/signup'
+end
+
+Then('I should be redirected to the home page of the marketplace') do
+  expect(current_path).to eq('/')
+end
+
