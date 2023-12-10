@@ -15,6 +15,8 @@ class ProductsController < ApplicationController
                                     :auction_enabled,
                                     :is_promoted,
                                     :is_featured,
+                                    :starting_bid,
+                                    :highest_bid,
                                     :bid
                                     )
   end
@@ -33,8 +35,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    puts "Params: #{params.inspect}"
     @product = current_user.products.new(product_params)
-
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to product_path(@product)
@@ -132,7 +134,7 @@ class ProductsController < ApplicationController
   end
   def create_bid
     @product = Product.find(params[:id])
-    amount = params[:amount].to_f
+    amount = params[:bid][:amount].to_f
     starting_bid = @product.starting_bid || 0
     highest_bid = @product.highest_bid || starting_bid
     bid = Bid.new(
@@ -140,12 +142,13 @@ class ProductsController < ApplicationController
       product: @product,
       amount: amount
     )
+
     if @product.auction_enabled && @product.auction_end_time > Time.now && amount > highest_bid
       if bid.valid? && bid.save
         @product.update(highest_bid: amount)
         flash[:notice] = 'Bid placed successfully!'
       else
-        flash[:alert] = 'Invalid bid!'
+        flash[:alert] = 'Invalid bid! In loop'
       end
     else
       flash[:alert] = 'Invalid bid!'
@@ -159,7 +162,9 @@ class ProductsController < ApplicationController
     if @product.auction_enabled && @product.auction_end_time <= Time.now
       # Award the product to the highest bidder
       winner = @product.highest_bidder
-      @product.update(sold_to: winner, auction_enabled: false)
+      @product.update(highest_bidder: winner, auction_enabled: false)
+      cart = winner.cart || winner.create_cart
+      cart_item = cart.cart_items.create(product: @product, quantity: 1)
       flash[:notice] = 'Auction ended successfully!'
     else
       flash[:alert] = 'Auction cannot be ended at this time!'
