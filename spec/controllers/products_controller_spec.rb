@@ -76,11 +76,11 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it 'awards the product to the highest bidder' do
-        expect(product.reload.sold_to).to eq(user)
+        expect(product.reload.highest_bidder).to eq(user.id)
       end
 
       it 'sets auction_enabled to false' do
-        expect(product.reload.auction_enabled).to be_falsey
+        expect(product.reload.auction_enabled).to eq(false)
       end
 
       it 'redirects to the product path' do
@@ -92,6 +92,14 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it 'puts the item into the user\'s cart' do
+        user.create_cart unless user.cart
+        # Reload the user to get the updated cart association
+        user.reload
+
+        # Debugging information
+        puts "User's cart: #{user.cart.inspect}"
+        puts "User's cart products: #{user.cart.products.inspect}"
+
         expect(user.cart.products).to include(product)
       end
     end

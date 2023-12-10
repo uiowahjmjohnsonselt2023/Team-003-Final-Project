@@ -160,7 +160,9 @@ class ProductsController < ApplicationController
 
     if @product.auction_enabled && @product.auction_end_time > Time.now && amount > highest_bid
       if bid.valid? && bid.save
-        @product.update(highest_bid: amount)
+        @product.highest_bid= amount
+        @product.highest_bidder= session[:user_id]
+        @product.save
         flash[:notice] = 'Bid placed successfully!'
       else
         flash[:alert] = 'Invalid bid! In loop'
@@ -174,17 +176,25 @@ class ProductsController < ApplicationController
   def end_auction
     @product = Product.find(params[:id])
 
-    if @product.auction_enabled && @product.auction_end_time <= Time.now
+    if @product.auction_enabled? && @product.auction_end_time <= Time.now
       # Award the product to the highest bidder
-      winner = @product.highest_bidder
-      @product.update(highest_bidder: winner, auction_enabled: false)
-      cart = winner.cart || winner.create_cart
-      cart_item = cart.cart_items.create(product: @product, quantity: 1)
-      flash[:notice] = 'Auction ended successfully!'
+      highest_bidder = @product.highest_bidder
+
+      if highest_bidder.present?
+        cart = highest_bidder.cart || highest_bidder.create_cart
+        cart_item = cart.cart_items.find_or_initialize_by(product: @product)
+        cart_item.quantity ||= 0
+        cart_item.quantity += 1
+        cart_item.save
+
+
+        flash[:notice] = 'Auction ended successfully! Product added to the winner\'s cart.'
+      else
+        flash[:alert] = 'No winner found. Auction cannot be ended at this time!'
+      end
     else
       flash[:alert] = 'Auction cannot be ended at this time!'
     end
-
     redirect_to product_path(@product)
   end
 
