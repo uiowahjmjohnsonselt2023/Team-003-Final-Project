@@ -1,19 +1,27 @@
-Given("the following users exist for search:") do |table|
-  table.hashes.each do |user|
-    User.create!(user)
+Given('the following users exist for search:') do |table|
+  table.hashes.each do |user_attributes|
+    User.create!(user_attributes)
   end
 end
 
-Given("the following products exist for search:") do |table|
-  table.hashes.each do |hash|
-    user = User.find_by(username: hash[:user])
-    category = Category.find_or_create_by(name: hash[:category])
-    Product.create!(
-      title: hash[:title],
-      description: hash[:description],
-      user: user,
-      category: category
-    )
+Given('the following products exist for search:') do |table|
+  user = User.find_by(username: 'MaryAnn') || User.create!(
+    username: 'MaryAnn',
+    email: 'mary@example.com',
+    password: 'password'
+  )
+
+  table.hashes.each do |product_attributes|
+    category_name = product_attributes.delete('category')
+    category = Category.find_or_create_by!(name: category_name)
+
+    Product.create!(product_attributes.merge({
+                                               user: user,
+                                               category: category,
+                                               auction_enabled: false,
+                                               starting_bid: 10,
+                                               highest_bid: 10
+                                             }))
   end
 end
 
@@ -41,4 +49,6 @@ Then("I should be on the details page for {string}") do |product_title|
   product = Product.find_by(title: product_title)
   expect(page.current_path).to eq product_path(product)
 end
+
+
 
