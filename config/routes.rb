@@ -38,8 +38,10 @@ Rails.application.routes.draw do
       post :write_review
       post :add_to_favorites
       post :promote
+      delete :destroy_product
       post :create_bid
       post :end_auction
+
       delete :unpromote
     end
     resources :listings

@@ -5,13 +5,15 @@ class Product < ApplicationRecord
 
   has_one_attached :image
   has_many :reviews, dependent: :destroy
-  has_many :orders
-  has_many :order_items
+  has_many :orders, dependent: :destroy
+  has_many :order_items, dependent: :destroy
 
-  has_many :favorites
-  has_many :favorited_by, through: :favorites, source: :user
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by, through: :favorites, source: :user, dependent: :destroy
 
-  has_many :conversations
+
+  has_many :conversations, dependent: :destroy
+
   has_many :bids
   validates :auction_enabled, inclusion: [true, false]
   validates :starting_bid, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -26,6 +28,7 @@ class Product < ApplicationRecord
   def highest_bidder
     bids.order(amount: :desc).first&.user
   end
+
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
