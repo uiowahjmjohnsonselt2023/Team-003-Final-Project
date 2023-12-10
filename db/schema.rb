@@ -80,7 +80,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
     t.bigint "product_id"
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.bigint "product_id"
     t.index ["product_id"], name: "index_conversations_on_product_id"
   end
 

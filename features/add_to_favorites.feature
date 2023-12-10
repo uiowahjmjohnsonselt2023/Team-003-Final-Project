@@ -5,8 +5,8 @@ Feature: Favorite Products
 
   Background:
     Given the following users exist:
-      | username  | email                 | password | password_confirmation |
-      | MaryAnee  | maryAnee@example.com  | password | password              |
+      | username | email                | password | password_confirmation |
+      | MaryAnee | maryAnee@example.com | password | password              |
     And the following products exist:
       | title             | price | description           |
       | Amazing Widget    | 19.99 | An amazing widget     |
