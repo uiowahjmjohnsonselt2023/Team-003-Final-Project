@@ -92,6 +92,11 @@ class ProductsController < ApplicationController
 
   # add a product to the user's favorites
   def add_to_favorites
+    if !logged_in?
+      flash[:alert] = ' You must be logged in to access this section'
+      redirect_to login_url
+      return
+    end
     @product = Product.find(params[:id])
     current_user.favorites.create(product: @product)
     flash[:notice] = "Product added to favorites."
@@ -255,9 +260,9 @@ class ProductsController < ApplicationController
     case sort_option
     when 'newest'
       'created_at DESC'
-    when 'price_asc'
+    when 'price_low_to_high'
       'price ASC'
-    when 'price_desc'
+    when 'price_high_to_low'
       'price DESC'
     else
       'created_at DESC' # default sorting by newest

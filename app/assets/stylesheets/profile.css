@@ -84,10 +84,11 @@
     line-height: 1.4;
     flex: 1;
 }
-
 .user-profile .user-actions .button.view-tracking {
     margin-left: 10px;
 }
 
-
+.user-profile .report-user-button:hover {
+    background-color: #c9302c;
+}
 

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  # route for omniauth callback
+  get 'auth/github/callback', to: 'sessions#create_from_omniauth'
+
   # root route for the marketplace home page
   root 'home#index'
 
