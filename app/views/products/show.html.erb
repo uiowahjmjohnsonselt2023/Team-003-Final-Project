@@ -39,13 +39,13 @@
             </div>
             <%= f.submit 'Place Bid', class: 'bid-button' %>
           <% end %>
-        <% else %>
-          <!-- Display Buy Now Price -->
-          <p class="product-detail-price">
-            Buy Now Price: <%= number_to_currency(@product.price) %>
-          </p>
-          <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: 'purchase-button' %>
         <% end %>
+      <% else %>
+        <!-- Display Buy Now Price -->
+        <p class="product-detail-price">
+          Buy Now Price: <%= number_to_currency(@product.price) %>
+        </p>
+        <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: 'purchase-button' %>
       <% end %>
       <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
       <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
