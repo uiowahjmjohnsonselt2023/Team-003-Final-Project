@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
     t.datetime "updated_at", null: false
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_conversations_on_product_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -128,7 +130,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
     t.integer "user_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
-
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -190,12 +191,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
     t.float "average_rating", default: 0.0
     t.string "category"
     t.bigint "category_id"
-    t.datetime "auction_start_time"
-    t.datetime "auction_end_time"
     t.boolean "is_promoted"
     t.boolean "is_featured"
+    t.datetime "auction_start_time"
+    t.datetime "auction_end_time"
+    t.boolean "auction_enabled"
+    t.decimal "highest_bid"
+    t.decimal "starting_bid"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -221,10 +235,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
     t.integer "status"
     t.string "tracking_number"
     t.string "shipping_carrier"
-
     t.bigint "order_id", null: false
     t.index ["order_id"], name: "index_trackings_on_order_id"
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -250,13 +262,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "conversations", "products"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "feedbacks", "orders"
-  add_foreign_key "messages", "users"
-  add_foreign_key "messages", "users", column: "receiver_id"
-  add_foreign_key "messages", "users", column: "recipient_id"
-  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "listings", "products"
   add_foreign_key "listings", "users"
   add_foreign_key "notifications", "users", column: "actor_id"
@@ -267,7 +276,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "relationships", "users", column: "followed_id"
+  add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
+  add_foreign_key "trackings", "orders"
 end
