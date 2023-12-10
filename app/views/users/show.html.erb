@@ -21,6 +21,11 @@
       <% unless @user == current_user %>
         <%= button_to 'Message Seller', message_seller_user_path(user_id: @user.id), method: :post, class: "user-actions button" %>
         <%= button_to 'Report User', message_seller_user_path(user_id: @admin.id), method: :post, class: "report-user-button" %>
+        <% if current_user.following?(@user) %>
+          <%= button_to 'Unfollow User', unfollow_user_path(user_id: @user.id), method: :delete, class: "user-actions button" %>
+        <% else %>
+          <%= button_to 'Follow User', follow_user_path(user_id: @user.id), method: :post, class: "user-actions button" %>
+        <% end %>
       <% end %>
       <%= link_to 'Active Listings', products_path(user_id: @user.id), class: "user-actions button" %>
   </div>
