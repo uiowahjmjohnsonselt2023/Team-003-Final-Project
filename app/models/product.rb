@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
 
   has_many :conversations
-  has_many :bids
+  has_many :bids, dependent: :destroy
   validates :auction_enabled, inclusion: [true, false]
   validates :starting_bid, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :highest_bid, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -24,7 +24,8 @@ class Product < ApplicationRecord
     bids.maximum(:amount) || starting_bid
   end
   def highest_bidder
-    bids.order(amount: :desc).first&.user
+    highest_bid = bids.order(amount: :desc).first
+    highest_bid&.user
   end
   def self.search(query)
     where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
