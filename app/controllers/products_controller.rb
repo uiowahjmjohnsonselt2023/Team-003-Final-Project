@@ -80,7 +80,17 @@ class ProductsController < ApplicationController
     # redirect to the user's own listings page
     redirect_back(fallback_location: user_listings_path(current_user))
   end
+  def destroy_product
+    @product = Product.find(params[:id])
 
+    if current_user.admin? && @product.destroy
+      flash[:notice] = "Product successfully deleted."
+    else
+      flash[:error] = "Failed to delete product."
+    end
+
+    redirect_to products_path
+  end
   # add a product to the user's favorites
   def add_to_favorites
     if !logged_in?
@@ -215,6 +225,8 @@ class ProductsController < ApplicationController
       'created_at DESC' # default sorting by newest
     end
   end
+
+ 
 end
 
 
