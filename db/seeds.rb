@@ -56,9 +56,6 @@ rescue ActiveRecord::RecordInvalid => e
   end
 end
 
-
-
-
 User.limit(5).each do |user|
   cart = user.cart || user.create_cart
   cart.cart_items.destroy_all

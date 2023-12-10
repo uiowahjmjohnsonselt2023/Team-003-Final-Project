@@ -77,9 +77,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
   create_table "conversations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.bigint "product_id"
     t.index ["product_id"], name: "index_conversations_on_product_id"
   end
 
@@ -248,12 +248,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_032641) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "verified"
-    t.string "verification_token"
     t.string "reset_token"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
     t.boolean "admin", default: false, null: false
+    t.boolean "verified"
+    t.string "verification_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

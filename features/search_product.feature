@@ -8,8 +8,8 @@ Feature: Search Products
       | username | email            | password |
       | MaryAnn  | mary@example.com | password |
     And the following products exist for search:
-      | title          | description      | user    | category |
-      | Amazing Widget | An amazing widget| MaryAnn | Widgets  |
+      | title          | description       | category |
+      | Amazing Widget | An amazing widget | Toys     |
 
   Scenario: Buyer searches for a product and sees clickable results
     Given I am on the homepage
