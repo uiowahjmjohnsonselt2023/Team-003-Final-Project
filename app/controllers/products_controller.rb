@@ -36,6 +36,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
+    if (@product.auction_enabled = 0)
+      @product.starting_bid = 0
+      @product.highest_bid = 0
+    end
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to product_path(@product)
