@@ -1,0 +1,11 @@
+<link rel="stylesheet" type="text/css" href="homepage.css">
+<div class="followed-users-container">
+  <h2 class="followed-users-title">Users I'm Following</h2>
+  <% @following.each do |user| %>
+    <div class="followed-user-item">
+      <span class="followed-username"><%= user.username %></span>
+      <%= link_to 'View Profile', user, class: 'followed-user-action-link' %>
+      <%= button_to 'Unfollow', unfollow_user_path(user), method: :delete, class: 'unfollow-button' %>
+    </div>
+  <% end %>
+</div>
