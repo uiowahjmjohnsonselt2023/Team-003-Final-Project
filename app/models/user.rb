@@ -47,6 +47,10 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_products, through: :favorites, source: :product
 
+
+  #associations for auctions
+  has_many :bids, dependent: :destroy
+
   # fetch top sellers
   def self.top_sellers
     User.joins(:orders)
@@ -55,6 +59,7 @@ class User < ApplicationRecord
         .order('total_sales DESC')
         .limit(5)
   end
+
   # Fetch Top rated sellers
   def self.top_rated
     User.joins(:received_reviews, :orders)
@@ -64,6 +69,7 @@ class User < ApplicationRecord
         .order('average_rating DESC')
         .limit(5)
   end
+
   # allows for secure password management within the model by adding methods to set and authenticate against a BCrypt password
   has_secure_password
 

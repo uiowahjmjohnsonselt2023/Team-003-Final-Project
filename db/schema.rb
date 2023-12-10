@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_08_052208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -120,6 +128,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
     t.integer "user_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -181,6 +190,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
     t.float "average_rating", default: 0.0
     t.string "category"
     t.bigint "category_id"
+    t.datetime "auction_start_time"
+    t.datetime "auction_end_time"
     t.boolean "is_promoted"
     t.boolean "is_featured"
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -210,8 +221,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
     t.integer "status"
     t.string "tracking_number"
     t.string "shipping_carrier"
+
     t.bigint "order_id", null: false
     t.index ["order_id"], name: "index_trackings_on_order_id"
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -232,12 +245,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bids", "products"
+  add_foreign_key "bids", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "feedbacks", "orders"
+  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "recipient_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "listings", "products"
   add_foreign_key "listings", "users"
   add_foreign_key "notifications", "users", column: "actor_id"
@@ -251,5 +270,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_221208) do
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
-  add_foreign_key "trackings", "orders"
 end
