@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:message_seller]
-  before_action :authenticate_user, only: [:message_seller]
-  before_action :require_login, only: [:new, :create]
+  before_action :set_product, only: [:message_seller, :create_bid]
+  before_action :authenticate_user, only: [:message_seller, :create_bid]
+  before_action :require_login, only: [:new, :create, :create_bid]
 
   def product_params
     params.require(:product).permit(:title,
@@ -10,6 +10,14 @@ class ProductsController < ApplicationController
                                     :condition,
                                     :location,
                                     :category_id,
+                                    :auction_start_time,
+                                    :auction_end_time,
+                                    :auction_enabled,
+                                    :is_promoted,
+                                    :is_featured,
+                                    :starting_bid,
+                                    :highest_bid,
+                                    :bid
                                     )
   end
 
@@ -27,8 +35,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    puts "Params: #{params.inspect}"
     @product = current_user.products.new(product_params)
-
     if @product.save
       flash[:notice] = 'Product added!'
       redirect_to product_path(@product)
@@ -43,6 +51,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @listings = @product.listings
     @reviews = @product.reviews
+    @current_bid = @product.highest_bidder
     # initialize an empty review object for the form
     @review = Review.new
 
@@ -138,6 +147,50 @@ class ProductsController < ApplicationController
 
     render 'search'
   end
+  def create_bid
+    @product = Product.find(params[:id])
+    amount = params[:bid][:amount].to_f
+    starting_bid = @product.starting_bid || 0
+    highest_bid = @product.highest_bid || starting_bid
+    bid = Bid.new(
+      user: current_user,
+      product: @product,
+      amount: amount
+    )
+
+    if @product.auction_enabled && @product.auction_end_time > Time.now && amount > highest_bid
+      if bid.valid? && bid.save
+        @product.update(highest_bid: amount)
+        flash[:notice] = 'Bid placed successfully!'
+      else
+        flash[:alert] = 'Invalid bid! In loop'
+      end
+    else
+      flash[:alert] = 'Invalid bid!'
+      end
+
+    redirect_to product_path(@product)
+  end
+  def end_auction
+    @product = Product.find(params[:id])
+
+    if @product.auction_enabled && @product.auction_end_time <= Time.now
+      # Award the product to the highest bidder
+      winner = @product.highest_bidder
+      @product.update(highest_bidder: winner, auction_enabled: false)
+      cart = winner.cart || winner.create_cart
+      cart_item = cart.cart_items.create(product: @product, quantity: 1)
+      flash[:notice] = 'Auction ended successfully!'
+    else
+      flash[:alert] = 'Auction cannot be ended at this time!'
+    end
+
+    redirect_to product_path(@product)
+  end
+
+  def bid_params
+    params.require(:bid).permit(:amount)
+  end
 
   def promote
     @product = current_user.products.find(params[:id])
@@ -226,7 +279,6 @@ class ProductsController < ApplicationController
     end
   end
 
- 
 end
 
 

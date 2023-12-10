@@ -19,8 +19,34 @@
     </div>
 
     <div class="product-detail-info">
-      <p class="product-detail-price"><%= number_to_currency(@product.price) %></p>
-      <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: "purchase-button" %>
+      <% if @product.auction_enabled %>
+        <p class="auction-info">
+          Auction starts at: <%= @product.auction_start_time.strftime("%B %e, %Y %I:%M %p") %>
+          <br>
+          Auction ends at: <%= @product.auction_end_time.strftime("%B %e, %Y %I:%M %p") %>
+          <br>
+          Starting Bid: <%= number_to_currency(@product.starting_bid) %>
+          <% if @product.highest_bid.present? %>
+            <br>
+            Highest Bid: <%= number_to_currency(@product.highest_bid) %>
+          <% end %>
+        </p>
+        <% if @product.auction_end_time > Time.now %>
+          <%= form_with(model: [@product, Bid.new], url: create_bid_product_path(@product), method: :post) do |f| %>
+            <div class="form-group">
+              <%= f.label :amount, 'Bid Amount' %>
+              <%= f.number_field :amount, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Place Bid', class: 'bid-button' %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <!-- Display Buy Now Price -->
+        <p class="product-detail-price">
+          Buy Now Price: <%= number_to_currency(@product.price) %>
+        </p>
+        <%= button_to 'Add to Cart', cart_items_path(product_id: @product.id), method: :post, class: 'purchase-button' %>
+      <% end %>
       <%= button_to 'Add to Favorites', add_to_favorites_product_path(@product), method: :post, class: "favorite-button" %>
       <%= button_to 'Message Seller', message_seller_product_path(@product), method: :post, class: "message-seller-button" %>
       <% if current_user.admin? == true %>

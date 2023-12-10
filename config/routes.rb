@@ -39,6 +39,9 @@ Rails.application.routes.draw do
       post :add_to_favorites
       post :promote
       delete :destroy_product
+      post :create_bid
+      post :end_auction
+
       delete :unpromote
     end
     resources :listings
@@ -71,6 +74,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
 
   # routes for conversations and messages
+
   resources :conversations, only: [:index, :show, :destroy] do
     resources :messages, only: [:create]
   end
